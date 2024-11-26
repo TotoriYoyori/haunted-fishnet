@@ -30,9 +30,10 @@ public class Player : NetworkBehaviour
                 narrow_dark_filter.SetActive(true);
                 wide_dark_filter.SetActive(true);
             }
-            else
+            else if (TryGetComponent(out GhostScript ghost))
             {
-                // ghost script here
+                ghost.player = GetComponent<Player>(); 
+                wide_dark_filter.SetActive(true);
             }
         }
         else

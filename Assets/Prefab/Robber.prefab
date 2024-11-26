@@ -375,7 +375,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 6780872986741511376}
   frozen: 0
   is_special_vision_on: 0
-  speed: 0.2
+  speed: 0.125
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 6616163819704814367}
   wide_dark_filter: {fileID: 4377614202541201557}

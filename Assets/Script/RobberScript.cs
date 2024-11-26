@@ -7,10 +7,6 @@ public class RobberScript : NetworkBehaviour
     public Player player;
     [SerializeField] GameObject flashlight;
     
-    void Update()
-    {
-        
-    }
     public void Flashlight(bool is_on)
     {
         SyncFlashlightServerRpc(is_on);
