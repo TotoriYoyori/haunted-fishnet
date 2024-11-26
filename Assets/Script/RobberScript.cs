@@ -36,7 +36,7 @@ public class RobberScript : NetworkBehaviour
     [ServerRpc]
     void SyncFlashlightServerRpc(bool is_on)
     {
-        flashlight.SetActive(is_on);
+        //flashlight.SetActive(is_on); this is unnecessary
         SyncFlashlightObserversRpc(is_on);
     }
 
