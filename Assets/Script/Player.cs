@@ -1,6 +1,7 @@
 using FishNet.Example.ColliderRollbacks;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
 {
@@ -23,7 +24,7 @@ public class Player : NetworkBehaviour
             camera = Camera.main;
             Debug.Log("Camera_supposed_to_be_assigned");
             if (camera == null) Debug.Log("Camera_was_not_assigned");
-
+        
             if (TryGetComponent(out RobberScript robber))
             {
                 robber.player = GetComponent<Player>();
@@ -34,11 +35,8 @@ public class Player : NetworkBehaviour
             {
                 ghost.player = GetComponent<Player>(); 
                 wide_dark_filter.SetActive(true);
+                camera.GetComponent<CameraBehavior>().filter.GetComponent<Image>().color = ghost.stepvision_color;
             }
-        }
-        else
-        {
-            gameObject.GetComponent<InputController>().enabled = false;
         }
     }
 

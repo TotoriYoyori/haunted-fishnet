@@ -251,6 +251,7 @@ MonoBehaviour:
   aiming_arrow: {fileID: 2830279574510897858}
   ghost_hiding: {fileID: 7272600033158285140}
   ghost_attacking: {fileID: 6632733983475322842}
+  stepvision_color: {r: 0.10293335, g: 0.44102767, b: 0.690566, a: 0.41568628}
   charge_duration: 0.5
   charge_length: 5
 --- !u!50 &4216343954045900820
@@ -545,7 +546,7 @@ GameObject:
   - component: {fileID: 6559171917028196190}
   - component: {fileID: 5257183380063970371}
   - component: {fileID: 5073025455822619268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HidingGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}

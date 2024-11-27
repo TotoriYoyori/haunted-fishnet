@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 6229946920321116732}
   - component: {fileID: -6679497480514498858}
   - component: {fileID: 1815629884914572010}
+  - component: {fileID: 7382639019768437697}
   m_Layer: 0
   m_Name: Robber
   m_TagString: Untagged
@@ -431,6 +432,7 @@ MonoBehaviour:
   - {fileID: 3381776187632408474}
   - {fileID: 892456825074874813}
   - {fileID: 3252101299203949182}
+  - {fileID: 1815629884914572010}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -539,9 +541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 6780872986741511376}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 6780872986741511376}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
@@ -570,3 +572,18 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &7382639019768437697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926702910527820004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fed5594d35de174695f88058aea64b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep_interval: 20
+  footstep_lifetime: 500
+  footstep: {fileID: 5055427431244221174, guid: 53907ae0147e8454ab0693a7be36a5f1, type: 3}

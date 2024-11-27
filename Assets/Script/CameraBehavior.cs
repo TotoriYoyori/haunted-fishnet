@@ -12,7 +12,7 @@ public class CameraBehavior : MonoBehaviour
     [HideInInspector]
     public Vector2 to_follow;
     [SerializeField] float speed;
-    [SerializeField] GameObject filter;
+    public GameObject filter;
     float camera_left_border, camera_right_border, camera_top_border, camera_bottom_border, camera_height, camera_width;
 
     void FixedUpdate()

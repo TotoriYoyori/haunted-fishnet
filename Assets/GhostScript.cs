@@ -10,6 +10,7 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] GameObject aiming_arrow;
     [SerializeField] GameObject ghost_hiding;
     [SerializeField] GameObject ghost_attacking;
+    public Color stepvision_color;
 
     // Dashing Variables
     bool is_aiming;
@@ -19,7 +20,6 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] float charge_duration;
     [SerializeField] float charge_length;
     Vector3 charge_starting_position;
-
 
     private void FixedUpdate()
     {

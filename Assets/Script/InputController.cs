@@ -26,7 +26,14 @@ public class InputController : NetworkBehaviour
         Vector3 Movement = new Vector3(x, y, 0) * player.speed;
         if (Movement.magnitude > 1) Movement.Normalize();
 
-        return Movement;
+        if (TryGetComponent<FootstepManager>(out FootstepManager footsteps))
+        {
+            if (Movement.magnitude > 0) footsteps.SetIsWalkingServerRpc(true);
+            else footsteps.SetIsWalkingServerRpc(false);
+        }
+
+        if (!IsOwner) return Vector3.zero;
+        else return Movement;
     }
     private void Update()
     {
@@ -34,6 +41,8 @@ public class InputController : NetworkBehaviour
     }
     void AbilitiesInput()
     {
+        if (!IsOwner) return;
+
         if (TryGetComponent(out RobberScript robber))
         {
             // Flashlight on left mouse
