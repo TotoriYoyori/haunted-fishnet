@@ -273,9 +273,9 @@ GameObject:
   - component: {fileID: 3241090622462452788}
   - component: {fileID: 3381776187632408474}
   - component: {fileID: 892456825074874813}
+  - component: {fileID: 3252101299203949182}
   - component: {fileID: 6780872986741511376}
   - component: {fileID: 6229946920321116732}
-  - component: {fileID: 3252101299203949182}
   - component: {fileID: -6679497480514498858}
   - component: {fileID: 1815629884914572010}
   m_Layer: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 6780872986741511376}
   frozen: 0
   is_special_vision_on: 0
-  speed: 0.2
+  speed: 0.125
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 6616163819704814367}
   wide_dark_filter: {fileID: 4377614202541201557}
@@ -394,6 +394,23 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 6780872986741511376}
   _networkObjectCache: {fileID: 6780872986741511376}
+--- !u!114 &3252101299203949182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926702910527820004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217ae21a78df1ae4786e48e23a2aabe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 6780872986741511376}
+  _networkObjectCache: {fileID: 6780872986741511376}
+  player: {fileID: 0}
+  flashlight: {fileID: 1159843323613937056}
 --- !u!114 &6780872986741511376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,23 +500,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &3252101299203949182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926702910527820004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217ae21a78df1ae4786e48e23a2aabe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 2
-  _addedNetworkObject: {fileID: 6780872986741511376}
-  _networkObjectCache: {fileID: 6780872986741511376}
-  player: {fileID: 0}
-  flashlight: {fileID: 1159843323613937056}
 --- !u!50 &-6679497480514498858
 Rigidbody2D:
   serializedVersion: 5

@@ -1,5 +1,9 @@
 using UnityEngine;
-
+public enum character
+{
+    ROBBER,
+    GHOST,
+}
 public class Game : MonoBehaviour
 {
     public static GameObject robber;
