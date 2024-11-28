@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b5c06cf8941bc04b8d71650e5fcd4be
+guid: 906a9393bdce098479ab04366d101aca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5986887661493015560
-    second: WoodenFloor_Bot_0
+      213: 4011715256358695628
+    second: BedroomWall_Top_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WoodenFloor_Bot_0
+      name: BedroomWall_Top_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 804d575bb92b51350800000000000000
-      internalID: 5986887661493015560
+      spriteID: cc2764b45c97ca730800000000000000
+      internalID: 4011715256358695628
       vertices: []
       indices: 
       edges: []

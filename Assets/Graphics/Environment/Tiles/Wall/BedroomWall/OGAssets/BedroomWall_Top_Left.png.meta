@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dcbfe5384e0b47b4c8c46f730e09bea0
+guid: 1e6023fb44fef134d83dcaaf1c18958f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3096353624524567195
-    second: BedroomWall_Top_Right_0
+      213: 2150341071835864992
+    second: BedroomWall_Top_Left_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomWall_Top_Right_0
+      name: BedroomWall_Top_Left_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 30
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56d483f98ca8705d0800000000000000
-      internalID: -3096353624524567195
+      spriteID: 0af95b4dfcb87dd10800000000000000
+      internalID: 2150341071835864992
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 34014ebab435fd3478e6aed9fcbb2cf0
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BedroomWall_Top_Left_0: 2150341071835864992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

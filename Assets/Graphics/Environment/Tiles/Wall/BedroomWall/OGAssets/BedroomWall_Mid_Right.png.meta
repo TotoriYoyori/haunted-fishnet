@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82724e728bbc3444698a38ec4c8c9a2f
+guid: 8f71e8255f71d7d4b8f601394a861558
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6822899835095917409
-    second: BedroomWall_Bot_Right_0
+      213: 281161152927654400
+    second: BedroomWall_Mid_Right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomWall_Bot_Right_0
+      name: BedroomWall_Mid_Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9c590fcfb03051a0800000000000000
-      internalID: -6822899835095917409
+      spriteID: 00264e43492e6e300800000000000000
+      internalID: 281161152927654400
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BedroomWall_Mid_Right_0: 281161152927654400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

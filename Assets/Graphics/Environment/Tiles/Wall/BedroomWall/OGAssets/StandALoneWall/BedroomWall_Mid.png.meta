@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8718f2b0bbfce80429d7cedc37c29cd0
+guid: 9cabc84521f232745a5a4a967a13bdb2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5826782968599280568
-    second: BedroomWall_Mid_Left_0
+      213: 6846016136163236846
+    second: BedroomWall_Mid_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomWall_Mid_Left_0
+      name: BedroomWall_Mid_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8bbf7a20d34ecd050800000000000000
-      internalID: 5826782968599280568
+      spriteID: eeb1a92776fe10f50800000000000000
+      internalID: 6846016136163236846
       vertices: []
       indices: 
       edges: []
