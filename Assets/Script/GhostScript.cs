@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class GhostScript : NetworkBehaviour
 {
-    [HideInInspector]
-    public Player player;
+    [HideInInspector] public Player player;
 
     [SerializeField] GameObject aiming_arrow;
     [SerializeField] GameObject ghost_hiding;
     [SerializeField] GameObject ghost_attacking;
     public Color stepvision_color;
+    [SerializeField] float stepvision_speed;
+    [HideInInspector] public float default_speed;
+    
 
     // Dashing Variables
     bool is_aiming;
@@ -86,16 +88,11 @@ public class GhostScript : NetworkBehaviour
         }
 
     }
-    void Hide(bool is_hiding)
-    {
-        player.frozen = !is_hiding;
-        ghost_hiding.SetActive(is_hiding);
-        ghost_attacking.SetActive(!is_hiding);
-    }
-
     public void StepVision(bool is_on)
     {
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
+
+        player.speed = (is_on) ? stepvision_speed : default_speed;
     }
 
     [ServerRpc]

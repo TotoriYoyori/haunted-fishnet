@@ -584,6 +584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed5594d35de174695f88058aea64b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 6780872986741511376}
+  _networkObjectCache: {fileID: 0}
   footstep_interval: 20
   footstep_lifetime: 500
-  footstep: {fileID: 5055427431244221174, guid: 53907ae0147e8454ab0693a7be36a5f1, type: 3}
+  footstep_prefab: {fileID: 5055427431244221174, guid: 53907ae0147e8454ab0693a7be36a5f1, type: 3}

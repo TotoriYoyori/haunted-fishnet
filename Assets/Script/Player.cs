@@ -1,5 +1,6 @@
 using FishNet.Example.ColliderRollbacks;
 using FishNet.Object;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,13 +31,21 @@ public class Player : NetworkBehaviour
                 robber.player = GetComponent<Player>();
                 narrow_dark_filter.SetActive(true);
                 wide_dark_filter.SetActive(true);
+                camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.ROBBER);
+                if (IsOwner) GetComponent<FootstepManager>().enabled = false;
             }
             else if (TryGetComponent(out GhostScript ghost))
             {
                 ghost.player = GetComponent<Player>(); 
+                ghost.default_speed = speed;
                 wide_dark_filter.SetActive(true);
                 camera.GetComponent<CameraBehavior>().filter.GetComponent<Image>().color = ghost.stepvision_color;
+                camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
             }
+        }
+        else
+        {
+            GetComponent<InputController>().enabled = false;
         }
     }
 

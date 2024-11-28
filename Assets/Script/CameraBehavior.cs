@@ -62,7 +62,7 @@ public class CameraBehavior : MonoBehaviour
         }
     }
 
-    void CameraMode(camera_mode mode)
+    public void CameraMode(camera_mode mode)
     {
         switch (mode)
         {
@@ -76,7 +76,7 @@ public class CameraBehavior : MonoBehaviour
                 GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Messages", "Nightvision", "Ghost", "Robber");
                 break;
             case camera_mode.GHOST_SPECIAL:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "StepVision", "Messages", "Robber");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "Stepvision", "Messages", "Robber");
                 break;
 
         }
