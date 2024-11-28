@@ -1,6 +1,7 @@
 using FishNet.Object;
 using FishNet.Connection;
 using UnityEngine;
+using FishNet.Managing;
 
 public class Spawner : NetworkBehaviour
 {
@@ -16,13 +17,13 @@ public class Spawner : NetworkBehaviour
         
         if (starting_character == character.ROBBER) // Order is based on the starting character specified in game.
         {
-            if (Game.robber == null) SpawnRobber();
-            else if (Game.ghost == null) SpawnGhost();
+            if (Game.Instance.robber.Value == null) SpawnRobber();
+            else if (Game.Instance.ghost.Value == null) SpawnGhost();
         }
         else if (starting_character == character.GHOST)
         {
-            if (Game.ghost == null) SpawnGhost();
-            else if (Game.robber == null) SpawnRobber();
+            if (Game.Instance.ghost.Value == null) SpawnGhost();
+            else if (Game.Instance.robber.Value == null) SpawnRobber();
         }
         
         else
@@ -54,8 +55,8 @@ public class Spawner : NetworkBehaviour
         new_player = Instantiate(player_to_spawn, position, Quaternion.identity);
         ServerManager.Spawn(new_player, owner);
 
-        if (is_robber) Game.robber = new_player;
-        else Game.ghost = new_player;
+        if (is_robber) UpdatePlayerObserversRpc(true);
+        else UpdatePlayerObserversRpc(false);
 
         Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // line by GPT to verify connection
 
@@ -64,6 +65,15 @@ public class Spawner : NetworkBehaviour
     {
         NetworkObject networkObject = GetComponent<NetworkObject>();
         networkObject.Despawn();
+    }
+    // theres a polish cafe 
+    [ObserversRpc]
+    void UpdatePlayerObserversRpc(bool is_robber)
+    {
+        if (is_robber)
+            Game.Instance.robber.Value = new_player;
+        else
+            Game.Instance.ghost.Value = new_player;
     }
 
 }
