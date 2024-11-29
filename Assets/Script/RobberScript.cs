@@ -6,10 +6,13 @@ public class RobberScript : NetworkBehaviour
 {
     [HideInInspector]
     public Player player;
-    [SerializeField] GameObject flashlight;
+    public GameObject flashlight;
+    [HideInInspector] public bool items_collected;
+    public GameObject item_pick_up_aura;
     
     public void Flashlight(bool is_on)
     {
+        if (player.is_special_vision_on) return;
         SyncFlashlightServerRpc(is_on);
         if (IsOwner) player.narrow_dark_filter.SetActive(!is_on);
 
@@ -26,8 +29,11 @@ public class RobberScript : NetworkBehaviour
     public void NightVision(bool is_on)
     {
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
+        player.is_special_vision_on = is_on;
 
         if (IsOwner) player.narrow_dark_filter.SetActive(!is_on);
+
+        if (is_on) SyncFlashlightObserversRpc(false);
     }
 
     [ServerRpc]

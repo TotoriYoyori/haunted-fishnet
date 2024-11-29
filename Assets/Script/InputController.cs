@@ -45,6 +45,7 @@ public class InputController : NetworkBehaviour
             if (Input.GetButtonUp("Fire2")) robber.Flashlight(false);
 
             // to do:add picking up items on SPACE_BAR
+            if (Input.GetButtonDown("Jump")) robber.item_pick_up_aura.GetComponent<ItemPickUp>().StartPicking(true);
         }
         else if (TryGetComponent(out GhostScript ghost))
         {
