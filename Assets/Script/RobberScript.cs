@@ -41,5 +41,6 @@ public class RobberScript : NetworkBehaviour
     void SyncFlashlightObserversRpc(bool is_on)
     {
         flashlight.SetActive(is_on);
+        Game.Instance.ghost.Value.GetComponent<Player>().Indication(is_on);
     }
 }

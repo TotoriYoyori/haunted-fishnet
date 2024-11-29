@@ -1,4 +1,5 @@
 using FishNet.Object;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -35,7 +36,6 @@ public class GhostScript : NetworkBehaviour
             if (charge_target_position != Vector2.zero) Charging();
         }
     }
-
     void AimForCharge(Vector2 target_position)
     {
         Vector2 direction = new Vector3(target_position.x, target_position.y, 0) - transform.position;
@@ -107,6 +107,7 @@ public class GhostScript : NetworkBehaviour
         if (IsOwner) player.frozen = !is_hiding;
         ghost_hiding.SetActive(is_hiding);
         ghost_attacking.SetActive(!is_hiding);
+        Game.Instance.robber.Value.GetComponent<Player>().Indication(!is_hiding);
     }
 
 }

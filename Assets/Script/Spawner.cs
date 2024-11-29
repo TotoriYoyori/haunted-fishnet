@@ -75,5 +75,4 @@ public class Spawner : NetworkBehaviour
         else
             Game.Instance.ghost.Value = new_player;
     }
-
 }
