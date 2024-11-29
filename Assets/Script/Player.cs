@@ -16,6 +16,10 @@ public class Player : NetworkBehaviour
     public GameObject narrow_dark_filter;
     public GameObject wide_dark_filter;
 
+    // indication varialbes
+    [SerializeField] GameObject indication;
+    [SerializeField] SpriteRenderer indication_sprite;
+    [SerializeField] float indication_hide_distance;
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -52,6 +56,45 @@ public class Player : NetworkBehaviour
     private void Update()
     {
         if (camera != null) camera.GetComponent<CameraBehavior>().to_follow = transform.position;
+    }
+
+    private void FixedUpdate()
+    {
+        IndicationRotation();
+    }
+
+    void IndicationRotation()
+    {
+        // indication
+        if (indication.activeSelf && TryGetComponent(out GhostScript ghost))
+        {
+            Vector3 robber_direction = (Game.Instance.robber.Value.transform.position - transform.position).normalized;
+            indication.transform.rotation = Quaternion.FromToRotation(Vector3.up, robber_direction);
+
+            if (Vector2.Distance(Game.Instance.robber.Value.transform.position, transform.position) < indication_hide_distance)
+            {
+                indication_sprite.enabled = false;
+            }
+            else indication_sprite.enabled = true;
+        }
+        else
+        {
+            if (indication.activeSelf && TryGetComponent(out RobberScript robber))
+            {
+                Vector3 robber_direction = (Game.Instance.ghost.Value.transform.position - transform.position).normalized;
+                indication.transform.rotation = Quaternion.FromToRotation(Vector3.up, robber_direction);
+
+                if (Vector2.Distance(Game.Instance.ghost.Value.transform.position, transform.position) < indication_hide_distance)
+                {
+                    indication_sprite.enabled = false;
+                }
+                else indication_sprite.enabled = true;
+            }
+        }
+    } // Optimize this
+    public void Indication(bool is_on)
+    {
+        if (IsOwner) indication.SetActive(is_on);
     }
 
 
