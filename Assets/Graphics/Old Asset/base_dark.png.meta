@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e296b31b54c2bd468e9030f998867ad
+guid: 41ee4957d85e68d4b923088737d07f48
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2750063866123556479
-    second: flash_dark_0
+      213: 8076996116779765493
+    second: base_dark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flash_dark_0
+      name: base_dark_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1246
-        height: 641
+        width: 2492
+        height: 1800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f769ee904803a2620800000000000000
-      internalID: 2750063866123556479
+      spriteID: 5fe0ed8ac21471070800000000000000
+      internalID: 8076996116779765493
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e73698db975e56146ad7e3179740faaf
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      flash_dark_0: 2750063866123556479
+      base_dark_0: 8076996116779765493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
