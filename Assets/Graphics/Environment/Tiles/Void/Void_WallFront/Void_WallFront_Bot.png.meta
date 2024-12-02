@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f7d5625b5bd3eea40832bade1d460ca6
+guid: b5402926026890145aa1a9ec2cc48fba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9059485670640897481
-    second: Void_Above_WallStandAlone_0
+      213: -3270757894317597332
+    second: Void_WallFront_Bot_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Void_Above_WallStandAlone_0
+      name: Void_WallFront_Bot_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 24
         width: 32
-        height: 32
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73235b128cd364280800000000000000
-      internalID: -9059485670640897481
+      spriteID: c6d15ea360feb92d0800000000000000
+      internalID: -3270757894317597332
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Void_Above_WallStandAlone_0: -9059485670640897481
+      Void_WallFront_Bot_0: -3270757894317597332
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
