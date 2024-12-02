@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9cabc84521f232745a5a4a967a13bdb2
+guid: 9fed1de9c907e864ea713a16e59ef130
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6846016136163236846
-    second: BedroomWall_Mid_0
+      213: 2507252208676660859
+    second: BathFloor_Mid_Right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BedroomWall_Mid_0
+      name: BathFloor_Mid_Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeb1a92776fe10f50800000000000000
-      internalID: 6846016136163236846
+      spriteID: b766c7c899c8bc220800000000000000
+      internalID: 2507252208676660859
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BedroomWall_Mid_0: 6846016136163236846
+      BathFloor_Mid_Right_0: 2507252208676660859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
