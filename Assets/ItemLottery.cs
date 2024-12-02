@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using FishNet.Serializing.Helping;
 
 public class ItemLottery : MonoBehaviour
 {
@@ -45,6 +46,15 @@ public class ItemLottery : MonoBehaviour
         }
     }
 
+    public void ClearLocations()
+    {
+        GameObject[] all_locations = GameObject.FindGameObjectsWithTag("Item");
+        
+        for (int i = 0; i < all_locations.Length; i++)
+        {
+            all_locations[i].SetActive(false);
+        }
+    }
     public bool AllItemsCollectedCheck()
     {
         for (int i = 0; i < item_coupon_ids.Length; i++)
