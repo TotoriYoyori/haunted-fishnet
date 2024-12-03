@@ -55,8 +55,7 @@ public class Spawner : NetworkBehaviour
         new_player = Instantiate(player_to_spawn, position, Quaternion.identity);
         ServerManager.Spawn(new_player, owner);
 
-        if (is_robber) UpdatePlayerObserversRpc(true);
-        else UpdatePlayerObserversRpc(false);
+        UpdatePlayerObserversRpc(is_robber);
 
         Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // line by GPT to verify connection
 
