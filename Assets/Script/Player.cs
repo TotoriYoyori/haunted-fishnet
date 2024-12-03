@@ -54,6 +54,7 @@ public class Player : NetworkBehaviour
         else
         {
             GetComponent<InputController>().enabled = false;
+            if (TryGetComponent(out AudioSource white_noise)) white_noise.enabled = false;
         }
     }
 

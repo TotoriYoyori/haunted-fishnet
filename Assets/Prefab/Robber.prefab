@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: -6679497480514498858}
   - component: {fileID: 1815629884914572010}
   - component: {fileID: 7382639019768437697}
+  - component: {fileID: 2164329333668951851}
   m_Layer: 0
   m_Name: Robber
   m_TagString: Untagged
@@ -639,6 +640,10 @@ MonoBehaviour:
   flashlight: {fileID: 1159843323613937056}
   items_collected: 0
   item_pick_up_aura: {fileID: 1851567907971040859}
+  radar_range: 16
+  white_noise_range: 10
+  shake_intensity: 2
+  white_noise_volume: 0.2
 --- !u!114 &6780872986741511376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +665,7 @@ MonoBehaviour:
   - {fileID: 892456825074874813}
   - {fileID: 3252101299203949182}
   - {fileID: 1815629884914572010}
+  - {fileID: 7382639019768437697}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -811,12 +817,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed5594d35de174695f88058aea64b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 6780872986741511376}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 6780872986741511376}
   footstep_interval: 20
   footstep_lifetime: 500
   footstep_prefab: {fileID: 5055427431244221174, guid: 53907ae0147e8454ab0693a7be36a5f1, type: 3}
+--- !u!82 &2164329333668951851
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926702910527820004}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aab6afbf0d4855645a6645b1e4d90e00, type: 3}
+  m_Resource: {fileID: 8300000, guid: aab6afbf0d4855645a6645b1e4d90e00, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8149528738269290541
 GameObject:
   m_ObjectHideFlags: 0
