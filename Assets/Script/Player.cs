@@ -15,6 +15,8 @@ public class Player : NetworkBehaviour
     public Camera camera;
     public GameObject narrow_dark_filter;
     public GameObject wide_dark_filter;
+    [HideInInspector] public SpriteRenderer sprite;
+    public Color color;
 
     // indication varialbes
     [SerializeField] GameObject indication;
@@ -29,6 +31,9 @@ public class Player : NetworkBehaviour
             camera = Camera.main;
             Debug.Log("Camera_supposed_to_be_assigned");
             if (camera == null) Debug.Log("Camera_was_not_assigned");
+
+            sprite = GetComponent<SpriteRenderer>();
+            sprite.color = color;
         
             if (TryGetComponent(out RobberScript robber))
             {

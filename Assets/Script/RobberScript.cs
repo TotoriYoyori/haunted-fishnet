@@ -78,6 +78,17 @@ public class RobberScript : NetworkBehaviour
 
     }
 
+    [Server]
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ghost")
+        {
+            SyncCatchRobberServerRpc();
+        }
+    }
+
+    // Synchronizing using the flashlight ===========================================
+
     [ServerRpc]
     void SyncFlashlightServerRpc(bool is_on)
     {
@@ -90,5 +101,25 @@ public class RobberScript : NetworkBehaviour
     {
         flashlight.SetActive(is_on);
         Game.Instance.ghost.Value.GetComponent<Player>().Indication(is_on);
+    }
+
+    // ===============================================================================
+
+    [ServerRpc]
+    void SyncCatchRobberServerRpc()
+    {
+        SyncCatchRobberObserverRpc();
+    }
+
+    [ObserversRpc]
+    void SyncCatchRobberObserverRpc()
+    {
+        CaughthRobber();
+        //Game.Instance.ghost.Value.GetComponent<GhostScript>().Catch();
+    }
+    void CaughthRobber()
+    {
+        Debug.Log("CATCHING: I was caught (Observer)");
+        GameObject.Find("Ghost(Clone)").GetComponent<GhostScript>().SyncCatchServerRpc();
     }
 }

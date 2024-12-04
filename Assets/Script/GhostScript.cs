@@ -1,4 +1,6 @@
 using FishNet.Object;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +26,30 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] float charge_length;
     Vector3 charge_starting_position;
 
+    // Catching Variables
+    [SerializeField] float laughing_duration;
+    bool is_laughing = false;
+    List<Vector3> teleportation_locations = new List<Vector3>();
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        Debug.Log("Ghost OnStartClient");
+
+        FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_2"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_3"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_4"));
+    }
+
+    void FindTeleportationPoint(GameObject teleport_point)
+    {
+        if (teleport_point == null) return;
+
+        teleportation_locations.Add(teleport_point.transform.position);
+        Debug.Log("Teleportation pont added at " + teleport_point.transform.position);
+    }
     private void FixedUpdate()
     {
         if (IsOwner)
@@ -88,12 +114,15 @@ public class GhostScript : NetworkBehaviour
         }
 
     }
+
     public void StepVision(bool is_on)
     {
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
 
         player.speed = (is_on) ? stepvision_speed : default_speed;
     }
+
+    // Changing states HIDING - ATTACKING ======================================
 
     [ServerRpc]
     public void SyncHideServerRpc(bool is_hiding)
@@ -110,4 +139,49 @@ public class GhostScript : NetworkBehaviour
         Game.Instance.robber.Value.GetComponent<Player>().Indication(!is_hiding);
     }
 
+    // ==========================================================================
+
+    [ServerRpc]
+    public void SyncCatchServerRpc()
+    {
+        SyncCatchObserverRpc();
+    }
+
+    [ObserversRpc]
+    public void SyncCatchObserverRpc()
+    {
+        if (is_laughing) return;
+        StartCoroutine(Catch());
+    }
+    void TeleportAway()
+    {
+        Debug.Log("TeleportsAway");
+    }
+    IEnumerator Catch()
+    {
+        Debug.Log("CATCHING: I caught the robber (Observer)");
+        
+        is_laughing = true;
+        SpriteRenderer sprite = ghost_hiding.GetComponent<SpriteRenderer>();
+        Color color = sprite.color;
+        player.frozen = true;
+        float currect_laughing_duration = laughing_duration;
+        float current_alpha = color.a;
+
+        while (currect_laughing_duration > 0)
+        {
+            Debug.Log(current_alpha);
+            sprite.color = new Color(color.r, color.g, color.b, current_alpha);
+            current_alpha = currect_laughing_duration / laughing_duration;
+
+            currect_laughing_duration--;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        sprite.color = color;
+        player.frozen = false;
+        is_laughing = false;
+
+        TeleportAway();        
+    }
 }
