@@ -2,7 +2,9 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
 using UnityEngine.InputSystem.Utilities;
+using System.Collections;
 using UnityEngine.Rendering;
+using System.Runtime.CompilerServices;
 
 public class RobberScript : NetworkBehaviour
 {
@@ -17,6 +19,11 @@ public class RobberScript : NetworkBehaviour
     [SerializeField] float white_noise_range;
     [SerializeField] float shake_intensity;
     [SerializeField] float white_noise_volume;
+
+    // Beign caught variables 
+    [SerializeField] float jumpscare_duration;
+    bool is_caught = false;
+    [SerializeField] GameObject jumpscare;
 
     public void Flashlight(bool is_on)
     {
@@ -51,12 +58,12 @@ public class RobberScript : NetworkBehaviour
 
     void GhostRadar()
     {
-        if (Game.Instance.ghost.Value == null && !IsOwner) return;
+        if (Game.Instance.ghost.Value == null || !IsOwner || player == null) return;
         float distance_to_ghost = Vector2.Distance(Game.Instance.ghost.Value.transform.position, transform.position);
 
         // Shaking darkness effect
-        player.narrow_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
-        player.wide_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
+        if (player.narrow_dark_filter != null) player.narrow_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
+        if (player.wide_dark_filter != null) player.wide_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
 
         // Growing Audio effect
         AudioSource white_noise = GetComponent<AudioSource>();
@@ -121,6 +128,30 @@ public class RobberScript : NetworkBehaviour
     void CaughthRobber()
     {
         Debug.Log("CATCHING: I was caught (Observer)");
-        GameObject.Find("Ghost(Clone)").GetComponent<GhostScript>().SyncCatchServerRpc();
+        if (IsOwner) GameObject.Find("Ghost(Clone)").GetComponent<GhostScript>().SyncCatchServerRpc();
+        Game.Instance.ghost.Value.GetComponent<GhostScript>().SyncCatchServerRpc();
+
+        if (IsOwner) StartCoroutine(GetSpooked());
+    }
+
+    IEnumerator GetSpooked()  // Maybe go a commit back with this code (?)
+    {
+        is_caught = true;
+        float alpha = 1f;
+        float current_jumpscare_duration = jumpscare_duration;
+        SpriteRenderer sprite = jumpscare.GetComponent<SpriteRenderer>();
+        jumpscare.SetActive(true);
+
+        while (current_jumpscare_duration > 0)
+        {
+            alpha = current_jumpscare_duration / jumpscare_duration;
+            sprite.color = new Color(1, 1, 1, alpha);
+
+            current_jumpscare_duration--;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        jumpscare.SetActive(false);
+        is_caught = false;
     }
 }
