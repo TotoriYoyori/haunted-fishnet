@@ -51,6 +51,7 @@ public class RobberScript : NetworkBehaviour
 
     void GhostRadar()
     {
+        if (Game.Instance.ghost.Value == null && !IsOwner) return;
         float distance_to_ghost = Vector2.Distance(Game.Instance.ghost.Value.transform.position, transform.position);
 
         // Shaking darkness effect
