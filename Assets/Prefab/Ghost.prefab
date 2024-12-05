@@ -309,6 +309,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 0}
   wide_dark_filter: {fileID: 5223075842775214517}
+  sprite: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   indication: {fileID: 8507590118961241968}
   indication_sprite: {fileID: 5107413432444896470}
   indication_hide_distance: 10
@@ -351,6 +353,7 @@ MonoBehaviour:
   default_speed: 0
   charge_duration: 0.5
   charge_length: 5
+  laughing_duration: 50
 --- !u!50 &4216343954045900820
 Rigidbody2D:
   serializedVersion: 5
@@ -521,7 +524,7 @@ GameObject:
   - component: {fileID: 8728926136322762512}
   m_Layer: 0
   m_Name: AttackingGhost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,8 +633,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.38699916}
-  m_Radius: 0.45128724
+  m_Offset: {x: -0.008152604, y: -0.38699916}
+  m_Radius: 0.21486005
 --- !u!1 &7272600033158285140
 GameObject:
   m_ObjectHideFlags: 0

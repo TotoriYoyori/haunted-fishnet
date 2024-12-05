@@ -1,7 +1,10 @@
 using FishNet.Object;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class GhostScript : NetworkBehaviour
 {
@@ -24,6 +27,35 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] float charge_length;
     Vector3 charge_starting_position;
 
+    // Catching Variables
+    [SerializeField] float laughing_duration;
+    bool is_laughing = false;
+    List<Vector3> teleportation_locations = new List<Vector3>();
+    SpriteRenderer hiding_sprite;
+    Color hiding_color;
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        Debug.Log("Ghost OnStartClient");
+
+        FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_2"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_3"));
+        FindTeleportationPoint(GameObject.Find("teleportation_point_4"));
+
+        hiding_sprite = ghost_hiding.GetComponent<SpriteRenderer>();
+        hiding_color = hiding_sprite.color;
+    }
+
+    void FindTeleportationPoint(GameObject teleport_point)
+    {
+        if (teleport_point == null) return;
+
+        teleportation_locations.Add(teleport_point.transform.position);
+        Debug.Log("Teleportation pont added at " + teleport_point.transform.position);
+    }
     private void FixedUpdate()
     {
         if (IsOwner)
@@ -48,7 +80,7 @@ public class GhostScript : NetworkBehaviour
     {
         charge_time += Time.deltaTime;
         float progress = ((charge_time / charge_duration) > 1f) ? 1 : charge_time / charge_duration;
-        Debug.Log(progress);
+        //Debug.Log(progress);
 
         float coolT = Mathf.Pow(progress, 2);
 
@@ -88,12 +120,15 @@ public class GhostScript : NetworkBehaviour
         }
 
     }
+
     public void StepVision(bool is_on)
     {
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
 
         player.speed = (is_on) ? stepvision_speed : default_speed;
     }
+
+    // Changing states HIDING - ATTACKING ======================================
 
     [ServerRpc]
     public void SyncHideServerRpc(bool is_hiding)
@@ -110,4 +145,62 @@ public class GhostScript : NetworkBehaviour
         Game.Instance.robber.Value.GetComponent<Player>().Indication(!is_hiding);
     }
 
+    // ==========================================================================
+
+    [ServerRpc]
+    public void SyncCatchServerRpc()
+    {
+        SyncCatchObserverRpc();
+    }
+
+    [ObserversRpc]
+    public void SyncCatchObserverRpc()
+    {
+        if (is_laughing) return;
+        StartCoroutine(Catch());
+    }
+    Vector2 TeleportAway()
+    {
+        Debug.Log("TeleportsAway");
+
+        int chosen_point = 0;
+
+        for (int i = 0; i < teleportation_locations.Count; i++)
+        {
+            float old_distance = Vector2.Distance(transform.position, teleportation_locations[chosen_point]);
+            float new_distance = Vector2.Distance(transform.position, teleportation_locations[i]);
+            if (new_distance > old_distance) chosen_point = i;
+        }
+
+        return teleportation_locations[chosen_point];
+    }
+    IEnumerator Catch()
+    {
+        Debug.Log("CATCHING: I caught the robber (Observer)");
+        
+        is_laughing = true;
+        ghost_hiding.layer = LayerMask.NameToLayer("Default");
+        if (player != null) player.frozen = true;
+        float current_laughing_duration = laughing_duration;
+        float current_alpha = hiding_color.a;
+
+        Debug.Log("CATCHING: is laugthing " + is_laughing + ", current_laughing_duration" + current_laughing_duration + ", laughing duration: " + laughing_duration + ", current_alpha: " + current_alpha );
+
+        while (current_laughing_duration > 0)
+        {
+            Debug.Log(current_alpha);
+            hiding_sprite.color = new Color(hiding_color.r, hiding_color.g, hiding_color.b, current_alpha);
+            current_alpha = current_laughing_duration / laughing_duration;
+
+            current_laughing_duration--;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        hiding_sprite.color = hiding_color;
+        if (player != null) player.frozen = false;
+        ghost_hiding.layer = LayerMask.NameToLayer("Ghost");
+        is_laughing = false;
+
+        transform.position = TeleportAway();        
+    }
 }
