@@ -101,4 +101,4 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 8314925730379989869}
   robber_prefab: {fileID: 6926702910527820004, guid: 1f685780162001e41a4a41f4d187ca3e, type: 3}
   ghost_prefab: {fileID: 3238304887432459600, guid: ba8f49d2415e72844976a304369ff3c4, type: 3}
-  starting_character: 0
+  starting_character: 1
