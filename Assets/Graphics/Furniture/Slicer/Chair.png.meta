@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0cb894808be2b2544bcd71707924d84e
+guid: 8d9e86460a9efdb4aa278e279fe7894f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 717927180307189200
-    second: TeaTable_0
+      213: 5843985864524226762
+    second: Chair_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TeaTable_0
+      name: Chair_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 48
-        height: 44
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ddcecc77f696f900800000000000000
-      internalID: 717927180307189200
+      spriteID: ac0ee575e220a1150800000000000000
+      internalID: 5843985864524226762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chair_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3dba491366709488c529eba7d36bb5
+      internalID: 1303566866
       vertices: []
       indices: 
       edges: []
@@ -125,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f4d18b7618779704a9033048a4741280
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TeaTable_0: 717927180307189200
+      Chair_0: 5843985864524226762
+      Chair_1: 1303566866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

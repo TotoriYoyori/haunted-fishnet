@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b6dd3afc2ab5ed46bfc5d29da229533
+guid: ad186fac2d6aa3244a3bfdd79e9eeb76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2581194991558548230
-    second: Vanity_0
+      213: 1300469373425206956
+    second: Tea_Table_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vanity_0
+      name: Tea_Table_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 30
-        height: 42
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60b5dd74b2f32d320800000000000000
-      internalID: 2581194991558548230
+      spriteID: ca6c84441023c0210800000000000000
+      internalID: 1300469373425206956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tea_Table_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92ebf293b2dc2d74fb0e0af4f4f3ab87
+      internalID: 1881121674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tea_Table_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab081871a1c60042bf68ce3a80a132a
+      internalID: 1217556444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tea_Table_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d711453b8560954abec90583b757c6f
+      internalID: 1390139195
       vertices: []
       indices: 
       edges: []
@@ -125,7 +204,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 657bb81f94f5cef4fb98e97ceca5c285
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +214,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Vanity_0: 2581194991558548230
+      Tea_Table_0: 1300469373425206956
+      Tea_Table_1: 1881121674
+      Tea_Table_2: 1217556444
+      Tea_Table_3: 1390139195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
