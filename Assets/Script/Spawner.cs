@@ -10,7 +10,7 @@ public class Spawner : NetworkBehaviour
     [SerializeField] character starting_character;
     GameObject new_player;
     
-    public override void OnStartServer()
+    public override void OnStartServer() // Add the character selection screen here!
     {
         base.OnStartServer();
 

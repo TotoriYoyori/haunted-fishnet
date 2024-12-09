@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Haunting Scene_0: -5318418817097156218
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

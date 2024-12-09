@@ -16,7 +16,11 @@ public class GhostScript : NetworkBehaviour
     public Color stepvision_color;
     [SerializeField] float stepvision_speed;
     [HideInInspector] public float default_speed;
-    
+
+    // GhostUI
+    GhostUI ghostUI;
+    [SerializeField] float dash_cooldown;
+    [SerializeField] float stepvision_cooldown;
 
     // Dashing Variables
     bool is_aiming;
@@ -47,6 +51,13 @@ public class GhostScript : NetworkBehaviour
 
         hiding_sprite = ghost_hiding.GetComponent<SpriteRenderer>();
         hiding_color = hiding_sprite.color;
+
+        if (IsOwner)
+        {
+            ghostUI = GameObject.Find("GhostUI").GetComponent<GhostUI>();
+            if (ghostUI == null) Debug.Log("Couldnt find ghost UI");
+            else ghostUI.EnableUI();
+        }
     }
 
     void FindTeleportationPoint(GameObject teleport_point)
@@ -97,6 +108,9 @@ public class GhostScript : NetworkBehaviour
         SyncHideServerRpc(false);
         //Hide(false);
 
+        // Cooldown
+        StartCoroutine(ghostUI.Cooldown(dash_cooldown, true));
+
         Debug.Log("Charge Started");
     }
 
@@ -104,25 +118,31 @@ public class GhostScript : NetworkBehaviour
     {
         charge_target_position = Vector3.zero;
         SyncHideServerRpc(true);
+
         //Hide(true);
         Debug.Log("Charge Ended");
     }
     public void ChargeAttack(bool is_on)
     {
+        if (ghostUI.dash_fill.fillAmount < 1) return;
+
         is_aiming = is_on;
         aiming_arrow.SetActive(is_aiming);
         SyncHideServerRpc(!is_on);
-        //Hide(!is_on);
 
         if (is_on == false && Vector2.Distance(mouse_position, transform.position) > 0f)
         {
             StartCharge();
         }
-
     }
 
     public void StepVision(bool is_on)
     {
+        if (ghostUI.stepvision_fill.fillAmount < 1) return;
+
+        // Cooldown
+        if (!is_on) StartCoroutine(ghostUI.Cooldown(stepvision_cooldown, false));
+
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
 
         player.speed = (is_on) ? stepvision_speed : default_speed;
@@ -183,8 +203,6 @@ public class GhostScript : NetworkBehaviour
         if (player != null) player.frozen = true;
         float current_laughing_duration = laughing_duration;
         float current_alpha = hiding_color.a;
-
-        Debug.Log("CATCHING: is laugthing " + is_laughing + ", current_laughing_duration" + current_laughing_duration + ", laughing duration: " + laughing_duration + ", current_alpha: " + current_alpha );
 
         while (current_laughing_duration > 0)
         {

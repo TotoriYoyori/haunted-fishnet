@@ -123,18 +123,18 @@ public class RobberScript : NetworkBehaviour
     void SyncCatchRobberObserverRpc()
     {
         CaughthRobber();
-        //Game.Instance.ghost.Value.GetComponent<GhostScript>().Catch();
+        
     }
     void CaughthRobber()
     {
         Debug.Log("CATCHING: I was caught (Observer)");
-        if (IsOwner) GameObject.Find("Ghost(Clone)").GetComponent<GhostScript>().SyncCatchServerRpc();
+        //if (IsOwner) GameObject.Find("Ghost(Clone)").GetComponent<GhostScript>().SyncCatchServerRpc();
         Game.Instance.ghost.Value.GetComponent<GhostScript>().SyncCatchServerRpc();
 
         if (IsOwner) StartCoroutine(GetSpooked());
     }
 
-    IEnumerator GetSpooked()  // Maybe go a commit back with this code (?)
+    IEnumerator GetSpooked() 
     {
         is_caught = true;
         float alpha = 1f;

@@ -351,6 +351,8 @@ MonoBehaviour:
   stepvision_color: {r: 0.10293335, g: 0.44102767, b: 0.690566, a: 0.41568628}
   stepvision_speed: 0.06
   default_speed: 0
+  dash_cooldown: 28
+  stepvision_cooldown: 12
   charge_duration: 0.5
   charge_length: 5
   laughing_duration: 50
