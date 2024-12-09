@@ -46,14 +46,20 @@ TagManager:
   - name: Ground
     uniqueID: 3439008113
     locked: 0
-  - name: Wall
+  - name: WalkInFront
+    uniqueID: 3521252337
+    locked: 0
+  - name: Collision
+    uniqueID: 2900693311
+    locked: 0
+  - name: Player
+    uniqueID: 1753927435
+    locked: 0
+  - name: WalkBehind
     uniqueID: 4250217701
     locked: 0
   - name: Void
     uniqueID: 2091929023
-    locked: 0
-  - name: Player
-    uniqueID: 1753927435
     locked: 0
   - name: Props
     uniqueID: 2744968065
