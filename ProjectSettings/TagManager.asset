@@ -43,5 +43,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3439008113
+    locked: 0
+  - name: Wall
+    uniqueID: 4250217701
+    locked: 0
+  - name: Void
+    uniqueID: 2091929023
+    locked: 0
+  - name: Player
+    uniqueID: 1753927435
+    locked: 0
+  - name: Props
+    uniqueID: 2744968065
+    locked: 0
   m_RenderingLayers:
   - Default
