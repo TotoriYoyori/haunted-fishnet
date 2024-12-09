@@ -41,8 +41,10 @@ public class GhostScript : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-
         Debug.Log("Ghost OnStartClient");
+
+
+        //GameObject.Find("ItemManager").GetComponent<ItemLottery>().ClearLocations();       
 
         FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
         FindTeleportationPoint(GameObject.Find("teleportation_point_2"));
