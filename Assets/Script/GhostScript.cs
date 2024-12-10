@@ -152,7 +152,7 @@ public class GhostScript : NetworkBehaviour
 
     // Changing states HIDING - ATTACKING ======================================
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SyncHideServerRpc(bool is_hiding)
     {
         SyncHideObserversRpc(is_hiding);
@@ -169,7 +169,7 @@ public class GhostScript : NetworkBehaviour
 
     // ==========================================================================
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SyncCatchServerRpc()
     {
         SyncCatchObserverRpc();
@@ -206,9 +206,11 @@ public class GhostScript : NetworkBehaviour
         float current_laughing_duration = laughing_duration;
         float current_alpha = hiding_color.a;
 
+        // Bliknking collected souls
+        if (IsOwner) StartCoroutine(player.BlinkingLives());
+
         while (current_laughing_duration > 0)
         {
-            Debug.Log(current_alpha);
             hiding_sprite.color = new Color(hiding_color.r, hiding_color.g, hiding_color.b, current_alpha);
             current_alpha = current_laughing_duration / laughing_duration;
 

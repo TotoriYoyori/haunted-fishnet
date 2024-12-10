@@ -97,7 +97,7 @@ public class RobberScript : NetworkBehaviour
 
     // Synchronizing using the flashlight ===========================================
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     void SyncFlashlightServerRpc(bool is_on)
     {
         //flashlight.SetActive(is_on); this is unnecessary
@@ -113,7 +113,7 @@ public class RobberScript : NetworkBehaviour
 
     // ===============================================================================
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     void SyncCatchRobberServerRpc()
     {
         SyncCatchRobberObserverRpc();
@@ -141,6 +141,9 @@ public class RobberScript : NetworkBehaviour
         float current_jumpscare_duration = jumpscare_duration;
         SpriteRenderer sprite = jumpscare.GetComponent<SpriteRenderer>();
         jumpscare.SetActive(true);
+
+        //HP blinking
+        if (IsOwner && player.is_blinking == false) StartCoroutine(player.BlinkingLives());
 
         while (current_jumpscare_duration > 0)
         {
