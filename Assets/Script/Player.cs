@@ -1,5 +1,6 @@
 using FishNet.Example.ColliderRollbacks;
 using FishNet.Object;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,16 @@ public class Player : NetworkBehaviour
     [SerializeField] GameObject indication;
     [SerializeField] SpriteRenderer indication_sprite;
     [SerializeField] float indication_hide_distance;
+
+    // lives/collected souls variables (hardcoded 3 for now)
+    [SerializeField] GameObject hp_bar;
+    [SerializeField] SpriteRenderer[] lives = new SpriteRenderer[3];
+    [SerializeField] float blinking_interval;
+    [SerializeField] float blinking_duration;
+    int current_hp = 3;
+    [SerializeField] Color wasted_life_color;
+    [HideInInspector] public bool is_blinking;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -103,6 +114,30 @@ public class Player : NetworkBehaviour
     public void Indication(bool is_on)
     {
         if (IsOwner) indication.SetActive(is_on);
+    }
+
+    public IEnumerator BlinkingLives()
+    {
+        Debug.Log("Started blinking");
+        hp_bar.SetActive(true);
+        float timer = blinking_duration;
+        is_blinking = true;
+
+        current_hp--;
+        lives[current_hp].color = wasted_life_color;
+
+        while (timer > 0)
+        {
+            timer -= blinking_interval;
+            Debug.Log("blink " + timer);
+
+            hp_bar.SetActive(!hp_bar.activeSelf);
+
+            yield return new WaitForSeconds(blinking_interval);
+        }
+
+        is_blinking = false;
+        hp_bar.SetActive(false);
     }
 
 
