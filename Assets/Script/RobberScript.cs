@@ -33,10 +33,16 @@ public class RobberScript : NetworkBehaviour
 
         if (is_on)
         {
+            //SFX
+            AudioManager.instance.PlaySFX("FlashlightOn");
+
             Debug.Log("FlashlightOn");
         }
         else
         {
+            //SFX
+            AudioManager.instance.PlaySFX("FlashlightOff");
+
             Debug.Log("FlashlightOff");
         }
     }

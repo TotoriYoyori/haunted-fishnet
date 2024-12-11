@@ -49,6 +49,9 @@ public class CameraBehavior : MonoBehaviour
     }
     public void SpecialVision(bool is_on, bool is_robber)
     {
+        //SFX
+        AudioManager.instance.PlaySFX("VisionSwitch");
+
         filter.SetActive(is_on);
         if (is_robber)
         {

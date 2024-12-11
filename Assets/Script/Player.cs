@@ -118,6 +118,9 @@ public class Player : NetworkBehaviour
 
     public IEnumerator BlinkingLives()
     {
+        //SFX
+        AudioManager.instance.PlaySFX("Damage");
+
         Debug.Log("Started blinking");
         hp_bar.SetActive(true);
         float timer = blinking_duration;

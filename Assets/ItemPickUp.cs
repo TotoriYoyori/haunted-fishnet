@@ -58,6 +58,9 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
 
     void FinishPicking()
     {
+        //SFX
+        AudioManager.instance.PlaySFX("ItemPickup");
+
         SelectionAura.GetComponent<Image>().fillAmount = 1;
 
         // Send a message to item manager that something was picked up
