@@ -305,6 +305,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: -5422034746920409676}
   _networkObjectCache: {fileID: -5422034746920409676}
   frozen: 0
+  won: 0
   is_special_vision_on: 0
   speed: 0.08
   camera: {fileID: 0}
@@ -324,6 +325,8 @@ MonoBehaviour:
   blinking_duration: 6
   wasted_life_color: {r: 0.124346524, g: 0.5622641, b: 0.10502664, a: 1}
   is_blinking: 0
+  win_text: You caught the robber
+  lose_text: Robber escaped the mansion
 --- !u!114 &6547271981266293688
 MonoBehaviour:
   m_ObjectHideFlags: 0

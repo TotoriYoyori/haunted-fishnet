@@ -164,7 +164,7 @@ public class GhostScript : NetworkBehaviour
     [ObserversRpc]
     public void SyncHideObserversRpc(bool is_hiding)
     {
-        if (IsOwner) player.frozen = !is_hiding;
+        if (IsOwner) player.frozen = !is_hiding; // To fix, make this not unfreeze the ghost when it dashes and catches the robber and when robber gets
         ghost_hiding.SetActive(is_hiding);
         ghost_attacking.SetActive(!is_hiding);
         Game.Instance.robber.Value.GetComponent<Player>().Indication(!is_hiding);

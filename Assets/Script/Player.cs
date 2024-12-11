@@ -4,11 +4,14 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : NetworkBehaviour
 {
     [HideInInspector]
     public bool frozen;
+    [HideInInspector]
+    public bool won;
     [HideInInspector]
     public bool is_special_vision_on;
     public float speed;
@@ -33,6 +36,12 @@ public class Player : NetworkBehaviour
     [SerializeField] Color wasted_life_color;
     [HideInInspector] public bool is_blinking;
 
+    // Text variables
+    [SerializeField] TextMeshProUGUI w_text;
+    [SerializeField] TextMeshProUGUI l_text;
+    [SerializeField] string win_text;
+    [SerializeField] string lose_text;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -42,6 +51,8 @@ public class Player : NetworkBehaviour
             camera = Camera.main;
             Debug.Log("Camera_supposed_to_be_assigned");
             if (camera == null) Debug.Log("Camera_was_not_assigned");
+
+            SetUpUI();
 
             sprite = GetComponent<SpriteRenderer>();
             sprite.color = color;
@@ -121,7 +132,6 @@ public class Player : NetworkBehaviour
         //SFX
         AudioManager.instance.PlaySFX("Damage");
 
-        Debug.Log("Started blinking");
         hp_bar.SetActive(true);
         float timer = blinking_duration;
         is_blinking = true;
@@ -129,10 +139,16 @@ public class Player : NetworkBehaviour
         current_hp--;
         lives[current_hp].color = wasted_life_color;
 
+        //check for game over
+        if (current_hp == 0 && TryGetComponent(out RobberScript robber))
+        {
+            GameOverServerRpc(false);
+            if (Game.Instance.ghost.Value != null) Game.Instance.ghost.Value.GetComponent<Player>().GameOverServerRpc(true);
+        }
+
         while (timer > 0)
         {
             timer -= blinking_interval;
-            Debug.Log("blink " + timer);
 
             hp_bar.SetActive(!hp_bar.activeSelf);
 
@@ -143,6 +159,32 @@ public class Player : NetworkBehaviour
         hp_bar.SetActive(false);
     }
 
+    void SetUpUI()
+    {
+        w_text = Game.Instance.win_text;
+        l_text = Game.Instance.lose_text;
+
+        w_text.text = win_text;
+        l_text.text = lose_text;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void GameOverServerRpc(bool won)
+    {
+        GameOverObserverRpc(won);
+    }
+
+    [ObserversRpc]
+    public void GameOverObserverRpc(bool won)
+    {
+        if (IsOwner)
+        {
+            Debug.Log("GAME OVER: Player " + won);
+            frozen = true;
+            if (won) w_text.gameObject.SetActive(true);
+            else l_text.gameObject.SetActive(true);
+        }
+    }
 
 }
 
