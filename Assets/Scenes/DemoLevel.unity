@@ -925,6 +925,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &144543068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144543070}
+  - component: {fileID: 144543069}
+  m_Layer: 0
+  m_Name: RobberAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &144543069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144543068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ca5c5dee66d534984d57483e3c8dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpItem: {fileID: 8300000, guid: 1ce3cbb025ea6b14d8ba3789e229f2b3, type: 3}
+  interacting: {fileID: 8300000, guid: 315d2e922a8c0234e918e7d067f081a0, type: 3}
+  walking: {fileID: 8300000, guid: 7eb4c77d3d1ef3c499cc9e8588e028f9, type: 3}
+  bumpIntoWall: {fileID: 8300000, guid: 183ec4265c53900469e2a5dfa401e1b2, type: 3}
+  flashlightToggle: {fileID: 8300000, guid: 12898ebd6791d6140b5d9210e0ee9acd, type: 3}
+  nightVisionToggle: {fileID: 8300000, guid: d50c0ac6fa6d78a439759a1251375e6c, type: 3}
+  timeRunsOut: {fileID: 8300000, guid: bc63a862bdc56c44491c42cf4c33255e, type: 3}
+  seeGhostUnderNightVision: {fileID: 8300000, guid: dd4c006b2f2f0724eb1491e7dc2e4881, type: 3}
+  successEscape: {fileID: 0}
+  whiteNoise: {fileID: 0}
+  ventsInteract: {fileID: 8300000, guid: 69b84e66af25a3d4e9f5155d36f8435e, type: 3}
+--- !u!4 &144543070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144543068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.6809144, y: 7.1089354, z: -0.2463535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159583427
 GameObject:
   m_ObjectHideFlags: 0
@@ -9171,6 +9226,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1352294824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1352294826}
+  - component: {fileID: 1352294825}
+  m_Layer: 0
+  m_Name: GhostAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1352294825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352294824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4372a293fdb67e74297e282937b27b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: {fileID: 8300000, guid: b676ecfd2e265a54ebed9c0b82543710, type: 3}
+  stepVision: {fileID: 8300000, guid: 1de9d9b7883ec294bb89d9025d2eaf09, type: 3}
+  dashing: {fileID: 8300000, guid: 908e9d298df0f374db6dbdab88c2a8ab, type: 3}
+  catchingRobberSuccess: {fileID: 8300000, guid: 99e3db5245f16dc42bb30460261410d9, type: 3}
+  ambientCreepy: {fileID: 8300000, guid: bc63a862bdc56c44491c42cf4c33255e, type: 3}
+--- !u!4 &1352294826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352294824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.6809144, y: 7.1089354, z: -0.2463535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358540357
 GameObject:
   m_ObjectHideFlags: 0
@@ -13793,3 +13897,5 @@ SceneRoots:
   - {fileID: 1365251319}
   - {fileID: 1628078251}
   - {fileID: 1953913605}
+  - {fileID: 144543070}
+  - {fileID: 1352294826}
