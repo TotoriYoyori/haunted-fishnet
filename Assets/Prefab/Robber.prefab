@@ -982,6 +982,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 6780872986741511376}
   _networkObjectCache: {fileID: 6780872986741511376}
   frozen: 0
+  won: 0
   is_special_vision_on: 0
   speed: 0.095
   camera: {fileID: 0}
@@ -1001,6 +1002,8 @@ MonoBehaviour:
   blinking_duration: 6
   wasted_life_color: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
   is_blinking: 0
+  win_text: You collected all the items and succesfully escaped the mansion
+  lose_text: Ghost caught you 3 times
 --- !u!114 &892456825074874813
 MonoBehaviour:
   m_ObjectHideFlags: 0

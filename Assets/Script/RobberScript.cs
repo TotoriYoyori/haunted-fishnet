@@ -92,12 +92,18 @@ public class RobberScript : NetworkBehaviour
 
     }
 
-    [Server]
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ghost")
+        if (IsServer && collision.gameObject.tag == "Ghost")
         {
             SyncCatchRobberServerRpc();
+        }
+
+        if (collision.gameObject.tag == "EscapeZone" && items_collected)
+        {
+            player.won = true;
+            player.GameOverServerRpc(true);
+            if (Game.Instance.ghost.Value != null) Game.Instance.ghost.Value.GetComponent<Player>().GameOverServerRpc(false);
         }
     }
 

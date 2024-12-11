@@ -1,6 +1,7 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Newtonsoft.Json.Bson;
+using TMPro;
 using UnityEngine;
 public enum character
 {
@@ -28,36 +29,20 @@ public class Game : NetworkBehaviour
     public Player player;
     public static Level level;
 
-    [SerializeField] GameObject RobberWinText;
-    [SerializeField] GameObject GhostWinText;
+    public TextMeshProUGUI win_text;
+    public TextMeshProUGUI lose_text;
 
     [ServerRpc(RequireOwnership = false)]
-    public void RobberWinsServerRpc()
-    {
-        RobberWinsObserverRpc();
-    }
-
-    [ObserversRpc]
-    void RobberWinsObserverRpc()
+    public void GameOverServerRpc()
     {
         GameOverObserverRpc();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void GhostWinsServerRpc()
-    {
-        GhostWinsObserverRpc();
-    }
-
-    [ObserversRpc]
-    void GhostWinsObserverRpc()
-    {
-        GameOverObserverRpc();
+        Debug.Log("GAME OVER: Server");
     }
 
     [ObserversRpc]
     void GameOverObserverRpc()
     {
-        player.frozen = true;
+        //player.GameOver();
+        Debug.Log("GAME OVER: Observer");
     }
 }

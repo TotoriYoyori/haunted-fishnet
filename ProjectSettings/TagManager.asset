@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Ghost
+  - EscapeZone
   layers:
   - Default
   - TransparentFX
