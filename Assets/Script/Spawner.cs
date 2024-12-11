@@ -128,6 +128,9 @@ public class Spawner : NetworkBehaviour
 
         UpdatePlayerObserversRpc(is_robber);
 
+        // Setting up player variable on the client
+        Game.Instance.player = new_player.GetComponent<Player>();
+
         Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // line by GPT to verify connection
 
         SelfDestruct();

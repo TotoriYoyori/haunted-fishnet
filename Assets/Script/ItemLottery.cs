@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using FishNet.Serializing.Helping;
+using System.Linq;
 
 public class ItemLottery : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ItemLottery : MonoBehaviour
     int[] item_coupon_ids = new int[6];
     [SerializeField] Image[] item_coupon_sprites = new Image[6];
     [SerializeField] GameObject items_collected_message;
+    [SerializeField] GameObject[] escape_zone = new GameObject[2];
 
     private void Awake()
     {
@@ -63,6 +65,12 @@ public class ItemLottery : MonoBehaviour
         }
 
         items_collected_message.SetActive(true);
+
+        for (int a = 0; a < escape_zone.Count(); a++)
+        {
+            escape_zone[a].SetActive(true);
+        }
+
         return true;
     }
     public void ItemPicked(Sprite item_sprite)
