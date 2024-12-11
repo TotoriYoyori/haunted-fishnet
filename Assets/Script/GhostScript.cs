@@ -104,6 +104,9 @@ public class GhostScript : NetworkBehaviour
 
     void StartCharge()
     {
+        //SFX
+        AudioManager.instance.PlaySFXGlobal("Dash");
+
         charge_target_position = transform.position + aiming_arrow.transform.up * charge_length;
         charge_starting_position = transform.position;
         charge_time = 0f;
