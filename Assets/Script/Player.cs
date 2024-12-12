@@ -19,7 +19,8 @@ public class Player : NetworkBehaviour
     public Camera camera;
     public GameObject narrow_dark_filter;
     public GameObject wide_dark_filter;
-    [HideInInspector] public SpriteRenderer sprite;
+    public SpriteRenderer sprite;
+    public SpriteRenderer aura_sprite; // temporary
     public Color color;
 
     // indication varialbes
@@ -53,9 +54,6 @@ public class Player : NetworkBehaviour
             if (camera == null) Debug.Log("Camera_was_not_assigned");
 
             SetUpUI();
-
-            sprite = GetComponent<SpriteRenderer>();
-            sprite.color = color;
         
             if (TryGetComponent(out RobberScript robber))
             {
@@ -129,9 +127,6 @@ public class Player : NetworkBehaviour
 
     public IEnumerator BlinkingLives()
     {
-        //SFX
-        AudioManager.instance.PlaySFX("Damage");
-
         hp_bar.SetActive(true);
         float timer = blinking_duration;
         is_blinking = true;

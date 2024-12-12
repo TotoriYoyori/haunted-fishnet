@@ -34,14 +34,14 @@ public class RobberScript : NetworkBehaviour
         if (is_on)
         {
             //SFX
-            AudioManager.instance.PlaySFX("FlashlightOn");
+            AudioManager.instance.PlaySFX("Flashlight");
 
             Debug.Log("FlashlightOn");
         }
         else
         {
             //SFX
-            AudioManager.instance.PlaySFX("FlashlightOff");
+            //AudioManager.instance.PlaySFX("Flashlight");
 
             Debug.Log("FlashlightOff");
         }
@@ -153,6 +153,8 @@ public class RobberScript : NetworkBehaviour
         float current_jumpscare_duration = jumpscare_duration;
         SpriteRenderer sprite = jumpscare.GetComponent<SpriteRenderer>();
         jumpscare.SetActive(true);
+
+        AudioManager.instance.PlaySFX("Damage");
 
         //HP blinking
         if (IsOwner && player.is_blinking == false) StartCoroutine(player.BlinkingLives());

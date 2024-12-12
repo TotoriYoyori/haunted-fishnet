@@ -50,7 +50,8 @@ public class CameraBehavior : MonoBehaviour
     public void SpecialVision(bool is_on, bool is_robber)
     {
         //SFX
-        AudioManager.instance.PlaySFX("VisionSwitch");
+        if (is_robber && is_on) AudioManager.instance.PlaySFX("Nightvision");
+        else if (is_on) AudioManager.instance.PlaySFX("Stepvision");
 
         filter.SetActive(is_on);
         if (is_robber)
