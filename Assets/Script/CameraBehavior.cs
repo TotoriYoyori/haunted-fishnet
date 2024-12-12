@@ -70,7 +70,7 @@ public class CameraBehavior : MonoBehaviour
         switch (mode)
         {
             case camera_mode.ROBBER:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Robber");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Robber", "NormalVision");
                 break;
             case camera_mode.GHOST:
                 GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "UI_for_ghost", "Robber");

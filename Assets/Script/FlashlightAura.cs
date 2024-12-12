@@ -6,6 +6,8 @@ public class FlashlightAura : MonoBehaviour
     {
         if (collision.gameObject.tag != "Item") return;
         collision.gameObject.GetComponent<Item>().sprite.enabled = true;
+
+        Debug.Log("FLASHLIGHT: ItemFound");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
