@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 20
   m_Sprite: {fileID: 3931143858439747636, guid: 2f804c53ee94620438d38bccac169f57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -162,9 +162,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.8141722, b: 0.06666666, a: 0.44313726}
   m_FlipX: 0
@@ -380,8 +380,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8415094, g: 0.15718754, b: 0.15718754, a: 1}
@@ -467,8 +467,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8415094, g: 0.15718754, b: 0.15718754, a: 1}
@@ -588,8 +588,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -1253870484941666149, guid: 4a460dcb8fe76d344a33ee194fb72dc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -762,8 +762,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8415094, g: 0.15718754, b: 0.15718754, a: 1}
@@ -849,8 +849,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: 5458253971975702416, guid: 8085b0e6623eabd4db83ff0be7db9a94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -952,8 +952,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 7fd58925224b1414f9fb8b2b5591ac20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1002,6 +1002,8 @@ MonoBehaviour:
   blinking_duration: 6
   wasted_life_color: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
   is_blinking: 0
+  w_text: {fileID: 0}
+  l_text: {fileID: 0}
   win_text: You collected all the items and succesfully escaped the mansion
   lose_text: Ghost caught you 3 times
 --- !u!114 &892456825074874813

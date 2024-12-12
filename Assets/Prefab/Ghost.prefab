@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -128562015
+  m_SortingLayer: 8
   m_SortingOrder: 20
   m_Sprite: {fileID: 4027256270896219312, guid: 146bd206498b4d54884144642f5e3644, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -205,8 +205,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 4
   m_Sprite: {fileID: -8920212770356013621, guid: b83f5cd960b44164cb19ca16745668e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -325,6 +325,8 @@ MonoBehaviour:
   blinking_duration: 6
   wasted_life_color: {r: 0.124346524, g: 0.5622641, b: 0.10502664, a: 1}
   is_blinking: 0
+  w_text: {fileID: 0}
+  l_text: {fileID: 0}
   win_text: You caught the robber
   lose_text: Robber escaped the mansion
 --- !u!114 &6547271981266293688
@@ -512,8 +514,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -128562015
+  m_SortingLayer: 8
   m_SortingOrder: 10
   m_Sprite: {fileID: -538232612562941006, guid: a1235577d3444494a9a847bf9287da99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -599,8 +601,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
@@ -686,8 +688,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
@@ -773,8 +775,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
@@ -861,8 +863,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: -8920212770356013621, guid: b83f5cd960b44164cb19ca16745668e6, type: 3}
   m_Color: {r: 0.9547169, g: 0.11348517, b: 0.11348517, a: 1}
@@ -985,8 +987,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: -8920212770356013621, guid: b83f5cd960b44164cb19ca16745668e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1108,8 +1110,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1549999231
+  m_SortingLayer: 7
   m_SortingOrder: 5
   m_Sprite: {fileID: 2059086750383650286, guid: 04a93419bdc67c84e8f17217ff60502c, type: 3}
   m_Color: {r: 1, g: 0.48584908, b: 0.48584908, a: 1}
