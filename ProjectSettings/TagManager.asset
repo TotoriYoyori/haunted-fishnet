@@ -62,6 +62,9 @@ TagManager:
   - name: Void
     uniqueID: 2091929023
     locked: 0
+  - name: VFX
+    uniqueID: 1167169465
+    locked: 0
   - name: Props
     uniqueID: 2744968065
     locked: 0
