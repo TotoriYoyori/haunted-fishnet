@@ -899,7 +899,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5150411841730171749}
@@ -989,7 +989,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 6616163819704814367}
   wide_dark_filter: {fileID: 8585852577352142445}
-  sprite: {fileID: 0}
+  sprite: {fileID: 3241090622462452788}
+  aura_sprite: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   indication: {fileID: 8149528738269290541}
   indication_sprite: {fileID: 1963028166546097948}

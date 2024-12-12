@@ -22,6 +22,17 @@ public class InputController : NetworkBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        // Flipping the character sprite              To Do >> Synchronize it!!!
+        if (x < 0)
+        {
+            player.sprite.flipX = true;
+            if (player.aura_sprite != null) player.aura_sprite.flipX = true;
+        }
+        else if (x > 0)
+        {
+            player.sprite.flipX = false;
+            if (player.aura_sprite != null) player.aura_sprite.flipX = false;
+        }
 
         Vector3 Movement = new Vector3(x, y, 0) * player.speed;
         if (Movement.magnitude > 1) Movement.Normalize();

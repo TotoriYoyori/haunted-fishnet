@@ -43,8 +43,9 @@ public class GhostScript : NetworkBehaviour
         base.OnStartClient();
         Debug.Log("Ghost OnStartClient");
 
-
-        //GameObject.Find("ItemManager").GetComponent<ItemLottery>().ClearLocations();       
+        // Temporarily turning off music for the ghost so that theres only one music that plays
+        if (IsOwner) AudioManager.instance.musicSource.gameObject.SetActive(false);
+        
 
         FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
         FindTeleportationPoint(GameObject.Find("teleportation_point_2"));
@@ -80,6 +81,8 @@ public class GhostScript : NetworkBehaviour
             if (is_aiming) AimForCharge(mouse_position);
             if (charge_target_position != Vector2.zero) Charging();
         }
+
+
     }
     void AimForCharge(Vector2 target_position)
     {
@@ -110,7 +113,7 @@ public class GhostScript : NetworkBehaviour
         charge_target_position = transform.position + aiming_arrow.transform.up * charge_length;
         charge_starting_position = transform.position;
         charge_time = 0f;
-        SyncHideServerRpc(false);
+        //SyncHideServerRpc(false);
         //Hide(false);
 
         // Cooldown
@@ -133,7 +136,7 @@ public class GhostScript : NetworkBehaviour
 
         is_aiming = is_on;
         aiming_arrow.SetActive(is_aiming);
-        SyncHideServerRpc(!is_on);
+        if (is_on) SyncHideServerRpc(false);
 
         if (is_on == false && Vector2.Distance(mouse_position, transform.position) > 0f)
         {
@@ -202,7 +205,10 @@ public class GhostScript : NetworkBehaviour
     IEnumerator Catch()
     {
         Debug.Log("CATCHING: I caught the robber (Observer)");
-        
+
+        //SFX
+        AudioManager.instance.PlaySFX("GhostLaugh");
+
         is_laughing = true;
         ghost_hiding.layer = LayerMask.NameToLayer("Default");
         if (player != null) player.frozen = true;

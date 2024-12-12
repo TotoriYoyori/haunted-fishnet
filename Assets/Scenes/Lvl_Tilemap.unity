@@ -399,12 +399,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52947164}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21168561, y: 8.120576, z: -0.038401745}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.7619145, y: 16.448694, z: -0.07025877}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1884943422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &63107505
 GameObject:
@@ -8008,11 +8008,12 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 0}
   musicSounds: []
   sfxSounds:
-  - {fileID: 8300000, guid: b901e08ee848b7340a48168cf1635f44, type: 3}
-  - {fileID: 8300000, guid: e5b0d526b16bcce468d2e2146858c2ef, type: 3}
-  - {fileID: 8300000, guid: 248263936749b8c4e97f0cfc1d517753, type: 3}
-  - {fileID: 8300000, guid: 4402ce023b62e2842b5f5b7b8f3afad8, type: 3}
-  - {fileID: 8300000, guid: b1abcc25df7b4344082dddd72513fce5, type: 3}
+  - {fileID: 8300000, guid: 908e9d298df0f374db6dbdab88c2a8ab, type: 3}
+  - {fileID: 8300000, guid: 85932912f4b0a024aa848f700dc72461, type: 3}
+  - {fileID: 8300000, guid: 99e3db5245f16dc42bb30460261410d9, type: 3}
+  - {fileID: 8300000, guid: 1ce3cbb025ea6b14d8ba3789e229f2b3, type: 3}
+  - {fileID: 8300000, guid: d50c0ac6fa6d78a439759a1251375e6c, type: 3}
+  - {fileID: 8300000, guid: 1de9d9b7883ec294bb89d9025d2eaf09, type: 3}
   - {fileID: 8300000, guid: 8ce299bc5f6dc4141acff344b63787aa, type: 3}
   musicSource: {fileID: 2068006972}
   sfxSource: {fileID: 1021322026}
@@ -28464,7 +28465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1737057909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29375,6 +29376,7 @@ Transform:
   - {fileID: 1989342392}
   - {fileID: 1140278160}
   - {fileID: 394151244}
+  - {fileID: 52947165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1884943423
@@ -30619,8 +30621,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d68af160c16f5ee4f822e28bef104145, type: 3}
+  m_Resource: {fileID: 8300000, guid: d68af160c16f5ee4f822e28bef104145, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -30971,5 +30973,4 @@ SceneRoots:
   - {fileID: 1884943422}
   - {fileID: 670449320}
   - {fileID: 2580675}
-  - {fileID: 52947165}
   - {fileID: 1220319011}
