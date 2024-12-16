@@ -46,7 +46,7 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
 
             picking_progress -= pick_up_speed;
             if (picking_progress < 0) FinishPicking();
-            SelectionAura.GetComponent<Image>().fillAmount = picking_progress;
+            else SelectionAura.GetComponent<Image>().fillAmount = picking_progress;
         }
         else if (Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.activeSelf == false) 
         {

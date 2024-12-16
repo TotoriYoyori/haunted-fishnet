@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closest_item: {fileID: 0}
-  pick_up_speed_default: 0.003
+  pick_up_speed_default: 0.0045
 --- !u!1 &3141590783439804674
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2396032752470807065
 Transform:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6557, y: 1.6557, z: 1.6557}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.6557}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 301110191859069049}
@@ -803,7 +803,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6635, y: 1.6635, z: 1.6635}
+  m_LocalScale: {x: 1.9, y: 1.9, z: 1.6635}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 301110191859069049}
@@ -985,7 +985,7 @@ MonoBehaviour:
   frozen: 0
   won: 0
   is_special_vision_on: 0
-  speed: 0.095
+  speed: 0.08
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 6616163819704814367}
   wide_dark_filter: {fileID: 8585852577352142445}

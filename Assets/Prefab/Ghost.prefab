@@ -204,7 +204,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5796433454075071025}
-  m_Father: {fileID: 3689534578954984618}
+  m_Father: {fileID: 300743850939253570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3238304887432459600
 GameObject:
@@ -248,6 +248,7 @@ Transform:
   - {fileID: 3689534578954984618}
   - {fileID: 3420123021285170685}
   - {fileID: 7758238068673379197}
+  - {fileID: 1429832455159816441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5326926918292430743
@@ -393,7 +394,7 @@ MonoBehaviour:
   frozen: 0
   won: 0
   is_special_vision_on: 0
-  speed: 0.065
+  speed: 0.045
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 0}
   wide_dark_filter: {fileID: 5223075842775214517}
@@ -451,12 +452,13 @@ MonoBehaviour:
   ghost_hiding: {fileID: 7272600033158285140}
   ghost_attacking: {fileID: 6632733983475322842}
   stepvision_color: {r: 0.10293335, g: 0.44102767, b: 0.690566, a: 0.22745098}
-  stepvision_speed: 0.07
+  stepvision_speed: 0.03
   default_speed: 0
-  dash_cooldown: 28
+  dash_cooldown: 42
   stepvision_cooldown: 12
-  charge_duration: 0.5
-  charge_length: 5
+  dash_duration: 0.5
+  dash_length: 8
+  dash_delay_time: 0.6
   laughing_duration: 50
 --- !u!50 &4216343954045900820
 Rigidbody2D:
@@ -908,7 +910,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 957693420162418207}
-  - {fileID: 1429832455159816441}
   m_Father: {fileID: 300743850939253570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8120849949804741715
