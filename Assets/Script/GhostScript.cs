@@ -27,8 +27,9 @@ public class GhostScript : NetworkBehaviour
     Vector2 mouse_position;
     Vector2 charge_target_position = Vector2.zero;
     float charge_time;
-    [SerializeField] float charge_duration;
-    [SerializeField] float charge_length;
+    [SerializeField] float dash_duration;
+    [SerializeField] float dash_length;
+    [SerializeField] float dash_delay_time;
     Vector3 charge_starting_position;
 
     // Catching Variables
@@ -95,7 +96,7 @@ public class GhostScript : NetworkBehaviour
     void Charging()
     {
         charge_time += Time.deltaTime;
-        float progress = ((charge_time / charge_duration) > 1f) ? 1 : charge_time / charge_duration;
+        float progress = ((charge_time / dash_duration) > 1f) ? 1 : charge_time / dash_duration;
         //Debug.Log(progress);
 
         float coolT = Mathf.Pow(progress, 2);
@@ -105,22 +106,35 @@ public class GhostScript : NetworkBehaviour
         if (progress == 1) EndCharge();
     }
 
-    void StartCharge()
+    IEnumerator StartCharge()
     {
         //SFX
+        AudioManager.instance.PlaySFXGlobal("GhostWarp");
+
+        SyncHideServerRpc(false);
+        is_aiming = false;
+
+        float dash_delay_timer = dash_delay_time;
+
+        while (dash_delay_timer > 0)
+        {
+            dash_delay_timer -= Time.deltaTime;
+
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        // Dash start soundeffect
         AudioManager.instance.PlaySFXGlobal("Dash");
 
-        charge_target_position = transform.position + aiming_arrow.transform.up * charge_length;
+        charge_target_position = transform.position + aiming_arrow.transform.up * dash_length;
         charge_starting_position = transform.position;
         charge_time = 0f;
-        //SyncHideServerRpc(false);
-        //Hide(false);
 
         // Cooldown
         StartCoroutine(ghostUI.Cooldown(dash_cooldown, true));
 
         Debug.Log("Charge Started");
-    }
+    } 
 
     void EndCharge()
     {
@@ -136,11 +150,10 @@ public class GhostScript : NetworkBehaviour
 
         is_aiming = is_on;
         aiming_arrow.SetActive(is_aiming);
-        if (is_on) SyncHideServerRpc(false);
 
         if (is_on == false && Vector2.Distance(mouse_position, transform.position) > 0f)
         {
-            StartCharge();
+            StartCoroutine(StartCharge());
         }
     }
 

@@ -7608,7 +7608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &719079359
 Transform:
   m_ObjectHideFlags: 0
@@ -8004,15 +8004,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item_list:
-  - {fileID: 21300000, guid: 92d321d82111ca64aadcb31413117baf, type: 3}
-  - {fileID: 21300000, guid: 739f505caa7c908459cb3ad714357dfe, type: 3}
-  - {fileID: 21300000, guid: eab54454b4189344eab30b562546c152, type: 3}
-  - {fileID: 21300000, guid: 9bd8d0fa5b9ed754486f4ade341696bf, type: 3}
-  - {fileID: 21300000, guid: cfe52b6126cdb2a4fa20e914d5d5a448, type: 3}
-  - {fileID: 21300000, guid: a975ab7509dd30d4ba53a1de5b872f4f, type: 3}
-  - {fileID: 21300000, guid: 8a41bcc187f65be44a912a26ebd5c591, type: 3}
-  - {fileID: 21300000, guid: f4bef9a04534b9342945535352621ada, type: 3}
-  - {fileID: 21300000, guid: f17c8dc454bb09f4cbf4ecf8ef046762, type: 3}
+  - {fileID: 3955076822983207715, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -2375705183220733276, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 8494853205557768699, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 2955258538917900213, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 3913694650564081182, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 784787742105701608, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -6741139869014073810, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -1148780141442793985, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -7562234343634632140, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -4513395960390891959, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 7597554879785794144, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -3989363812312204456, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -2566614228151675625, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -3966983111240052010, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 6239104718059131448, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: 6864702152542869434, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
+  - {fileID: -5719365517173527537, guid: df3136c6362ea104abe4f73765427e2f, type: 3}
   total_item_number: 12
   item_coupon_sprites:
   - {fileID: 1294054349}
@@ -8581,10 +8589,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 908e9d298df0f374db6dbdab88c2a8ab, type: 3}
   - {fileID: 8300000, guid: 85932912f4b0a024aa848f700dc72461, type: 3}
   - {fileID: 8300000, guid: 99e3db5245f16dc42bb30460261410d9, type: 3}
-  - {fileID: 8300000, guid: 1ce3cbb025ea6b14d8ba3789e229f2b3, type: 3}
+  - {fileID: 8300000, guid: 928ce15192675c64dad62b21ec15b859, type: 3}
   - {fileID: 8300000, guid: d50c0ac6fa6d78a439759a1251375e6c, type: 3}
   - {fileID: 8300000, guid: 1de9d9b7883ec294bb89d9025d2eaf09, type: 3}
   - {fileID: 8300000, guid: 8ce299bc5f6dc4141acff344b63787aa, type: 3}
+  - {fileID: 8300000, guid: 16f11b1330bac2c4b8021eda46042545, type: 3}
   musicSource: {fileID: 2068006972}
   sfxSource: {fileID: 1021322026}
 --- !u!1 &1031731687
@@ -12008,7 +12017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1485461202
 Transform:
   m_ObjectHideFlags: 0
@@ -32250,7 +32259,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
