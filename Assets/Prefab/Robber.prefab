@@ -986,7 +986,7 @@ MonoBehaviour:
   frozen: 0
   won: 0
   is_special_vision_on: 0
-  speed: 0.08
+  speed: 0.09
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 6616163819704814367}
   wide_dark_filter: {fileID: 8585852577352142445}
