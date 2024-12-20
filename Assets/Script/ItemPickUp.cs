@@ -24,7 +24,7 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ItemPicking();
     }
