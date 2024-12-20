@@ -71,16 +71,16 @@ public class CameraBehavior : MonoBehaviour
         switch (mode)
         {
             case camera_mode.ROBBER:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Robber", "NormalVision");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Robber", "NormalVision", "AttackingGhost");
                 break;
             case camera_mode.GHOST:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "UI_for_ghost", "Robber");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "UI_for_ghost", "Robber", "AttackingGhost");
                 break;
             case camera_mode.ROBBER_SPECIAL:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Messages", "Nightvision", "Ghost", "Robber");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "UI_for_robber", "Messages", "Nightvision", "Ghost", "Robber", "AttackingGhost");
                 break;
             case camera_mode.GHOST_SPECIAL:
-                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "Stepvision", "Messages", "Robber");
+                GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "UI", "Ghost", "Stepvision", "Messages", "Robber", "AttackingGhost");
                 break;
 
         }

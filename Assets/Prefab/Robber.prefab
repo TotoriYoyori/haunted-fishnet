@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 5840645621886486777}
   - component: {fileID: 2768493975258272320}
   - component: {fileID: 9214517429060986252}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemPickUpAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closest_item: {fileID: 0}
-  pick_up_speed_default: 0.0045
+  pick_up_speed_default: 0.009
 --- !u!1 &3141590783439804674
 GameObject:
   m_ObjectHideFlags: 0
