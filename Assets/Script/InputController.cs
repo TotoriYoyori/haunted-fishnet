@@ -4,17 +4,32 @@ using UnityEngine;
 public class InputController : NetworkBehaviour
 {
     Player player;
+    Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GetComponent<Player>();
+        animator = GetComponentInChildren<Animator>();
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>(); // Fallback to the parent if no child Animator is found
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Vector3 movement = MovementInput();
         player.transform.position += MovementInput();
+
+        if (animator != null)
+        {
+            bool isWalking = movement.x != 0f || movement.y != 0f;
+            animator.SetBool("isWalking", isWalking);  // Set the 'isWalking' parameter in the Animator
+        }
     }
+
     Vector3 MovementInput()
     {
         if (player.frozen) return Vector3.zero;
@@ -38,6 +53,7 @@ public class InputController : NetworkBehaviour
         if (Movement.magnitude > 1) Movement.Normalize();
 
         return Movement;
+
     }
     private void Update()
     {
