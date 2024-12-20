@@ -24,11 +24,6 @@ public class AudioManager : NetworkBehaviour
         }
     }
 
-    private void Start()
-    {
-        //PlayMusic("Theme");
-    }
-
     public void PlayMusic(string name)
     {
         AudioClip s = Array.Find(musicSounds, x => x.name == name);

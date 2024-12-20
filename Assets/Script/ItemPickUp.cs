@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,8 +51,11 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
         }
         else if (Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.activeSelf == false) 
         {
-            if (SelectionAura != null) SelectionAura.SetActive(false);
-            closest_item = null;
+            if (closest_item != null && closest_item.tag != "Vent")
+            {
+                if (SelectionAura != null) SelectionAura.SetActive(false);
+                closest_item = null;
+            }
             is_picking = false;
         }
     }
@@ -75,6 +79,13 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        // Vents
+        if (collision.gameObject.tag == "Vent")
+        {
+            LockOnItem(collision.gameObject);
+        }
+
+        // Picking Items
         if (collision.gameObject.tag != "Item" || Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.activeSelf != true) return;
 
         if (closest_item == null)
@@ -90,6 +101,16 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
     public void StartPicking(bool picking)
     {
         if (closest_item == null) return;
+
+        if (closest_item.tag == "Vent")
+        {
+            closest_item.GetComponent<Vent>().OpenVent(picking);
+            // use went in some way
+
+
+            return;
+        }
+
         Debug.Log("StartedPicking");
         picking_progress = 1;
         SelectionAura.GetComponent<Image>().fillAmount = 1f;
@@ -108,7 +129,7 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Item") return;
+        //if (collision.gameObject.tag != "Item") return;
 
         if (closest_item != null && closest_item == collision.gameObject)
         {

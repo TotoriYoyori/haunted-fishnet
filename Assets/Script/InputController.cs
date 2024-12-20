@@ -1,5 +1,6 @@
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputController : NetworkBehaviour
 {
@@ -64,7 +65,7 @@ public class InputController : NetworkBehaviour
         if (TryGetComponent(out RobberScript robber))
         {
             // Flashlight on left mouse
-            if (Input.GetButtonDown("Fire1")) robber.NightVision(true);
+            if (Input.GetButtonDown("Fire1") && !IsMouseOverButton()) robber.NightVision(true);
             if (Input.GetButtonUp("Fire1")) robber.NightVision(false);
             
             // Nightvision on right mouse
@@ -86,5 +87,10 @@ public class InputController : NetworkBehaviour
             if (Input.GetButtonUp("Fire2")) ghost.StepVision(false);
 
         }
+    }
+
+    bool IsMouseOverButton()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
