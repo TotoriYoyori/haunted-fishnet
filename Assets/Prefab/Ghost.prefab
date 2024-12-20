@@ -295,8 +295,8 @@ SpriteRenderer:
   m_SortingLayerID: 1753927435
   m_SortingLayer: 4
   m_SortingOrder: 4
-  m_Sprite: {fileID: -8920212770356013621, guid: b83f5cd960b44164cb19ca16745668e6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7133959456112172551, guid: 85543cc4cd8d2ce41ba4620ef2d494a6, type: 3}
+  m_Color: {r: 0.7921569, g: 0.95686275, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1029,7 +1029,7 @@ Transform:
   m_GameObject: {fileID: 6961304883764799202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,6 +1101,7 @@ GameObject:
   - component: {fileID: 6559171917028196190}
   - component: {fileID: 5257183380063970371}
   - component: {fileID: 5073025455822619268}
+  - component: {fileID: 7563545704372446208}
   m_Layer: 6
   m_Name: HidingGhost
   m_TagString: Untagged
@@ -1215,6 +1216,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.38699916}
   m_Radius: 0.45128724
+--- !u!95 &7563545704372446208
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7272600033158285140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03d948da7f79af24fa0b8a80e48b524d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8254208411718246037
 GameObject:
   m_ObjectHideFlags: 0
