@@ -104,6 +104,7 @@ MonoBehaviour:
   connected_vents: []
   closed_color: {r: 0.19245279, g: 0.19245279, b: 0.19245279, a: 1}
   blocked_color: {r: 0.509434, g: 0.2258811, b: 0.2258811, a: 1}
+  vent_moving_speed: 0.7
   blocked: 0
 --- !u!61 &9169624020446279728
 BoxCollider2D:
