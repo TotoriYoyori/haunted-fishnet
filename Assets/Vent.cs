@@ -1,10 +1,11 @@
+using FishNet.Object;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Vent : MonoBehaviour
+public class Vent : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] Vent[] connected_vents;
@@ -44,7 +45,7 @@ public class Vent : MonoBehaviour
     public void OpenVent(bool is_open)
     {
         if (blocked) return;
-        if (CheckToBlock()) BlockVent();
+        if (CheckToBlock()) BlockVentServerRpc();
 
         // changing visuals
         sprite.color = (is_open) ? open_color : closed_color;
@@ -79,13 +80,6 @@ public class Vent : MonoBehaviour
         }
     }
 
-    public void BlockVent()
-    {
-        blocked = true;
-        this.gameObject.tag = "Untagged";
-        sprite.color = blocked_color;
-    }
-
     bool CheckToBlock()
     {
         for (int a = 0; a < connected_vents.Length; a++)
@@ -97,9 +91,9 @@ public class Vent : MonoBehaviour
     }
     IEnumerator MoveToVent(Vent vent_to_move_to)
     {
-        // Darkness disappers when you use vents
+        // Darkness disappers when you use vents 
 
-        OpenVent(false);
+        OpenVent(false); 
 
         //SFX
         AudioManager.instance.PlaySFX("Vent");
@@ -128,8 +122,8 @@ public class Vent : MonoBehaviour
 
         // ==============================================================================================================
 
-        Game.Instance.robber.Value.SetActive(false); // Deactivating the robber so that its invisible and theres no input
-
+        //Game.Instance.robber.Value.SetActive(false); // Deactivating the robber so that its invisible and theres no input
+        Game.Instance.robber.Value.GetComponent<RobberScript>().EnableServerRpc(false);
 
         // Moving the robber through 
         int current_target_position = 0;
@@ -145,25 +139,40 @@ public class Vent : MonoBehaviour
                 Debug.Log("VENT: switched the position");
             }
 
-            Game.Instance.robber.Value.transform.position = Vector3.MoveTowards(robber_position, moving_positions[current_target_position], vent_moving_speed);
+            Game.Instance.robber.Value.transform.position = Vector3.MoveTowards(robber_position, moving_positions[current_target_position], 0.1f);
 
             //Updating camera position;
             Game.Instance.robber.Value.GetComponent<Player>().camera.GetComponent<CameraBehavior>().to_follow = robber_position;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(vent_moving_speed);
         }
 
         //SFX
         AudioManager.instance.PlaySFX("Vent");
 
-        Game.Instance.robber.Value.SetActive(true); // Reactivating the robber
+        //Game.Instance.robber.Value.SetActive(true); // Reactivating the robber
+        Game.Instance.robber.Value.GetComponent<RobberScript>().EnableServerRpc(true);
         Debug.Log("VENT: finished_moving");
         // block the vent you just moved to
-        vent_to_move_to.BlockVent();
+        vent_to_move_to.BlockVentServerRpc();
 
         // we need to block this vent if both vents it goes to were blocked
-        if (CheckToBlock()) BlockVent();
+        if (CheckToBlock()) BlockVentServerRpc();
 
         // to do: the above can happen when you interact with another vent so make sure to account for that
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void BlockVentServerRpc()
+    {
+        BlockVentObserverRpc();
+    }
+
+    [ObserversRpc]
+    public void BlockVentObserverRpc()
+    {
+        blocked = true;
+        this.gameObject.tag = "Untagged";
+        sprite.color = blocked_color;
     }
 }

@@ -47,6 +47,19 @@ public class RobberScript : NetworkBehaviour
         }
     }
 
+    [ServerRpc]
+    public void EnableServerRpc(bool is_enabled)
+    {
+        EnableObseverRpc(is_enabled);
+    }
+
+    [ObserversRpc]
+    public void EnableObseverRpc(bool is_enabled)
+    {
+        GetComponent<SpriteRenderer>().enabled = is_enabled;
+        GetComponent<CircleCollider2D>().enabled = is_enabled;
+        if (IsOwner) GetComponent<InputController>().enabled = is_enabled;
+    }
     public void NightVision(bool is_on)
     {
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
