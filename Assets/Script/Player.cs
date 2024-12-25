@@ -83,7 +83,7 @@ public class Player : NetworkBehaviour
 
     private void Update()
     {
-        if (camera != null) camera.GetComponent<CameraBehavior>().to_follow = transform.position;
+        if (camera != null && this.gameObject.activeSelf) camera.GetComponent<CameraBehavior>().to_follow = transform.position;
     }
 
     private void FixedUpdate()
