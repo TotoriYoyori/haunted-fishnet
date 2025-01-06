@@ -32,6 +32,9 @@ public class Spawner : NetworkBehaviour
             return;
         }
 
+        if (IsOwner) Debug.Log("I- I own the spawner");
+        else if (IsOwner == false) Debug.Log("I dont own the spawner");
+
         ghost_button.onClick.AddListener(() => RequestSpawnGhost());
         robber_button.onClick.AddListener(() => RequestSpawnRobber());
     }
