@@ -2,8 +2,10 @@
 using FishNet.Managing;
 using FishNet.Object;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 namespace FishNet.Component.Spawning
 {
@@ -97,6 +99,13 @@ namespace FishNet.Component.Spawning
                 NetworkManagerExtensions.LogWarning($"Player prefab is empty and cannot be spawned for connection {conn.ClientId}.");
                 return;
             }
+
+            StartCoroutine(DelayedSpawning(conn));
+        }
+
+        IEnumerator DelayedSpawning(NetworkConnection conn)
+        {
+            yield return new WaitForSeconds(4.0f);
 
             Vector3 position;
             Quaternion rotation;

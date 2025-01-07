@@ -84,6 +84,7 @@ namespace FishNet.Example
 #endif
         #endregion
 
+        
         void OnGUI()
         {
 #if ENABLE_INPUT_SYSTEM

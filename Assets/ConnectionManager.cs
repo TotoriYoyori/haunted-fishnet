@@ -13,25 +13,33 @@ public class ConnectionManager : NetworkBehaviour
     {
         base.OnStartServer();
         StartCoroutine(EnableCharacterSelectScreen());
-
-
         // this whole thing only works on servers side !!! 
     }
 
+    // I wait for a little here, so that the scene is fully loaded before I proceed with spawning anything
     IEnumerator EnableCharacterSelectScreen()
     {
         yield return new WaitForSeconds(1.0f);
 
         Debug.Log("I- Trying to spawn a player");
-        GameObject new_player = Instantiate(character_select);
-        ServerManager.Spawn(new_player, LocalConnection);
-        //EnableCharacterSelectScreenServerRpc(LocalConnection);
+        //GameObject new_player = Instantiate(character_select);
+        //ServerManager.Spawn(new_player, LocalConnection);
+        EnableCharacterSelectScreenServerRpc();
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void EnableCharacterSelectScreenServerRpc(NetworkConnection connection)
+    private void EnableCharacterSelectScreenServerRpc(NetworkConnection sender = null)
     {
+        // Spawn the character selection screen for the specific client
+        if (sender == null)
+        {
+            Debug.LogError("ServerRpc received no valid sender connection.");
+            return;
+        }
+
         GameObject new_player = Instantiate(character_select);
-        ServerManager.Spawn(new_player, connection);
+        ServerManager.Spawn(new_player, sender);
+
+        Debug.Log($"Spawned character select screen for client: {sender.ClientId}");
     }
 }
