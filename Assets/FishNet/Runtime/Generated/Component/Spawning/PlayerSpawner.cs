@@ -105,7 +105,7 @@ namespace FishNet.Component.Spawning
 
         IEnumerator DelayedSpawning(NetworkConnection conn)
         {
-            yield return new WaitForSeconds(4.0f);
+            yield return new WaitForSeconds(2.5f);
 
             Vector3 position;
             Quaternion rotation;

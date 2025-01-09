@@ -4,9 +4,26 @@ using UnityEngine.UIElements;
 using FishNet.Connection;
 using System.Collections;
 using UnityEditor.MemoryProfiler;
+using UnityEngine.SceneManagement;
 
-public class ConnectionManager : NetworkBehaviour
+public class ConnectionManager : MonoBehaviour 
 {
+    private void Start()
+    {
+        StartCoroutine(CheckForConnection());
+    }
+
+    IEnumerator CheckForConnection()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+        if (Game.Instance.network_manager == null) SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        else Debug.Log("Connection manager: network manager is valid");
+    }
+}
+
+
+/*
     [SerializeField] GameObject character_select;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     override public void OnStartServer()
@@ -41,5 +58,4 @@ public class ConnectionManager : NetworkBehaviour
         ServerManager.Spawn(new_player, sender);
 
         Debug.Log($"Spawned character select screen for client: {sender.ClientId}");
-    }
-}
+    }*/

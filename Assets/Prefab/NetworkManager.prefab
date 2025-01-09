@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6cf5abc0107fa184eb3f8a95f83770a6, type: 2}
     - target: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_Name
-      value: NetworkManager Variant
+      value: NetworkManager
       objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: _playerPrefab

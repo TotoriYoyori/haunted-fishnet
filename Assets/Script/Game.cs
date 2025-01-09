@@ -1,7 +1,9 @@
+using FishNet.Managing;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Newtonsoft.Json.Bson;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 public enum character
 {
@@ -29,20 +31,11 @@ public class Game : NetworkBehaviour
     public Player player;
     public static Level level;
 
-    public TextMeshProUGUI win_text;
-    public TextMeshProUGUI lose_text;
+    public static GameOverUI game_over;
+    public NetworkManager network_manager;
 
-    [ServerRpc(RequireOwnership = false)]
-    public void GameOverServerRpc()
+    void Start()
     {
-        GameOverObserverRpc();
-        Debug.Log("GAME OVER: Server");
-    }
-
-    [ObserversRpc]
-    void GameOverObserverRpc()
-    {
-        //player.GameOver();
-        Debug.Log("GAME OVER: Observer");
+        network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
 }
