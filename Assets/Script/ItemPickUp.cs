@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemPickUp : MonoBehaviour                // Solve all the bugs with turning off flashlight at inappropriate times
+public class ItemPickUp : MonoBehaviour
 {
-    // There is something wrong with line 50 here and some other line, somewhere else. Also items are way too huge
     public GameObject closest_item;
     GameObject SelectionAura;
     [SerializeField] float pick_up_speed_default;
+    [SerializeField] GameObject pickupVFXPrefab; // Pickup VFX prefab
     bool is_picking;
     float picking_progress;
     GameObject item_lottery;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         SelectionAura = GameObject.Find("WorldCanvas/SelectionAura");
         item_lottery = GameObject.Find("ItemManager");
     }
+
     void Start()
     {
         if (SelectionAura != null) SelectionAura.SetActive(false);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         ItemPicking();
@@ -58,21 +58,39 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
 
     void FinishPicking()
     {
-        //SFX
+        // Play sound effect
         AudioManager.instance.PlaySFX("ItemPickup");
 
+        // Reset SelectionAura fill amount
         SelectionAura.GetComponent<Image>().fillAmount = 1;
 
-        // Send a message to item manager that something was picked up
-        if (item_lottery == null) Debug.Log("item lottery isnt assigned");
-        else if (closest_item == null) Debug.Log("closest_item isnt assigned");
-        else item_lottery.GetComponent<ItemLottery>().ItemPicked(closest_item.GetComponent<SpriteRenderer>().sprite);
+        // Instantiate pickup VFX at the item's position
+        if (pickupVFXPrefab != null && closest_item != null)
+        {
+            Instantiate(pickupVFXPrefab, closest_item.transform.position, Quaternion.identity);
+        }
 
-        closest_item.SetActive(false);                      // removing the item
-        closest_item = null;
-        is_picking = false;
+        if (item_lottery == null)
+        {
+            Debug.Log("item lottery isn't assigned");
+        }
+        else if (closest_item == null)
+        {
+            Debug.Log("closest_item isn't assigned");
+        }
+        else
+        {
+            item_lottery.GetComponent<ItemLottery>().ItemPicked(closest_item.GetComponent<SpriteRenderer>().sprite);
+        }
+
+        if (closest_item != null)
+        {
+            closest_item.SetActive(false);
+            closest_item = null;
+            is_picking = false;
+        }
     }
-
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Item" || Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.activeSelf != true) return;
@@ -95,6 +113,7 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
         SelectionAura.GetComponent<Image>().fillAmount = 1f;
         is_picking = picking;
     }
+
     void LockOnItem(GameObject item)
     {
         if (item == null) SelectionAura.SetActive(false);
@@ -106,6 +125,7 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
         }
 
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Item") return;
@@ -116,5 +136,4 @@ public class ItemPickUp : MonoBehaviour                // Solve all the bugs wit
             closest_item = null;
         }
     }
-
 }
