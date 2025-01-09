@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5012920797770665111}
   - component: {fileID: 5107413432444896470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1429832455159816441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AimingArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: -4896882876058351143}
   - component: {fileID: 4216343954045900820}
   - component: {fileID: 674950313668253436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ MonoBehaviour:
   frozen: 0
   won: 0
   is_special_vision_on: 0
-  speed: 0.045
+  speed: 0.06
   camera: {fileID: 0}
   narrow_dark_filter: {fileID: 0}
   wide_dark_filter: {fileID: 5223075842775214517}
@@ -452,13 +452,13 @@ MonoBehaviour:
   ghost_hiding: {fileID: 7272600033158285140}
   ghost_attacking: {fileID: 6632733983475322842}
   stepvision_color: {r: 0.10293335, g: 0.44102767, b: 0.690566, a: 0.22745098}
-  stepvision_speed: 0.03
+  stepvision_speed: 0.045
   default_speed: 0
   dash_cooldown: 42
   stepvision_cooldown: 12
   dash_duration: 0.5
   dash_length: 8
-  dash_delay_time: 0.6
+  dash_delay_time: 0.3
   laughing_duration: 50
 --- !u!50 &4216343954045900820
 Rigidbody2D:
@@ -540,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481134947811216452}
   - component: {fileID: 5508735148309740180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: flash_dark_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5223075842775214517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -627,7 +627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684857273062691623}
   - component: {fileID: 1299418996964304896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: soul_slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3368847618664550414}
   - component: {fileID: 1017170626110075531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: soul_slot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2980184255046009650}
   - component: {fileID: 2431913802192839615}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: soul_slot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5796433454075071025}
   - component: {fileID: 1656109654253158344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArrowSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7758238068673379197}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CollectedSouls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1368,7 +1368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3420123021285170685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlashlightIndication
   m_TagString: Untagged
   m_Icon: {fileID: 0}

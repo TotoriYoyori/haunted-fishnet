@@ -6,6 +6,7 @@ public class GhostUI : MonoBehaviour
 {
     public Image dash_fill;
     public Image stepvision_fill;
+    public GameObject ghostVision;
     [SerializeField] Color charged_color;
     [SerializeField] Color cooldown_color;
     [HideInInspector] public bool is_dash_ready = true;
@@ -36,5 +37,6 @@ public class GhostUI : MonoBehaviour
     {
         dash_fill.gameObject.SetActive(true);
         stepvision_fill.gameObject.SetActive(true);
+        ghostVision.SetActive(true);
     }
 }
