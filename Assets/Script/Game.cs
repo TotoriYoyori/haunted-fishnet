@@ -23,6 +23,9 @@ public class Game : NetworkBehaviour
         }
 
         Instance = this;
+
+        // activating loading screen
+        loading_screen.SetActive(true);
     }
     //public static GameObject robber;
     public readonly SyncVar<GameObject> robber = new SyncVar<GameObject>();
@@ -33,6 +36,7 @@ public class Game : NetworkBehaviour
 
     public static GameOverUI game_over;
     public NetworkManager network_manager;
+    public GameObject loading_screen;
 
     void Start()
     {

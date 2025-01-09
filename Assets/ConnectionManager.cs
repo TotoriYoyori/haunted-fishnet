@@ -13,12 +13,17 @@ public class ConnectionManager : MonoBehaviour
         StartCoroutine(CheckForConnection());
     }
 
-    IEnumerator CheckForConnection()
+    IEnumerator CheckForConnection() // whoever clicked play on the tile scene will be transported to main menu
     {
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(2.0f);
 
         if (Game.Instance.network_manager == null) SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-        else Debug.Log("Connection manager: network manager is valid");
+        else
+        {
+            Debug.Log("Connection manager: network manager is valid");
+
+            // create a character select for each client
+        }
     }
 }
 

@@ -33,6 +33,8 @@ public class Spawner : NetworkBehaviour
             return;
         }
 
+        if (Game.Instance.loading_screen != null) Game.Instance.loading_screen.SetActive(false);
+
         Debug.Log("I- Spawner client star");
 
         ghost_button.onClick.AddListener(() => RequestSpawnGhost());

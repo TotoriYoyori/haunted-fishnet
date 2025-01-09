@@ -96,16 +96,18 @@ namespace FishNet.Component.Spawning
                 return;
             if (_playerPrefab == null)
             {
+                Debug.Log("Player prefab is empty");
                 NetworkManagerExtensions.LogWarning($"Player prefab is empty and cannot be spawned for connection {conn.ClientId}.");
                 return;
             }
+            else Debug.Log("Player prefab exists");
 
             StartCoroutine(DelayedSpawning(conn));
         }
 
         IEnumerator DelayedSpawning(NetworkConnection conn)
         {
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(1.5f);
 
             Vector3 position;
             Quaternion rotation;

@@ -1,4 +1,6 @@
+using FishNet.Managing;
 using FishNet.Managing.Client;
+using FishNet.Object;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +45,15 @@ public class GameOverUI : MonoBehaviour
         {
             // both client and server can shut down the server upon pressing disconnect
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            Game.Instance.network_manager.ClientManager.StopConnection();
+
+            // Despawn all network objects.
+            /*
+            foreach (NetworkObject obj in Game.Instance.network_manager.ServerManager.IsSpawned)
+            {
+                obj.Despawn();
+            }*/
+
             Game.Instance.network_manager.ServerManager.StopConnection(true);
             
         }
