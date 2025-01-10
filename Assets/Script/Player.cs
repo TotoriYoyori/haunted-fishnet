@@ -73,6 +73,10 @@ public class Player : NetworkBehaviour
                 camera.GetComponent<CameraBehavior>().filter.GetComponent<Image>().color = ghost.stepvision_color;
                 camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
             }
+
+            // for testing
+            //if (IsHost) GameOverServerRpc(false);
+            //else GameOverServerRpc(true);
         }
         else
         {
@@ -156,8 +160,8 @@ public class Player : NetworkBehaviour
 
     void SetUpUI()
     {
-        w_text = Game.Instance.win_text;
-        l_text = Game.Instance.lose_text;
+        w_text = Game.game_over.win_text;
+        l_text = Game.game_over.lose_text;
 
         w_text.text = win_text;
         l_text.text = lose_text;
@@ -176,8 +180,9 @@ public class Player : NetworkBehaviour
         {
             Debug.Log("GAME OVER: Player " + won);
             frozen = true;
-            if (won) w_text.gameObject.SetActive(true);
-            else l_text.gameObject.SetActive(true);
+
+            if (IsHost) Game.game_over.GameOverUIOn(won, true);
+            else Game.game_over.GameOverUIOn(won, false);
         }
     }
 

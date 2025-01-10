@@ -24,6 +24,7 @@ public class Spawner : NetworkBehaviour
         base.OnStartClient();
 
         // Only allow the owner to see and interact with the character selection screen
+        
         if (!base.IsOwner)
         {
             ghost_button.gameObject.SetActive(false);
@@ -31,6 +32,10 @@ public class Spawner : NetworkBehaviour
             //SelfDestruct();
             return;
         }
+
+        if (Game.Instance.loading_screen != null) Game.Instance.loading_screen.SetActive(false);
+
+        Debug.Log("I- Spawner client star");
 
         ghost_button.onClick.AddListener(() => RequestSpawnGhost());
         robber_button.onClick.AddListener(() => RequestSpawnRobber());
@@ -80,47 +85,6 @@ public class Spawner : NetworkBehaviour
         return (spawnPoint != null) ? spawnPoint.transform.position : Vector3.zero;
     }
 
-    /*
-    public override void OnStartServer() // Add the character selection screen here!
-    {
-        base.OnStartServer();
-
-        
-        if (starting_character == character.ROBBER) // Order is based on the starting character specified in game.
-        {
-            if (Game.Instance.robber.Value == null) SpawnRobber();
-            else if (Game.Instance.ghost.Value == null) SpawnGhost();
-        }
-        else if (starting_character == character.GHOST)
-        {
-            if (Game.Instance.ghost.Value == null) SpawnGhost();
-            else if (Game.Instance.robber.Value == null) SpawnRobber();
-        }
-        
-        else
-        {
-            Debug.Log("No more players needed");
-        }
-
-        SelfDestruct(); 
-    }
-    */
-    void SpawnRobber()
-    {
-        NetworkConnection ownerConnection = GetComponent<NetworkObject>().Owner;
-
-        Debug.Log("spawning a robber");
-        Vector3 spawn_position = (GameObject.Find("RobberSpawnpoint") == null) ? Vector3.zero : GameObject.Find("RobberSpawnpoint").transform.position;
-        SpawnPlayer(robber_prefab, spawn_position, ownerConnection, true);
-    }
-    void SpawnGhost()
-    {
-        NetworkConnection ownerConnection = GetComponent<NetworkObject>().Owner;
-
-        Debug.Log("spawning a ghost");
-        Vector3 spawn_position = (GameObject.Find("GhostSpawnpoint") == null) ? Vector3.zero : GameObject.Find("GhostSpawnpoint").transform.position;
-        SpawnPlayer(ghost_prefab, spawn_position, ownerConnection, false);
-    }
     void SpawnPlayer(GameObject player_to_spawn, Vector3 position, NetworkConnection owner, bool is_robber)
     {
         new_player = Instantiate(player_to_spawn, position, Quaternion.identity);

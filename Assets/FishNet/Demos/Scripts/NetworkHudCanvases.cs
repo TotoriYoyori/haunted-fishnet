@@ -3,6 +3,7 @@ using FishNet.Transporting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace FishNet.Example
 {
@@ -83,6 +84,7 @@ namespace FishNet.Example
 #endif
         #endregion
 
+        
         void OnGUI()
         {
 #if ENABLE_INPUT_SYSTEM
@@ -212,6 +214,8 @@ namespace FishNet.Example
             else
                 _networkManager.ServerManager.StartConnection();
 
+           
+
             DeselectButtons();
         }
 
@@ -225,6 +229,12 @@ namespace FishNet.Example
                 _networkManager.ClientManager.StopConnection();
             else
                 _networkManager.ClientManager.StartConnection();
+
+            // Igor changes ===================
+
+            SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
+
+            // ================================
 
             DeselectButtons();
         }
