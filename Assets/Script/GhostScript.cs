@@ -24,6 +24,7 @@ public class GhostScript : NetworkBehaviour
 
     // Dashing Variables
     bool is_aiming;
+    bool is_dashing;
     Vector2 mouse_position;
     Vector2 charge_target_position = Vector2.zero;
     float charge_time;
@@ -138,6 +139,7 @@ public class GhostScript : NetworkBehaviour
 
     void EndCharge()
     {
+        aiming_arrow.SetActive(false);
         charge_target_position = Vector3.zero;
         SyncHideServerRpc(true);
 
@@ -146,7 +148,7 @@ public class GhostScript : NetworkBehaviour
     }
     public void ChargeAttack(bool is_on)
     {
-        if (ghostUI.dash_fill.fillAmount < 1) return;
+        if (ghostUI.dash_fill.fillAmount < 1 || is_dashing) return;
 
         is_aiming = is_on;
         aiming_arrow.SetActive(is_aiming);
@@ -183,6 +185,7 @@ public class GhostScript : NetworkBehaviour
         if (IsOwner) player.frozen = !is_hiding; // To fix, make this not unfreeze the ghost when it dashes and catches the robber and when robber gets
         ghost_hiding.SetActive(is_hiding);
         ghost_attacking.SetActive(!is_hiding);
+        is_dashing = !is_hiding;
         Game.Instance.robber.Value.GetComponent<Player>().Indication(!is_hiding);
     }
 
