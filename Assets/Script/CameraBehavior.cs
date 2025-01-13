@@ -12,7 +12,8 @@ public class CameraBehavior : MonoBehaviour
     [HideInInspector]
     public Vector2 to_follow;
     [SerializeField] float speed;
-    public GameObject filter;
+    public GameObject robber_filter;
+    public GameObject ghost_filter;
     float camera_left_border, camera_right_border, camera_top_border, camera_bottom_border, camera_height, camera_width;
 
     void FixedUpdate()
@@ -53,14 +54,18 @@ public class CameraBehavior : MonoBehaviour
         if (is_robber && is_on) AudioManager.instance.PlaySFX("Nightvision");
         else if (is_on) AudioManager.instance.PlaySFX("Stepvision");
 
-        filter.SetActive(is_on);
+        
         if (is_robber)
         {
+            robber_filter.SetActive(is_on);
+
             if (is_on) CameraMode(camera_mode.ROBBER_SPECIAL);
             else CameraMode(camera_mode.ROBBER);
         }
         else 
         {
+            ghost_filter.SetActive(is_on);
+
             if (is_on) CameraMode(camera_mode.GHOST_SPECIAL);
             else CameraMode(camera_mode.GHOST);
         }

@@ -70,7 +70,7 @@ public class Player : NetworkBehaviour
                 ghost.player = GetComponent<Player>(); 
                 ghost.default_speed = speed;
                 wide_dark_filter.SetActive(true);
-                camera.GetComponent<CameraBehavior>().filter.GetComponent<Image>().color = ghost.stepvision_color;
+                camera.GetComponent<CameraBehavior>().robber_filter.GetComponent<Image>().color = ghost.stepvision_color;
                 camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
             }
 

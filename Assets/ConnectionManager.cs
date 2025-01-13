@@ -3,7 +3,6 @@ using FishNet.Object;
 using UnityEngine.UIElements;
 using FishNet.Connection;
 using System.Collections;
-using UnityEditor.MemoryProfiler;
 using UnityEngine.SceneManagement;
 
 public class ConnectionManager : MonoBehaviour 
