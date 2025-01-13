@@ -11,6 +11,7 @@ public class RobberScript : NetworkBehaviour
     [HideInInspector]
     public Player player;
     public GameObject flashlight;
+    public GameObject natural_light;
     [HideInInspector] public bool items_collected;
     public GameObject item_pick_up_aura;
 
@@ -28,6 +29,7 @@ public class RobberScript : NetworkBehaviour
     public void Flashlight(bool is_on)
     {
         if (player.is_special_vision_on) return;
+        flashlight.SetActive(is_on);
         SyncFlashlightServerRpc(is_on);
         if (IsOwner) player.narrow_dark_filter.SetActive(!is_on);
 
@@ -59,6 +61,7 @@ public class RobberScript : NetworkBehaviour
         GetComponent<SpriteRenderer>().enabled = is_enabled;
         GetComponent<CircleCollider2D>().enabled = is_enabled;
         if (IsOwner) GetComponent<InputController>().enabled = is_enabled;
+        else natural_light.SetActive(is_enabled);
     }
     public void NightVision(bool is_on)
     {

@@ -36,6 +36,7 @@ public class Game : NetworkBehaviour
     public static GameOverUI game_over;
     public NetworkManager network_manager;
     public GameObject loading_screen;
+    public ItemLottery item_lottery;
 
     void Start()
     {

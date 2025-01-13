@@ -65,12 +65,12 @@ public class InputController : NetworkBehaviour
         if (TryGetComponent(out RobberScript robber))
         {
             // Flashlight on left mouse
-            if (Input.GetButtonDown("Fire1") && !IsMouseOverButton()) robber.NightVision(true);
-            if (Input.GetButtonUp("Fire1")) robber.NightVision(false);
+            if (Input.GetButtonDown("Fire2") && !IsMouseOverButton()) robber.NightVision(true);
+            if (Input.GetButtonUp("Fire2")) robber.NightVision(false);
             
             // Nightvision on right mouse
-            if (Input.GetButtonDown("Fire2")) robber.Flashlight(true);
-            if (Input.GetButtonUp("Fire2")) robber.Flashlight(false);
+            if (Input.GetButtonDown("Fire1")) robber.Flashlight(true);
+            if (Input.GetButtonUp("Fire1")) robber.Flashlight(false);
 
             // to do:add picking up items on SPACE_BAR
             if (Input.GetButtonDown("Jump")) robber.item_pick_up_aura.GetComponent<ItemPickUp>().StartPicking(true);

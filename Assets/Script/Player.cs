@@ -72,9 +72,10 @@ public class Player : NetworkBehaviour
                 wide_dark_filter.SetActive(true);
                 camera.GetComponent<CameraBehavior>().robber_filter.GetComponent<Image>().color = ghost.stepvision_color;
                 camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
+                Game.Instance.item_lottery.ClearLocations();
             }
 
-            // for testing
+            // for testing game over screen
             //if (IsHost) GameOverServerRpc(false);
             //else GameOverServerRpc(true);
         }
