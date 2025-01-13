@@ -48,6 +48,11 @@ public class ItemLottery : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Game.Instance.item_lottery = this;        
+    }
+
     public void ClearLocations()
     {
         GameObject[] all_locations = GameObject.FindGameObjectsWithTag("Item");

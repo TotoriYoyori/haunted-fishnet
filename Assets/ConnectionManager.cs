@@ -9,12 +9,12 @@ public class ConnectionManager : MonoBehaviour
 {
     private void Start()
     {
-        StartCoroutine(CheckForConnection());
+        //StartCoroutine(CheckForConnection());
     }
 
     IEnumerator CheckForConnection() // whoever clicked play on the tile scene will be transported to main menu
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
 
         if (Game.Instance.network_manager == null) SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         else

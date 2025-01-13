@@ -124,6 +124,7 @@ public class Vent : NetworkBehaviour
 
         //Game.Instance.robber.Value.SetActive(false); // Deactivating the robber so that its invisible and theres no input
         Game.Instance.robber.Value.GetComponent<RobberScript>().EnableServerRpc(false);
+        Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.SetActive(false);
 
         // Moving the robber through 
         int current_target_position = 0;
