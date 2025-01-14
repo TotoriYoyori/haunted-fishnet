@@ -9946,6 +9946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: candle_highE_Wall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3328557849391532708, guid: 92e9241239698bc4b9e2c4ae6caa6f73, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7249969639895371820, guid: 92e9241239698bc4b9e2c4ae6caa6f73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.37
@@ -14897,6 +14901,7 @@ MonoBehaviour:
   player: {fileID: 0}
   network_manager: {fileID: 0}
   loading_screen: {fileID: 292308422}
+  item_lottery: {fileID: 0}
 --- !u!114 &1401163104
 MonoBehaviour:
   m_ObjectHideFlags: 0

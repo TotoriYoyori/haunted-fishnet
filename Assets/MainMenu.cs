@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] TMP_InputField input_field;
     [SerializeField] TMP_Text server_button_text;
     [SerializeField] Color server_text_color;
+    [SerializeField] GameObject tutorial_window;
+    [SerializeField] GameObject credits_window;
     bool server_created = false;
 
     private void Start()
@@ -21,6 +23,27 @@ public class MainMenu : MonoBehaviour
         network = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         tugboat = network.gameObject.GetComponent<Tugboat>();
     }
+
+    public void OpenTutorial()
+    {
+        bool is_tutorial_open = (tutorial_window.activeSelf);
+
+        tutorial_window.SetActive(!is_tutorial_open);
+        tutorial_window.GetComponent<Tutorial>().EnableTutorial(!is_tutorial_open);
+
+        // closing credits in case they are open
+        credits_window.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        bool are_credits_open = (credits_window.activeSelf);
+        credits_window.SetActive(!are_credits_open);
+
+        // closing tutorial in case it is open
+        tutorial_window.SetActive(false);
+    }
+
     public void ServerCreate()
     {
         if (server_created) return;

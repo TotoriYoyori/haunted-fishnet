@@ -1416,7 +1416,7 @@ MonoBehaviour:
   item_pick_up_aura: {fileID: 1851567907971040859}
   radar_range: 16
   white_noise_range: 10
-  shake_intensity: 2
+  shake_intensity: 1
   white_noise_volume: 0.2
   jumpscare_duration: 10
   jumpscare: {fileID: 5603760665451837918}
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
+    LocalScale: {x: -1.1, y: 1.1, z: 1}
 --- !u!58 &6229946920321116732
 CircleCollider2D:
   m_ObjectHideFlags: 0

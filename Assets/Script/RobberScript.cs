@@ -20,12 +20,17 @@ public class RobberScript : NetworkBehaviour
     [SerializeField] float white_noise_range;
     [SerializeField] float shake_intensity;
     [SerializeField] float white_noise_volume;
+    GameObject level_light;
 
     // Beign caught variables 
     [SerializeField] float jumpscare_duration;
     bool is_caught = false;
     [SerializeField] GameObject jumpscare;
 
+    private void Start()
+    {
+        level_light = GameObject.Find("Candels");
+    }
     public void Flashlight(bool is_on)
     {
         if (player.is_special_vision_on) return;
@@ -68,6 +73,9 @@ public class RobberScript : NetworkBehaviour
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
         player.is_special_vision_on = is_on;
 
+        // Disabling robbers natural light, so it doesnt look weird with night vision
+        natural_light.SetActive(!is_on);
+
         if (IsOwner) player.narrow_dark_filter.SetActive(!is_on);
 
         if (is_on) SyncFlashlightObserversRpc(false);
@@ -81,11 +89,14 @@ public class RobberScript : NetworkBehaviour
     void GhostRadar()
     {
         if (Game.Instance.ghost.Value == null || !IsOwner || player == null) return;
+
         float distance_to_ghost = Vector2.Distance(Game.Instance.ghost.Value.transform.position, transform.position);
 
-        // Shaking darkness effect
-        if (player.narrow_dark_filter != null) player.narrow_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
-        if (player.wide_dark_filter != null) player.wide_dark_filter.transform.localPosition = ShakeEffect(distance_to_ghost);
+        // Shaking effect
+        Vector2 shake_vector = ShakeEffect(distance_to_ghost);
+        natural_light.transform.localPosition = new Vector3(shake_vector.x, shake_vector.y, natural_light.transform.position.z);
+        flashlight.transform.localPosition = new Vector3(shake_vector.x, shake_vector.y, flashlight.transform.position.z);
+        //level_light.transform.localPosition = new Vector3(shake_vector.x, shake_vector.y, level_light.transform.position.z);
 
         // Growing Audio effect
         AudioSource white_noise = GetComponent<AudioSource>();
