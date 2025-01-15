@@ -2577,7 +2577,7 @@ PrefabInstance:
     - target: {fileID: 6891990480452815521, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
       propertyPath: _playerPrefab
       value: 
-      objectReference: {fileID: 6063010662701733762, guid: beec3e7f75a147246a668d847a088dc6, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6891990480452815521, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
       propertyPath: _addToDefaultScene
       value: 1
@@ -2634,7 +2634,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4100817875754215418, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6891990480452815534, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728850871}
   m_SourcePrefab: {fileID: 100100000, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
 --- !u!1 &1650395900
 GameObject:
@@ -2995,6 +2998,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4979719979628202816, guid: 72e45f022a625284ab6dda06b839d539, type: 3}
   m_PrefabInstance: {fileID: 1691643576}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1728850865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6891990480452815534, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
+  m_PrefabInstance: {fileID: 1582134116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728850871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728850865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68828c85278210948b9d50a8db3aab74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _authenticator: {fileID: 0}
+  _remoteClientTimeout: 0
+  _remoteClientTimeoutDuration: 60
+  _allowPredictedSpawning: 0
+  _reservedObjectIds: 15
+  _syncTypeRate: 0.1
+  SpawnPacking:
+    Position: 0
+    Rotation: 2
+    Scale: 2
+  _changeFrameRate: 1
+  _frameRate: 500
+  _shareIds: 1
+  _startOnHeadless: 1
 --- !u!1001 &1784527605
 PrefabInstance:
   m_ObjectHideFlags: 0
