@@ -3387,6 +3387,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
+      propertyPath: m_lineSpacing
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSizeBase
       value: 30
       objectReference: {fileID: 0}
@@ -4077,10 +4081,12 @@ MonoBehaviour:
   - {fileID: 1555723947}
   - {fileID: 2093550460}
   - {fileID: 365831552}
+  - {fileID: 888522677}
   ghost_tutorial_pages:
   - {fileID: 1654151535}
   - {fileID: 985295511}
   - {fileID: 2014624785}
+  - {fileID: 809624933}
 --- !u!114 &2070931862
 MonoBehaviour:
   m_ObjectHideFlags: 0
