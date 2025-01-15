@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8262703946355504451}
   - component: {fileID: 2059038657069392664}
   - component: {fileID: 9169624020446279728}
-  - component: {fileID: 5041354858536413399}
+  - component: {fileID: -7791087918115146080}
   m_Layer: 0
   m_Name: Vent
   m_TagString: Vent
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995afa0d0e5513247a92734f7e134f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 5041354858536413399}
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: -7791087918115146080}
   _networkObjectCache: {fileID: 0}
   connected_vents: []
   closed_color: {r: 0.19245279, g: 0.19245279, b: 0.19245279, a: 1}
@@ -156,7 +156,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5041354858536413399
+--- !u!114 &-7791087918115146080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
