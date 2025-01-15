@@ -575,28 +575,27 @@ PrefabInstance:
       value: 'Controls
 
 
-        
+
 
         Move - W, A, S, D
 
-        
 
-        Lantern
-        - Left Mouse Button
 
-        
+        Lantern - Left Mouse
+        Button
+
+
 
         Night Vision - Right Mouse Button
 
-        
 
-        Collect
-        Item - Spacebar (Hold)
 
-        
+        Collect Item
+        - Spacebar (Hold)
 
-        Use Vent - Spacebar + Left Mouse
-        Button
+
+
+        Use Vent - Spacebar + Left Mouse Button
 
 '
       objectReference: {fileID: 0}
@@ -1145,7 +1144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &735005474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2067,7 +2066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1214774442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2244,16 +2243,16 @@ PrefabInstance:
       value: 'Controls
 
 
-        
+
 
         Move - W, A, S, D
 
-        
 
-        Dash
-        - Left Mouse Button
 
-        
+        Dash - Left Mouse
+        Button
+
+
 
         Step Vision - Right Mouse Button
 
@@ -2468,7 +2467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1338612222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3232,9 +3231,9 @@ PrefabInstance:
         Robber to find them.\n\r\nYour Step Vision lets you see their footprints,
         and their location will be revealed to you when they use their Lantern.\n\r\nThe
         Robber cannot see you unless you Dash or they use their Night Vision, but
-        they can feel when you get close.\n\r\nVents scattered around the mansion
-        lets them quickly get away from you, but they can only travel to each vent
-        once. Use that to your advantage!\r"
+        they can feel when you get close.\n\r\nVents, which are scattered around
+        the mansion lets them quickly get away from you, but they can only travel
+        to each vent once. Use that to your advantage!\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSize
@@ -3767,23 +3766,23 @@ PrefabInstance:
         Vents are powerful tools for avoiding the Ghost, letting
         you reach faraway spots much quicker.
 
-        
 
-        Each vent you travel
-        to will become permanently unusable afterwards, so make sure to only rely
-        on them in a pinch!
 
-        
+        Each vent you travel to
+        will become permanently unusable afterwards, so make sure to only rely on
+        them in a pinch!
 
-        If you are struggling to find the
-        right items, an arrow will eventually appear to point you in the direction
-        of one you have yet to collect.
 
-        
 
-        Keep an eye on the time
-        limit, because when it runs out, the Ghost will get angry for real, and things
-        will probably not end well for you.
+        If you are struggling to find the right items,
+        an arrow will eventually appear to point you in the direction of one you
+        have yet to collect.
+
+
+
+        Keep an eye on the time limit, because when
+        it runs out, the Ghost will get angry for real, and things will probably
+        not end well for you.
 
 '
       objectReference: {fileID: 0}
