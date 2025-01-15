@@ -8943,7 +8943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &705336384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14647,6 +14647,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165685745}
     m_Modifications:
+    - target: {fileID: -7791087918115146080, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 4156506075
+      objectReference: {fileID: 0}
     - target: {fileID: 2059038657069392664, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
       propertyPath: connected_vents.Array.size
       value: 2
@@ -15449,6 +15453,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165685745}
     m_Modifications:
+    - target: {fileID: -7791087918115146080, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 3556752267
+      objectReference: {fileID: 0}
     - target: {fileID: 2059038657069392664, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
       propertyPath: connected_vents.Array.size
       value: 2
@@ -35395,6 +35403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165685745}
     m_Modifications:
+    - target: {fileID: -7791087918115146080, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 3690721215
+      objectReference: {fileID: 0}
     - target: {fileID: 2059038657069392664, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
       propertyPath: connected_vents.Array.size
       value: 2
@@ -35824,6 +35836,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165685745}
     m_Modifications:
+    - target: {fileID: -7791087918115146080, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 3757915131
+      objectReference: {fileID: 0}
     - target: {fileID: 2059038657069392664, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
       propertyPath: connected_vents.Array.size
       value: 2
@@ -37379,6 +37395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1165685745}
     m_Modifications:
+    - target: {fileID: -7791087918115146080, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 3556356031
+      objectReference: {fileID: 0}
     - target: {fileID: 2059038657069392664, guid: 1385eaeab57f7c14b9c000067a29331c, type: 3}
       propertyPath: connected_vents.Array.size
       value: 2
