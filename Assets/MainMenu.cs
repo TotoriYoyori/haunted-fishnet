@@ -67,7 +67,6 @@ public class MainMenu : MonoBehaviour
         network.ClientManager.StartConnection();
 
         SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
-        //network.ServerManager.LoadConnectionScenes("MainMenu", LoadSceneMode.Single);
     }
 
     public void ChooseIP()

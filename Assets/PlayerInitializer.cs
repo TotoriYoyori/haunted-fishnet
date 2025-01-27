@@ -1,5 +1,7 @@
 using FishNet.Connection;
+using FishNet.Managing;
 using FishNet.Object;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class PlayerInitializer : MonoBehaviour
@@ -27,7 +29,13 @@ public class PlayerInitializer : MonoBehaviour
     {
         GameObject character_select = Instantiate(character_select_prefab);
         Game.Instance.network_manager.ServerManager.Spawn(character_select, conn);
+
+        NetworkObject network_obj = character_select.GetComponent<NetworkObject>();
+        Game.Instance.network_manager.SceneManager.AddOwnerToDefaultScene(network_obj);
+
+        //OnSpawned?.Invoke(network_obj);
     }
+
 
     private void OnDestroy()
     {

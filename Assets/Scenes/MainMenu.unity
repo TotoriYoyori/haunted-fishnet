@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28942863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2761,7 +2761,7 @@ PrefabInstance:
     - target: {fileID: 6891990480452815521, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
       propertyPath: _playerPrefab
       value: 
-      objectReference: {fileID: 6063010662701733762, guid: beec3e7f75a147246a668d847a088dc6, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6891990480452815521, guid: 86e1add7275cd0c44a7d008768352d16, type: 3}
       propertyPath: _addToDefaultScene
       value: 1
@@ -3217,7 +3217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _authenticator: {fileID: 0}
-  _remoteClientTimeout: 2
+  _remoteClientTimeout: 0
   _remoteClientTimeoutDuration: 60
   _allowPredictedSpawning: 0
   _reservedObjectIds: 15
