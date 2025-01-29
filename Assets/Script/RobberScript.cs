@@ -14,6 +14,7 @@ public class RobberScript : NetworkBehaviour
     public GameObject natural_light;
     [HideInInspector] public bool items_collected;
     public GameObject item_pick_up_aura;
+    RobberUI robberUI;
 
     // Shake variables
     [SerializeField] float radar_range;
@@ -27,6 +28,16 @@ public class RobberScript : NetworkBehaviour
     bool is_caught = false;
     [SerializeField] GameObject jumpscare;
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (IsOwner)
+        {
+            robberUI = GameObject.Find("RobberUI").GetComponent<RobberUI>();
+            if (robberUI == null) Debug.Log("Couldnt find ghost UI");
+            else robberUI.EnableUI();
+        }
+    }
     private void Start()
     {
         level_light = GameObject.Find("Candels");
@@ -70,6 +81,9 @@ public class RobberScript : NetworkBehaviour
     }
     public void NightVision(bool is_on)
     {
+        // Energy bar UI code (if its too low it wont work)
+        if (!robberUI.UseEnergy(is_on)) is_on = false;
+
         player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
         player.is_special_vision_on = is_on;
 

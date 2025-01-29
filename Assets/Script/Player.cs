@@ -62,8 +62,6 @@ public class Player : NetworkBehaviour
                 wide_dark_filter.SetActive(true);
                 camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.ROBBER);
                 if (IsOwner) GetComponent<FootstepManager>().enabled = false;
-
-                GameObject.Find("RobberUI").GetComponent<UI>().EnableUI();
             }
             else if (TryGetComponent(out GhostScript ghost))
             {
