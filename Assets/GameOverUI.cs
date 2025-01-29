@@ -37,7 +37,7 @@ public class GameOverUI : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
+        SceneManager.LoadScene("RestartScene", LoadSceneMode.Single);
     }
 
     private void Disconnect()
