@@ -14,13 +14,11 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         // The pause menu code, currently it disables the script for the robber, but it should disable the script of the current player.
-        // TODO: Fix the player instance from the Game class
-        // TODO: Change the way input is handled later
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(!pausePanel.activeSelf);
-            Game.Instance.robber.Value.GetComponent<InputController>().enabled = false;
+            Game.Instance.player.GetComponent<InputController>().enabled = (Game.Instance.player.GetComponent<InputController>().enabled) ? false : true;
             isPaused = !isPaused;
         }
 

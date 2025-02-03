@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      night_vision_0: 451579658470832876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
