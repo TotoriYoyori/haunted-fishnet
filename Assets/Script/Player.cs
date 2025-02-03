@@ -52,6 +52,7 @@ public class Player : NetworkBehaviour
             camera = Camera.main;
             Debug.Log("Camera_supposed_to_be_assigned");
             if (camera == null) Debug.Log("Camera_was_not_assigned");
+            Game.Instance.player = this;
 
             SetUpUI();
         
