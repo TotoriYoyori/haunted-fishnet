@@ -14,27 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lvl_Tilemap.unity
     guid: c9c3bcc0bf8003c4bb76241d57635f00
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   - enabled: 0
     path: Assets/Scenes/RestartScene.unity
     guid: e83201b97edba7c47b9bd1d7018bdfbb
   - enabled: 0
     path: Assets/Scenes/PauseTempScene.unity
     guid: 24c62350b27e0344face0013abc43881
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
