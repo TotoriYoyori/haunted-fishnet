@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
         tugboat = network.gameObject.GetComponent<Tugboat>();
     }
 
+    //text tutorial to refresh or read up
     public void OpenTutorial()
     {
         bool is_tutorial_open = (tutorial_window.activeSelf);
@@ -33,6 +34,15 @@ public class MainMenu : MonoBehaviour
 
         // closing credits in case they are open
         credits_window.SetActive(false);
+    }
+
+    //the actual tutorial - the simulated one
+    public void StartTutorial()
+    {
+        //reset the tutorial stage in static script
+        TutorialProgress.part = 1;
+
+        SceneManager.LoadScene("Lvl_Tutorial", LoadSceneMode.Single);
     }
 
     public void OpenCredits()

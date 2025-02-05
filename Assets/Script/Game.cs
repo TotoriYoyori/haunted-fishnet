@@ -24,7 +24,7 @@ public class Game : NetworkBehaviour
         Instance = this;
 
         // activating loading screen
-        loading_screen.SetActive(true);
+        if (loading_screen != null) loading_screen.SetActive(true);
     }
     //public static GameObject robber;
     public readonly SyncVar<GameObject> robber = new SyncVar<GameObject>();
