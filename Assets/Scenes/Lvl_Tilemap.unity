@@ -28580,8 +28580,8 @@ MonoBehaviour:
   full_energy_color: {r: 0.8701162, g: 0.9169811, b: 0.40658593, a: 1}
   low_energy_color: {r: 0.87169814, g: 0.1957208, b: 0.1957208, a: 1}
   energy_bar_sprite: {fileID: 301697042}
-  burst_decrease: 0.03
-  energy_decrease: 0.003
+  burst_decrease: 0.05
+  energy_decrease: 0.004
   energy_regeneration: 0.002
   use_threshold: 0.2
 --- !u!1001 &1534259440
