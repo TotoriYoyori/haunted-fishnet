@@ -37,12 +37,21 @@ public class MainMenu : MonoBehaviour
     }
 
     //the actual tutorial - the simulated one
-    public void StartTutorial()
+    public void RealTutorial()
     {
+        // closing credits in case they are open
+        credits_window.SetActive(false);
+
+        //creating a dummy server for the functionality
+        ServerCreate();
+        network.ClientManager.StartConnection();
+
         //reset the tutorial stage in static script
         TutorialProgress.part = 1;
 
-        SceneManager.LoadScene("Lvl_Tutorial", LoadSceneMode.Single);
+        //load the choice scene for the tutorial level
+        SceneManager.LoadScene("Choose_Tutorial", LoadSceneMode.Single);
+
     }
 
     public void OpenCredits()
