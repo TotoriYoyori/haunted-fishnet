@@ -733,9 +733,9 @@ PrefabInstance:
       propertyPath: m_text
       value: "Avoiding the Ghost\n\n\r\nWatch out for the Ghost, who will be trying
         to catch you as you explore the mansion!\n\r\nThe Ghost is invisible, but
-        you can see them through your Night Vision.\n\r\nYou can still sense when
-        the Ghost is close, if you pay close attention.\n\r\nThe Ghost can see the
-        both the light from your Lantern and footprints you leave behind while moving.\r"
+        you can see them through your Night Vision.\n\r\nYou can also sense when
+        the Ghost is close, if you pay close attention.\n\r\nThe Ghost can see both
+        the light from your Lantern and footprints you leave behind while moving.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSize
@@ -3285,7 +3285,7 @@ PrefabInstance:
         and their location will be revealed to you when they use their Lantern.\n\r\nThe
         Robber cannot see you unless you Dash or they use their Night Vision, but
         they can feel when you get close.\n\r\nVents, which are scattered around
-        the mansion lets them quickly get away from you, but they can only travel
+        the mansion, lets them quickly get away from you but they can only travel
         to each vent once. Use that to your advantage!\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
