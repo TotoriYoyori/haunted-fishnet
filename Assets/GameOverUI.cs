@@ -1,5 +1,7 @@
+using FishNet;
 using FishNet.Managing;
 using FishNet.Managing.Client;
+using FishNet.Managing.Scened;
 using FishNet.Object;
 using System.Collections.Generic;
 using TMPro;
@@ -23,6 +25,7 @@ public class GameOverUI : MonoBehaviour
     }
     public void GameOverUIOn(bool won, bool is_host)
     {
+        GameData.is_game_over = true;
         // disconnect button
         //disconnect_button.gameObject.SetActive(true);         should always be somewhere and available
 
@@ -37,7 +40,9 @@ public class GameOverUI : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene("RestartScene", LoadSceneMode.Single);
+        SceneLoadData sld = new SceneLoadData("RestartScene");
+        InstanceFinder.SceneManager.LoadGlobalScenes(sld);           
+        //SceneManager.LoadScene("RestartScene", LoadSceneMode.Single);
     }
 
     private void Disconnect()
@@ -77,7 +82,11 @@ public class GameOverUI : MonoBehaviour
 
         // Reset scene state by loading MainMenu.
         Debug.Log("Loading MainMenu...");
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+        SceneLoadData sld = new SceneLoadData("MainMenu");
+        InstanceFinder.SceneManager.LoadGlobalScenes(sld);
+
+        //SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
 

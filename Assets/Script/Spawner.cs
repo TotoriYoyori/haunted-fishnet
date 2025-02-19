@@ -109,7 +109,7 @@ public class Spawner : NetworkBehaviour
     void UpdatePlayerObserversRpc(bool is_robber)
     {
         if (is_robber)
-            Game.Instance.robber.Value = new_player;
+            Game.Instance.robber.Value = new_player; 
         else
             Game.Instance.ghost.Value = new_player;
 

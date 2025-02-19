@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//using FishNet.Managing.Scened;
+using FishNet;
 
 public class Restart : MonoBehaviour
 {
@@ -21,5 +23,8 @@ public class Restart : MonoBehaviour
     {
         yield return new WaitForSeconds(restart_time);
         SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
+        //SceneLoadData sld = new SceneLoadData("MainMenu");
+        //InstanceFinder.SceneManager.LoadGlobalScenes(sld);
+        //InstanceFinder.SceneManager.LoadGlobalScenes(sld);
     }
 }
