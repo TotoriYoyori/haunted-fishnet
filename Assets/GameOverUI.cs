@@ -38,7 +38,7 @@ public class GameOverUI : MonoBehaviour
         else client_wait_text.gameObject.SetActive(true);
     }
 
-    public void DisconnectClient()
+    public void DisconnectClient() // when the host disconnects the clients should also disconnect
     {
         if (Game.Instance.network_manager != null)
         {
@@ -78,6 +78,8 @@ public class GameOverUI : MonoBehaviour
         Debug.Log("Loading MainMenu...");
 
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+        GameData.is_game_over = false;
         //Game.Instance.network_manager.SceneManager.LoadConnectionScenes(Game.Instance.player.LocalConnection, new SceneLoadData("MainMenu"));
     }
 }
