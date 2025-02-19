@@ -2021,6 +2021,14 @@ PrefabInstance:
       value: Paused!
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
+      propertyPath: m_margin.x
+      value: 39.352295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
+      propertyPath: m_margin.z
+      value: 224.91898
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -2102,7 +2110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4780237162663079393, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 276
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 4780237162663079393, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
