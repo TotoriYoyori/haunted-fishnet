@@ -8,7 +8,7 @@ public class ChooseTutorialScript : MonoBehaviour
     {
         //reset the tutorial stage in static script
         TutorialProgress.part = 1;
-
+        Debug.Log("FRANEK::Twoja stara to z³odziej");
         SceneManager.LoadScene("Lvl_Tutorial_Robber", LoadSceneMode.Single);
     }
 
@@ -16,7 +16,7 @@ public class ChooseTutorialScript : MonoBehaviour
     {
         //reset the tutorial stage in static script
         TutorialProgress.part = 1;
-
+        Debug.Log("FRANEK::Twoja stara to duch");
         SceneManager.LoadScene("Lvl_Tutorial_Ghost", LoadSceneMode.Single);
     }
 
