@@ -143,7 +143,7 @@ public class Vent : NetworkBehaviour
             Game.Instance.robber.Value.transform.position = Vector3.MoveTowards(robber_position, moving_positions[current_target_position], 0.1f);
 
             //Updating camera position;
-            Game.Instance.robber.Value.GetComponent<Player>().camera.GetComponent<CameraBehavior>().to_follow = robber_position;
+            Game.Instance.robber.Value.GetComponent<Player>().main_camera.GetComponent<CameraBehavior>().to_follow = robber_position;
 
             yield return new WaitForSeconds(vent_moving_speed);
         }

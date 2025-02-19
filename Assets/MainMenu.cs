@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+//using FishNet.Managing.Scened;
+using FishNet;
+using Unity.Mathematics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -66,6 +69,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Client Button works");
         network.ClientManager.StartConnection();
 
+        // SceneLoadData sld = new SceneLoadData("Lvl_Tilemap");
+        // InstanceFinder.SceneManager.LoadGlobalScenes(sld);
         SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
     }
 
