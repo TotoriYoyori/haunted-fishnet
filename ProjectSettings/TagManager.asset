@@ -9,6 +9,7 @@ TagManager:
   - EscapeZone
   - Vent
   - VentButton
+  - MapBoundary
   layers:
   - Default
   - TransparentFX
