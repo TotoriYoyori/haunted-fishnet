@@ -3550,10 +3550,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: "Credits\n\n\r\nElisabetta Maria Poli - Character Design, Animation,
-        UI Art\n\r\nThuy Dang Ngoc Phuong - Environmental Art\n\r\nJoel Ow\xE9n -
-        Level Design, Tutorial Design, QA\n\r\nQuan Nguyen - Project Management,
-        Sound Design, Technical Support\n\r\nIgors Sorogovecs - Lead Design, Programming"
+      value: "Credits\n\n\r\nIgors Sorogovecs - Lead Design, Programming\n\nRajat
+        Upadhayaya - Programming\n\nFranciszek Ryt - Programming\n\nElisabetta Maria
+        Poli - Character Design, Animation, UI Art\n\nTuerxun Ailikamu - UI Art\n\r\nThuy
+        Dang Ngoc Phuong - Environmental Art\n\r\nJoel Ow\xE9n - Level Design, Tutorial
+        Design, QA\n\r\nQuan Nguyen - Project Management, Sound Design, Technical
+        Support"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSize
