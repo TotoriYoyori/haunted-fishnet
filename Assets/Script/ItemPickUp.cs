@@ -85,6 +85,11 @@ public class ItemPickUp : MonoBehaviour
         else
         {
             item_lottery.GetComponent<ItemLottery>().ItemPicked(closest_item.GetComponent<SpriteRenderer>().sprite);
+
+            if (this.gameObject.TryGetComponent(out robberTutorial component))
+            {
+                component.itemsGathered += 1;
+            }
         }
 
         if (closest_item != null)

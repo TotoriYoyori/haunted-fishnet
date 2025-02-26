@@ -36,6 +36,12 @@ public class RoomCheckScript : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
+            //checking the position of the ghost in the tutorial
+            if (collider.gameObject.TryGetComponent(out ghostTutorial component))
+            {
+                component.throughWall = true;
+            }
+
             if (tutorial_part_1 && TutorialProgress.part == 1) { TutorialProgress.part = 2; }
             else if (tutorial_part_2 && TutorialProgress.part == 2) { TutorialProgress.part = 3; }
             else if (tutorial_part_3 && TutorialProgress.part == 3) { TutorialProgress.part = 4; }
