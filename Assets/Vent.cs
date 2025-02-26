@@ -16,6 +16,7 @@ public class Vent : NetworkBehaviour
     Color open_color;
     SpriteRenderer sprite;
     [HideInInspector] public bool blocked;
+    GameObject[] key_UI = new GameObject[2];
     
     void Awake()
     {
@@ -28,6 +29,9 @@ public class Vent : NetworkBehaviour
         {
             vent_buttons[i] = vent_button_gameObjects[i].GetComponent<Button>();
         }
+
+        key_UI[0] = GameObject.Find("QKeyText");
+        key_UI[1] = GameObject.Find("EKeyText");
     }
 
     private void Start()
@@ -72,6 +76,8 @@ public class Vent : NetworkBehaviour
             vent_buttons[a].transform.rotation = Quaternion.FromToRotation(Vector3.up, vent_direction);
 
             vent_buttons[a].transform.position += vent_buttons[a].transform.up * 1.5f;
+            key_UI[a].transform.position = vent_buttons[a].transform.position;
+
 
             // Adding functionality to buttons
             vent_buttons[a].onClick.RemoveAllListeners();
