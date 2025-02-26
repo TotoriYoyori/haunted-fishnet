@@ -40,13 +40,14 @@ public class RobberUI : MonoBehaviour
 
     void RechargeMode(bool is_recharge)
     {
-        recharging = (recharging) ? false : true;
+        recharging = is_recharge;
 
         energy_bar_sprite.color = (recharging) ? low_energy_color : full_energy_color;
     }
 
     void EnergyManagement()
     {
+        if (current_energy >= 1f && recharging) RechargeMode(false);
         if (using_energy)
         {
             current_energy -= energy_decrease;
@@ -66,9 +67,8 @@ public class RobberUI : MonoBehaviour
         else
         {
             current_energy += energy_regeneration;
-            if (current_energy > 1f)
+            if (current_energy >= 1f)
             {
-                if (!recharging) RechargeMode(false);
                 current_energy = 1f;
             }
             //else if (current_energy > use_threshold && energy_bar_sprite.color == low_energy_color) energy_bar_sprite.color = full_energy_color;
