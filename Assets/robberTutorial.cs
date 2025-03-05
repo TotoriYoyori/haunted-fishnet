@@ -42,7 +42,42 @@ public class robberTutorial : MonoBehaviour
     {
         //tracking the progress of the part of the tutorial
 
+        //part 1
+        if(goUp && goDown && goLeft && goRight)
+        {
+            TutorialProgress.part = 2;
+        }
 
+        //part 2
+        if(flashlight)
+        {
+            TutorialProgress.part = 3;
+        }
+
+        //part 3
+        
+        if(itemsGathered == 1)
+        {
+            TutorialProgress.part = 4;
+        }
+
+
+        //part 4
+        if (itemsGathered == 3)
+        {
+            TutorialProgress.part = 5;
+        }
+
+        //part 5
+        if (lossOfLife)
+        {
+            TutorialProgress.part = 6;
+        }
+
+        //part 6
+
+
+        //part 7
 
 
     }

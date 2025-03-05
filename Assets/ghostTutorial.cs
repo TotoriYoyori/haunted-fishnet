@@ -16,7 +16,7 @@ public class ghostTutorial : MonoBehaviour
 
     //accessed the closed room
     public bool throughWall;
-
+    public bool finishSteps;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,13 +31,51 @@ public class ghostTutorial : MonoBehaviour
         stepVision = false;
 
         throughWall = false;
+        finishSteps = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //tutorial part checker
+        //tracking the progress of the part of the tutorial
 
+        //part 1
+        if (goUp && goDown && goLeft && goRight)
+        {
+            TutorialProgress.part = 2;
+        }
+
+        //part 2
+
+        if (throughWall)
+        {
+            TutorialProgress.part = 3;
+        }
+
+
+        //part 3
+        if (robberKills == 1)
+        {
+            TutorialProgress.part = 4;
+        }
+
+        //part 4
+        if (finishSteps)
+        {
+            TutorialProgress.part = 5;
+        }
+
+        //part 5
+        if (robberKills == 2)
+        {
+            TutorialProgress.part = 6;
+        }
+
+        //part 6
+        if (robberKills == 3)
+        {
+            TutorialProgress.part = 7;
+        }
 
     }
 }
