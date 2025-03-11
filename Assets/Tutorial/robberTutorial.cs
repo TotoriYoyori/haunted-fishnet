@@ -18,6 +18,9 @@ public class robberTutorial : MonoBehaviour
     //did the robber loose a life
     public bool lossOfLife;
 
+    //did the player use vent mechanic
+    public bool ventUsed;
+
 
 
 
@@ -35,6 +38,8 @@ public class robberTutorial : MonoBehaviour
         flashlight = false;
 
         lossOfLife = false;
+
+        ventUsed = false;
     }
 
     // Update is called once per frame
@@ -75,9 +80,10 @@ public class robberTutorial : MonoBehaviour
         }
 
         //part 6
-
-
-        //part 7
+        if(ventUsed)
+        {
+            TutorialProgress.part = 7;
+        }
 
 
     }

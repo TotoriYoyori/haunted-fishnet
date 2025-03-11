@@ -11,34 +11,35 @@ public class SpawnAntagonists : MonoBehaviour
     public Transform secondInstance;  
     public Transform thirdInstance;
 
-    //endzones spawn
-    public GameObject endZones;
+
 
 
     // Update is called once per frame
     void Update()
     {
-        if(TutorialProgress.part == 1)
-        {
-            //Instantiate(robberObject, firstInstance.position, Quaternion.identity);
-        }
 
-
-        if(TutorialProgress.part == 2)
-        {
-            //Instantiate(robberObject, secondInstance.position, Quaternion.identity);
-            footsteps.SetActive(true);
-        }
 
         if (TutorialProgress.part == 3)
         {
-            //Instantiate(robberObject, thirdInstance.position, Quaternion.identity);
+            Instantiate(robberObject, firstInstance.position, Quaternion.identity);
+        }
+
+
+        if(TutorialProgress.part == 4)
+        {
+            Instantiate(robberObject, secondInstance.position, Quaternion.identity);
+            footsteps.SetActive(true);
+        }
+
+        if (TutorialProgress.part == 5)
+        {
+            Instantiate(robberObject, thirdInstance.position, Quaternion.identity);
             footsteps.SetActive(false);
         }
 
         if(TutorialProgress.part == 6)
         {
-            endZones.SetActive(true);
+            //ghost wins
         }
     }
 }

@@ -9,14 +9,21 @@ public class SpawnGhostAntagonists : MonoBehaviour
     //places to spawn robber
     public Transform firstInstance;
 
+    //endzones spawn
+    public GameObject endZones;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (TutorialProgress.part == 1)
+        if (TutorialProgress.part == 4)
         {
-            //Instantiate(ghostObject, firstInstance.position, Quaternion.identity);
+            Instantiate(ghostObject, firstInstance.position, Quaternion.identity);
+        }
+
+        if(TutorialProgress.part == 7)
+        {
+            endZones.SetActive(true);
         }
 
     }

@@ -4290,6 +4290,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -4883,6 +4887,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -5363,6 +5371,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -5445,6 +5457,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -5947,6 +5963,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -6488,7 +6508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 2
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -7178,6 +7198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -9521,6 +9545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -10014,7 +10042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -10179,6 +10207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostObject: {fileID: 8971885395949694260, guid: c4ef0389c687121439e3b0e33f16aea6, type: 3}
   firstInstance: {fileID: 1571439576}
+  endZones: {fileID: 0}
 --- !u!1 &683222164
 GameObject:
   m_ObjectHideFlags: 0
@@ -11447,7 +11476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 6
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -11819,6 +11848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_3
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -11907,7 +11940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 7
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -12316,6 +12349,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -12958,7 +12995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 3
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -13859,6 +13896,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -14287,6 +14328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -14422,6 +14467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -16359,7 +16408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 5
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -18074,7 +18123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: This is FLUFF text and some info too
+      value: text part 4
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_margin.x
@@ -19021,6 +19070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_5
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -19099,6 +19152,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -31800,6 +31857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -32368,6 +32429,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -37064,6 +37129,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -37470,6 +37539,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -37669,6 +37742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -39129,6 +39206,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -39901,6 +39982,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 911028748}
     m_Modifications:
+    - target: {fileID: 3219251291073008462, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
+      propertyPath: tutorial_part_6
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4998305883248392542, guid: be6928e522ad95747b3f05c10cf69aef, type: 3}
       propertyPath: m_SortingLayer
       value: 3
