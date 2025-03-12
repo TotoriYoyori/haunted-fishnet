@@ -11,7 +11,12 @@ public class OverlayScript : MonoBehaviour
     public bool tutorial_part_6;
     public bool tutorial_part_7;
 
-    private bool show = false;
+    public bool show = true;
+
+    void Start()
+    {
+
+    }
 
     void Update()
     {
@@ -19,32 +24,18 @@ public class OverlayScript : MonoBehaviour
         Deinitialise();
     }
 
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
-
     void Deinitialise()
     {
-        if (tutorial_part_1 && TutorialProgress.part == 1)  { show = true; }
-        else if (tutorial_part_2 && TutorialProgress.part == 2) { show = true; }
-        else if (tutorial_part_3 && TutorialProgress.part == 3) { show = true; }
-        else if (tutorial_part_4 && TutorialProgress.part == 4) { show = true; }
-        else if (tutorial_part_5 && TutorialProgress.part == 5) { show = true; }
-        else if (tutorial_part_6 && TutorialProgress.part == 6) { show = true; }
-        else if (tutorial_part_7 && TutorialProgress.part == 7) { show = true; }
-
-        if (tutorial_part_1 && TutorialProgress.part != 1) { show = false; }
-        else if (tutorial_part_2 && TutorialProgress.part != 2) { show = false; }
-        else if (tutorial_part_3 && TutorialProgress.part != 3) { show = false; }
-        else if (tutorial_part_4 && TutorialProgress.part != 4) { show = false; }
-        else if (tutorial_part_5 && TutorialProgress.part != 5) { show = false; }
-        else if (tutorial_part_6 && TutorialProgress.part != 6) { show = false; }
-        else if (tutorial_part_7 && TutorialProgress.part == 7) { show = true; }
+        if (tutorial_part_1 && TutorialProgress.part == 2) { show = false; }
+        else if (tutorial_part_2 && TutorialProgress.part == 3) { show = false; }
+        else if (tutorial_part_3 && TutorialProgress.part == 4) { show = false; }
+        else if (tutorial_part_4 && TutorialProgress.part == 5) { show = false; }
+        else if (tutorial_part_5 && TutorialProgress.part == 6) { show = false; }
+        else if (tutorial_part_6 && TutorialProgress.part == 7) { show = false; }
+        else if (tutorial_part_7 && TutorialProgress.part == 8) { show = false; }
 
 
-        if (show) { gameObject.SetActive(true); }
-        else { gameObject.SetActive(false); }
+        if (!show) { gameObject.SetActive(false); }
     }
 
 

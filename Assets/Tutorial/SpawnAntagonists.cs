@@ -11,7 +11,9 @@ public class SpawnAntagonists : MonoBehaviour
     public Transform secondInstance;  
     public Transform thirdInstance;
 
-
+    bool firstRobber = false;
+    bool secondRobber = false;
+    bool thirdRobber = false;
 
 
     // Update is called once per frame
@@ -19,22 +21,28 @@ public class SpawnAntagonists : MonoBehaviour
     {
 
 
-        if (TutorialProgress.part == 3)
+        if (TutorialProgress.part == 3 && !firstRobber)
         {
+
             Instantiate(robberObject, firstInstance.position, Quaternion.identity);
+            firstRobber = true;
         }
 
 
-        if(TutorialProgress.part == 4)
+        if(TutorialProgress.part == 4 && !secondRobber)
         {
+
             Instantiate(robberObject, secondInstance.position, Quaternion.identity);
             footsteps.SetActive(true);
+            secondRobber = true;
         }
 
-        if (TutorialProgress.part == 5)
+        if (TutorialProgress.part == 5 && !thirdRobber)
         {
+
             Instantiate(robberObject, thirdInstance.position, Quaternion.identity);
             footsteps.SetActive(false);
+            thirdRobber = true;
         }
 
         if(TutorialProgress.part == 6)

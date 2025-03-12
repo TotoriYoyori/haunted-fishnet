@@ -550,6 +550,8 @@ MonoBehaviour:
   goRight: 0
   stepVision: 0
   throughWall: 0
+  finishSteps: 0
+  ghostTeleportBack: {fileID: 8080231199574203373, guid: 29be1592a97da074bbbb5001cf8a55c5, type: 3}
 --- !u!1 &5223075842775214517
 GameObject:
   m_ObjectHideFlags: 0

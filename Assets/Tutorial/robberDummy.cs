@@ -14,7 +14,9 @@ public class robberDummy : MonoBehaviour
     {
         if(collision.CompareTag("Ghost"))
         {
-            if (collision.gameObject.TryGetComponent(out ghostTutorial component))
+            GameObject ghost = collision.gameObject.transform.parent.gameObject;
+
+            if (ghost.TryGetComponent(out ghostTutorial component))
             {
                 component.robberKills += 1;
             }

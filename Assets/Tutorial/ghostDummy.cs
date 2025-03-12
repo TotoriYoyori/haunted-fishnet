@@ -15,24 +15,25 @@ public class ghostDummy : MonoBehaviour
         
     }
 
-    IEnumerator Despawn(int time, Collider2D collider)
+    IEnumerator Despawn(int time)
     {
 
         yield return new WaitForSeconds(time);
 
-        if (collider.gameObject.TryGetComponent(out robberTutorial component))
-        {
-            component.lossOfLife = true;
-        }
-
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Robber"))
         {
-            Despawn(3, collision);
+            if (collision.gameObject.TryGetComponent(out robberTutorial component))
+            {
+                component.lossOfLife = true;
+            }
+
+            this.gameObject.SetActive(false);
+            Despawn(2);
         }
     }
 }

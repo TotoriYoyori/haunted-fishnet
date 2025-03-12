@@ -21,12 +21,13 @@ public class ClosedDoorTutorialScript : MonoBehaviour
 
     void Deinitialise()
     {
-        if (tutorial_part_1 && TutorialProgress.part == 2)  { open = true; }
-        else if (tutorial_part_2 && TutorialProgress.part == 3) { open = true; }
-        else if (tutorial_part_3 && TutorialProgress.part == 4) { open = true; }
-        else if (tutorial_part_4 && TutorialProgress.part == 5) { open = true; }
-        else if (tutorial_part_5 && TutorialProgress.part == 6) { open = true; }
-        else if (tutorial_part_6 && TutorialProgress.part == 7) { open = true; }
+        if (tutorial_part_1 && TutorialProgress.part == 1)  { open = true; }
+        else if (tutorial_part_2 && TutorialProgress.part == 2) { open = true; }
+        else if (tutorial_part_3 && TutorialProgress.part == 3) { open = true; }
+        else if (tutorial_part_4 && TutorialProgress.part == 4) { open = true; }
+        else if (tutorial_part_5 && TutorialProgress.part == 5) { open = true; }
+        else if (tutorial_part_6 && TutorialProgress.part == 6) { open = true; }
+        else if (tutorial_part_7 && TutorialProgress.part == 7) { open = true; }
 
 
         if (open)

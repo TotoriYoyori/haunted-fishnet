@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6028811831234262764}
   - component: {fileID: 6728117456546134161}
   - component: {fileID: 2606483489641444621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GhostDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1753927435
+  m_SortingLayer: 4
+  m_SortingOrder: 4
   m_Sprite: {fileID: 6656582412914418087, guid: f69c4fa4cb7af9c4599e1fe57e1100a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,7 +119,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

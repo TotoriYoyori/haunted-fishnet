@@ -18,6 +18,9 @@ public class ghostTutorial : MonoBehaviour
     public bool throughWall;
     public bool finishSteps;
 
+    //teleportation back for the ghost
+    public Transform ghostTeleportBack;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,49 +35,81 @@ public class ghostTutorial : MonoBehaviour
 
         throughWall = false;
         finishSteps = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("tutorial part: " + TutorialProgress.part);
+
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
         //tracking the progress of the part of the tutorial
+        if (!goUp || !goDown || !goLeft || !goRight)
+        {
+            if (x > 0)
+            {
+                goRight = true;
+            }
+
+            if (y > 0)
+            {
+                goUp = true;
+            }
+
+            if (y < 0)
+            {
+                goDown = true;
+            }
+
+            if (x < 0)
+            {
+                goLeft = true;
+            }
+        }
+
 
         //part 1
-        if (goUp && goDown && goLeft && goRight)
+        if (goUp && goDown && goLeft && goRight && TutorialProgress.part == 1)
         {
             TutorialProgress.part = 2;
         }
 
         //part 2
 
-        if (throughWall)
+        if (throughWall && TutorialProgress.part == 2)
         {
             TutorialProgress.part = 3;
         }
 
 
         //part 3
-        if (robberKills == 1)
+        if (robberKills == 1 && TutorialProgress.part == 3)
         {
             TutorialProgress.part = 4;
+            this.gameObject.transform.position = ghostTeleportBack.GetChild(0).position;
         }
 
         //part 4
-        if (finishSteps)
+        if (finishSteps && TutorialProgress.part == 4)
         {
             TutorialProgress.part = 5;
         }
 
         //part 5
-        if (robberKills == 2)
+        if (robberKills == 2 && TutorialProgress.part == 5)
         {
             TutorialProgress.part = 6;
+            this.gameObject.transform.position = ghostTeleportBack.GetChild(0).position;
         }
 
         //part 6
-        if (robberKills == 3)
+        if (robberKills == 3 && TutorialProgress.part == 6)
         {
             TutorialProgress.part = 7;
+            this.gameObject.transform.position = ghostTeleportBack.GetChild(0).position;
         }
 
     }
