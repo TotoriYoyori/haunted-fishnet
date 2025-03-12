@@ -38780,6 +38780,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3303337661677990742, guid: 3877634595e9ec144a787089e9ca28a4, type: 3}
+      propertyPath: m_text
+      value: Q
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993333498745888302, guid: 3877634595e9ec144a787089e9ca28a4, type: 3}
+      propertyPath: m_text
+      value: E
+      objectReference: {fileID: 0}
     - target: {fileID: 7074859295382440176, guid: 3877634595e9ec144a787089e9ca28a4, type: 3}
       propertyPath: m_Name
       value: NewVentUI

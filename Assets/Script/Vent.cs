@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+// TO FIX: make it go to the direction it is pointing at
+
 public class Vent : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,17 +16,16 @@ public class Vent : NetworkBehaviour
     [SerializeField] Color blocked_color;
     [SerializeField] float vent_moving_speed;
     Color open_color;
-    SpriteRenderer sprite;
+    [SerializeField] SpriteRenderer sprite;
     [HideInInspector] public bool blocked;
     GameObject[] key_UI = new GameObject[2];
     VentArrows ventUI;
     bool open = false;
+    [SerializeField] Sprite[] vent_sprites;
+    [SerializeField] GameObject open_aura;
 
     void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        open_color = sprite.color;
-
         // getting all the vent ui buttons and disabling them
         GameObject[] vent_button_gameObjects = GameObject.FindGameObjectsWithTag("VentButton");
         for (int i = 0; i < vent_button_gameObjects.Length; i++)
@@ -65,9 +66,7 @@ public class Vent : NetworkBehaviour
         ventUI.right_arrow.SetActive(right_arrow_active);
 
         ventUI.transform.position = transform.position;
-
-        // changing visuals
-        sprite.color = (open) ? blocked_color : open_color;
+        open_aura.SetActive(is_open);
 
         Debug.Log("VENT Opened:" + open);
 
@@ -212,6 +211,6 @@ public class Vent : NetworkBehaviour
     {
         blocked = true;
         //this.gameObject.tag = "Untagged";
-        sprite.color = blocked_color;
+        sprite.sprite = vent_sprites[1];
     }
 }
