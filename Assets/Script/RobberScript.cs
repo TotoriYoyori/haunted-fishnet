@@ -74,6 +74,7 @@ public class RobberScript : NetworkBehaviour
     [ObserversRpc]
     public void EnableObseverRpc(bool is_enabled)
     {
+        item_pick_up_aura.SetActive(is_enabled);
         GetComponent<SpriteRenderer>().enabled = is_enabled;
         GetComponent<CircleCollider2D>().enabled = is_enabled;
         if (IsOwner) GetComponent<InputController>().enabled = is_enabled;
