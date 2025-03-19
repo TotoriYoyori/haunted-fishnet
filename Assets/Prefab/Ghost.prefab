@@ -223,9 +223,10 @@ GameObject:
   - component: {fileID: -4896882876058351143}
   - component: {fileID: 4216343954045900820}
   - component: {fileID: 674950313668253436}
+  - component: {fileID: 7521582741859784345}
   m_Layer: 6
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,6 +531,27 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &7521582741859784345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238304887432459600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe42da8eb4d54584db1e058a645aa6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robberKills: 0
+  goUp: 0
+  goDown: 0
+  goLeft: 0
+  goRight: 0
+  stepVision: 0
+  throughWall: 0
+  finishSteps: 0
+  ghostTeleportBack: {fileID: 8080231199574203373, guid: 29be1592a97da074bbbb5001cf8a55c5, type: 3}
 --- !u!1 &5223075842775214517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1154,7 @@ GameObject:
   - component: {fileID: 7563545704372446208}
   m_Layer: 6
   m_Name: HidingGhost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
