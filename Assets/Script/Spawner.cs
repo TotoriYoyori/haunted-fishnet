@@ -4,6 +4,8 @@ using UnityEngine;
 using FishNet.Managing;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System.Collections;
+using TMPro;
 
 public class Spawner : NetworkBehaviour
 {
@@ -18,6 +20,10 @@ public class Spawner : NetworkBehaviour
     [SerializeField] GameObject ghost_taken_text;
     [SerializeField] GameObject robber_taken_text;
 
+    //Count down
+    [SerializeField] int countdown;
+    [SerializeField] float time_between_countdown;
+    [SerializeField] TextMeshProUGUI countdown_text;
 
     public override void OnStartClient()
     {
@@ -44,23 +50,23 @@ public class Spawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnGhost(NetworkConnection sender = null)
     {
-        if (Game.Instance.ghost.Value != null)
+        if (Game.Instance.is_ghost_connected)
         {
             DenyChoiceObserverRpc(false);
             return;
         }
-        SpawnPlayer(ghost_prefab, FindSpawnPoint("GhostSpawnpoint"), sender, false);
+        StartCoroutine(SpawnPlayer(ghost_prefab, FindSpawnPoint("GhostSpawnpoint"), sender, false));
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnRobber(NetworkConnection sender = null)
     {
-        if (Game.Instance.robber.Value != null)
+        if (Game.Instance.is_robber_connected)
         {
             DenyChoiceObserverRpc(true);
             return;
         }
-        SpawnPlayer(robber_prefab, FindSpawnPoint("RobberSpawnpoint"), sender, true);
+        StartCoroutine(SpawnPlayer(robber_prefab, FindSpawnPoint("RobberSpawnpoint"), sender, true));
     }
 
     [ObserversRpc]
@@ -85,26 +91,56 @@ public class Spawner : NetworkBehaviour
         return (spawnPoint != null) ? spawnPoint.transform.position : Vector3.zero;
     }
 
-    void SpawnPlayer(GameObject player_to_spawn, Vector3 position, NetworkConnection owner, bool is_robber)
+    IEnumerator SpawnPlayer(GameObject player_to_spawn, Vector3 position, NetworkConnection owner, bool is_robber)
     {
+        UpdatePlayerConnectionObserversRpc(is_robber); // telling the server that a client is connected as robber/ghost
+
+        // Waiting for the other client to connect
+        while (Game.Instance.is_robber_connected == false || Game.Instance.is_ghost_connected == false)
+        {
+            Debug.Log("Waiting for another player");
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Count down
+        for (int a = countdown; a >= 0; a--)
+        {
+            if (a > 0) countdown_text.text = a.ToString();
+            else countdown_text.text = "Start!";
+
+            yield return new WaitForSeconds(time_between_countdown);
+        }
+
+        // Spawning the character prefab, technically starting the game
         new_player = Instantiate(player_to_spawn, position, Quaternion.identity);
         ServerManager.Spawn(new_player, owner);
 
+        // Assigning player and robber/ghost variables in the game script
         UpdatePlayerObserversRpc(is_robber);
 
-        // Setting up player variable on the client
-        // Game.Instance.player = new_player.GetComponent<Player>();
+        Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // verify connection
 
-        Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // line by GPT to verify connection
-
-        SelfDestruct();
+        SelfDestruct(); // Deactivating the character select screen
     }
+
+
     void SelfDestruct()
     {
         NetworkObject networkObject = GetComponent<NetworkObject>();
         networkObject.Despawn();
     }
-    // theres a polish cafe 
+
+    [ObserversRpc]
+    void UpdatePlayerConnectionObserversRpc(bool is_robber)
+    {
+        if (is_robber)
+            Game.Instance.is_robber_connected = true;
+        else
+            Game.Instance.is_ghost_connected = true;
+
+        //if (IsOwner) Game.Instance.player = new_player.GetComponent<Player>();
+    }
+
     [ObserversRpc]
     void UpdatePlayerObserversRpc(bool is_robber)
     {
