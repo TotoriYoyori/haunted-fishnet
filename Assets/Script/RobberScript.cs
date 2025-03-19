@@ -74,6 +74,7 @@ public class RobberScript : NetworkBehaviour
     [ObserversRpc]
     public void EnableObseverRpc(bool is_enabled)
     {
+        item_pick_up_aura.SetActive(is_enabled);
         GetComponent<SpriteRenderer>().enabled = is_enabled;
         GetComponent<CircleCollider2D>().enabled = is_enabled;
         if (IsOwner) GetComponent<InputController>().enabled = is_enabled;
@@ -84,7 +85,7 @@ public class RobberScript : NetworkBehaviour
         // Energy bar UI code (if its too low it wont work)
         if (!robberUI.UseEnergy(is_on)) is_on = false;
 
-        player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
+        player.main_camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
         player.is_special_vision_on = is_on;
 
         // Disabling robbers natural light, so it doesnt look weird with night vision

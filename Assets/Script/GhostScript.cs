@@ -1,10 +1,7 @@
 using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public class GhostScript : NetworkBehaviour
 {
@@ -32,6 +29,7 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] float dash_length;
     [SerializeField] float dash_delay_time;
     Vector3 charge_starting_position;
+    Vector3 last_valid_position; // New variable to store the last valid position
 
     // Catching Variables
     [SerializeField] float laughing_duration;
@@ -47,7 +45,6 @@ public class GhostScript : NetworkBehaviour
 
         // Temporarily turning off music for the ghost so that theres only one music that plays
         if (IsOwner) AudioManager.instance.musicSource.gameObject.SetActive(false);
-        
 
         FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
         FindTeleportationPoint(GameObject.Find("teleportation_point_2"));
@@ -72,20 +69,33 @@ public class GhostScript : NetworkBehaviour
         teleportation_locations.Add(teleport_point.transform.position);
         Debug.Log("Teleportation pont added at " + teleport_point.transform.position);
     }
+
     private void FixedUpdate()
     {
         if (IsOwner)
         {
             Vector3 screen_mouse_position = Input.mousePosition;
 
-            mouse_position = player.camera.ScreenToWorldPoint(screen_mouse_position);
+            mouse_position = player.main_camera.ScreenToWorldPoint(screen_mouse_position);
 
             if (is_aiming) AimForCharge(mouse_position);
             if (charge_target_position != Vector2.zero) Charging();
+
+            // Check for collisions with map boundaries
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag("MapBoundary"))
+                {
+                    Debug.Log("Collided with MapBoundary");
+                    transform.position = last_valid_position; // Reset position to the last valid position
+                    EndCharge();
+                    break;
+                }
+            }
         }
-
-
     }
+
     void AimForCharge(Vector2 target_position)
     {
         Vector2 direction = new Vector3(target_position.x, target_position.y, 0) - transform.position;
@@ -98,11 +108,12 @@ public class GhostScript : NetworkBehaviour
     {
         charge_time += Time.deltaTime;
         float progress = ((charge_time / dash_duration) > 1f) ? 1 : charge_time / dash_duration;
-        //Debug.Log(progress);
 
         float coolT = Mathf.Pow(progress, 2);
 
-        player.transform.position = Vector3.Lerp(charge_starting_position, charge_target_position, coolT);
+        Vector3 next_position = Vector3.Lerp(charge_starting_position, charge_target_position, coolT);
+
+        player.transform.position = next_position;
 
         if (progress == 1) EndCharge();
     }
@@ -129,13 +140,14 @@ public class GhostScript : NetworkBehaviour
 
         charge_target_position = transform.position + aiming_arrow.transform.up * dash_length;
         charge_starting_position = transform.position;
+        last_valid_position = charge_starting_position; // Store the starting position
         charge_time = 0f;
 
         // Cooldown
         StartCoroutine(ghostUI.Cooldown(dash_cooldown, true));
 
         Debug.Log("Charge Started");
-    } 
+    }
 
     void EndCharge()
     {
@@ -143,9 +155,9 @@ public class GhostScript : NetworkBehaviour
         charge_target_position = Vector3.zero;
         SyncHideServerRpc(true);
 
-        //Hide(true);
         Debug.Log("Charge Ended");
     }
+
     public void ChargeAttack(bool is_on)
     {
         if (ghostUI.dash_fill.fillAmount < 1 || is_dashing) return;
@@ -166,7 +178,7 @@ public class GhostScript : NetworkBehaviour
         // Cooldown
         if (!is_on) StartCoroutine(ghostUI.Cooldown(stepvision_cooldown, false));
 
-        player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
+        player.main_camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
 
         player.speed = (is_on) ? stepvision_speed : default_speed;
     }
@@ -182,7 +194,7 @@ public class GhostScript : NetworkBehaviour
     [ObserversRpc]
     public void SyncHideObserversRpc(bool is_hiding)
     {
-        if (IsOwner) player.frozen = !is_hiding; // To fix, make this not unfreeze the ghost when it dashes and catches the robber and when robber gets
+        if (IsOwner) player.frozen = !is_hiding;
         ghost_hiding.SetActive(is_hiding);
         ghost_attacking.SetActive(!is_hiding);
         is_dashing = !is_hiding;
@@ -203,6 +215,7 @@ public class GhostScript : NetworkBehaviour
         if (is_laughing) return;
         StartCoroutine(Catch());
     }
+
     Vector2 TeleportAway()
     {
         Debug.Log("TeleportsAway");
@@ -218,6 +231,7 @@ public class GhostScript : NetworkBehaviour
 
         return teleportation_locations[chosen_point];
     }
+
     IEnumerator Catch()
     {
         Debug.Log("CATCHING: I caught the robber (Observer)");
@@ -231,7 +245,7 @@ public class GhostScript : NetworkBehaviour
         float current_laughing_duration = laughing_duration;
         float current_alpha = hiding_color.a;
 
-        // Bliknking collected souls
+        // Blinking collected souls
         if (IsOwner) StartCoroutine(player.BlinkingLives());
 
         while (current_laughing_duration > 0)
@@ -248,6 +262,6 @@ public class GhostScript : NetworkBehaviour
         ghost_hiding.layer = LayerMask.NameToLayer("Ghost");
         is_laughing = false;
 
-        transform.position = TeleportAway();        
+        transform.position = TeleportAway();
     }
 }
