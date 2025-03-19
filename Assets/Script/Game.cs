@@ -21,10 +21,15 @@ public class Game : NetworkBehaviour
             return;
         }
 
+
         Instance = this;
 
         // activating loading screen
-        loading_screen.SetActive(true);
+        if (loading_screen != null) loading_screen.SetActive(true);
+
+        //connection fails
+        network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+    
     }
     //public static GameObject robber;
     public readonly SyncVar<GameObject> robber = new SyncVar<GameObject>();
@@ -42,6 +47,6 @@ public class Game : NetworkBehaviour
 
     void Start()
     {
-        network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        //network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
 }
