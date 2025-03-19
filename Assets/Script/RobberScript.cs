@@ -1,10 +1,6 @@
 using FishNet.Object;
-using FishNet.Object.Synchronizing;
-using UnityEngine;
-using UnityEngine.InputSystem.Utilities;
 using System.Collections;
-using UnityEngine.Rendering;
-using System.Runtime.CompilerServices;
+using UnityEngine;
 
 public class RobberScript : NetworkBehaviour
 {
@@ -177,7 +173,7 @@ public class RobberScript : NetworkBehaviour
     void SyncCatchRobberObserverRpc()
     {
         CaughthRobber();
-        
+
     }
     void CaughthRobber()
     {
@@ -188,7 +184,7 @@ public class RobberScript : NetworkBehaviour
         if (IsOwner) StartCoroutine(GetSpooked());
     }
 
-    IEnumerator GetSpooked() 
+    IEnumerator GetSpooked()
     {
         is_caught = true;
         float alpha = 1f;
