@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+// TO FIX: make it go to the direction it is pointing at
+
 public class Vent : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,20 +16,27 @@ public class Vent : NetworkBehaviour
     [SerializeField] Color blocked_color;
     [SerializeField] float vent_moving_speed;
     Color open_color;
-    SpriteRenderer sprite;
+    [SerializeField] SpriteRenderer sprite;
     [HideInInspector] public bool blocked;
-    
+    GameObject[] key_UI = new GameObject[2];
+    VentArrows ventUI;
+    bool open = false;
+    [SerializeField] Sprite[] vent_sprites;
+    [SerializeField] GameObject open_aura;
+
     void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
-        open_color = sprite.color;
-
         // getting all the vent ui buttons and disabling them
         GameObject[] vent_button_gameObjects = GameObject.FindGameObjectsWithTag("VentButton");
         for (int i = 0; i < vent_button_gameObjects.Length; i++)
         {
             vent_buttons[i] = vent_button_gameObjects[i].GetComponent<Button>();
         }
+
+        key_UI[0] = GameObject.Find("QKeyText");
+        key_UI[1] = GameObject.Find("EKeyText");
+
+        ventUI = GameObject.Find("NewVentUI").GetComponent<VentArrows>();
     }
 
     private void Start()
@@ -44,12 +53,24 @@ public class Vent : NetworkBehaviour
 
     public void OpenVent(bool is_open)
     {
-        if (blocked) return;
+        //if (blocked) return;
+        if (blocked) is_open = false;
         if (CheckToBlock()) BlockVentServerRpc();
 
-        // changing visuals
-        sprite.color = (is_open) ? open_color : closed_color;
+        open = is_open;
 
+        // Enabling/disabling arrows
+        bool left_arrow_active = (is_open && !connected_vents[0].blocked) ? true : false;
+        bool right_arrow_active = (is_open && !connected_vents[1].blocked) ? true : false;
+        ventUI.left_arrow.SetActive(left_arrow_active);
+        ventUI.right_arrow.SetActive(right_arrow_active);
+
+        ventUI.transform.position = transform.position;
+        open_aura.SetActive(is_open);
+
+        Debug.Log("VENT Opened:" + open);
+
+        /*            OLD CODE FOR DYNAMIC BUTTON ALLOCATION
         for (int a = 0; a < connected_vents.Length; a++)
         {
             if (a >= vent_buttons.Length) continue;
@@ -72,12 +93,14 @@ public class Vent : NetworkBehaviour
             vent_buttons[a].transform.rotation = Quaternion.FromToRotation(Vector3.up, vent_direction);
 
             vent_buttons[a].transform.position += vent_buttons[a].transform.up * 1.5f;
+            key_UI[a].transform.position = vent_buttons[a].transform.position;
+
 
             // Adding functionality to buttons
             vent_buttons[a].onClick.RemoveAllListeners();
             Vent target_vent = connected_vents[a];
             vent_buttons[a].onClick.AddListener(() => StartCoroutine(MoveToVent(target_vent))); 
-        }
+        }*/
     }
 
     bool CheckToBlock()
@@ -88,6 +111,18 @@ public class Vent : NetworkBehaviour
         }
 
         return true;
+    }
+
+    void Update()
+    {
+        VentsInput();
+    }
+
+    void VentsInput()
+    {
+        if (!open || blocked) return;
+        if (Input.GetButtonUp("VentLeft") && connected_vents[0] != null) StartCoroutine(MoveToVent(connected_vents[0]));
+        else if (Input.GetButtonUp("VentRight") && connected_vents[1] != null) StartCoroutine(MoveToVent(connected_vents[1]));
     }
     IEnumerator MoveToVent(Vent vent_to_move_to)
     {
@@ -152,13 +187,15 @@ public class Vent : NetworkBehaviour
         AudioManager.instance.PlaySFX("Vent");
 
         //Game.Instance.robber.Value.SetActive(true); // Reactivating the robber
-        Game.Instance.robber.Value.GetComponent<RobberScript>().EnableServerRpc(true);
-        Debug.Log("VENT: finished_moving");
+        
         // block the vent you just moved to
         vent_to_move_to.BlockVentServerRpc();
 
         // we need to block this vent if both vents it goes to were blocked
         if (CheckToBlock()) BlockVentServerRpc();
+
+        Game.Instance.robber.Value.GetComponent<RobberScript>().EnableServerRpc(true);
+        Debug.Log("VENT: finished_moving");
 
         // to do: the above can happen when you interact with another vent so make sure to account for that
     }
@@ -173,7 +210,7 @@ public class Vent : NetworkBehaviour
     public void BlockVentObserverRpc()
     {
         blocked = true;
-        this.gameObject.tag = "Untagged";
-        sprite.color = blocked_color;
+        //this.gameObject.tag = "Untagged";
+        sprite.sprite = vent_sprites[1];
     }
 }
