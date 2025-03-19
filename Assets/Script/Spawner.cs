@@ -24,6 +24,7 @@ public class Spawner : NetworkBehaviour
     [SerializeField] int countdown;
     [SerializeField] float time_between_countdown;
     [SerializeField] TextMeshProUGUI countdown_text;
+    
 
     public override void OnStartClient()
     {
@@ -103,10 +104,9 @@ public class Spawner : NetworkBehaviour
         }
 
         // Count down
-        for (int a = countdown; a >= 0; a--)
+        for (int a = countdown; a > 0; a--)
         {
-            if (a > 0) countdown_text.text = a.ToString();
-            else countdown_text.text = "Start!";
+            if (a > 0 && IsOwner) UpdateCountDownObserversRpc(a.ToString());
 
             yield return new WaitForSeconds(time_between_countdown);
         }
@@ -130,6 +130,30 @@ public class Spawner : NetworkBehaviour
         networkObject.Despawn();
     }
 
+    IEnumerator UpdateCountDown(string new_countdown)
+    {
+        countdown_text.text = new_countdown;
+
+        
+        float countdown_default_text_size = countdown_text.fontSize;
+        float current_text_size = countdown_default_text_size;
+
+        for (float a = 0; a <= time_between_countdown; a += time_between_countdown / 100)
+        {
+            //current_text_size *= 1.3f;
+            
+            countdown_text.fontSize = current_text_size + a * 20;
+            yield return new WaitForSeconds(time_between_countdown / 100);
+        }
+        countdown_text.fontSize = current_text_size;
+    }
+
+    [ObserversRpc]
+    void UpdateCountDownObserversRpc(string new_countdown)
+    {
+        StartCoroutine(UpdateCountDown(new_countdown));
+    }
+   
     [ObserversRpc]
     void UpdatePlayerConnectionObserversRpc(bool is_robber)
     {
