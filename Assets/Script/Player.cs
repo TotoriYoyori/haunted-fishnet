@@ -1,10 +1,8 @@
-using FishNet.Example.ColliderRollbacks;
 using FishNet.Object;
 using System.Collections;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Player : NetworkBehaviour
 {
@@ -55,7 +53,7 @@ public class Player : NetworkBehaviour
             Game.Instance.player = this;
 
             SetUpUI();
-        
+
             if (TryGetComponent(out RobberScript robber))
             {
                 robber.player = GetComponent<Player>();
@@ -66,7 +64,7 @@ public class Player : NetworkBehaviour
             }
             else if (TryGetComponent(out GhostScript ghost))
             {
-                ghost.player = GetComponent<Player>(); 
+                ghost.player = GetComponent<Player>();
                 ghost.default_speed = speed;
                 wide_dark_filter.SetActive(true);
                 main_camera.GetComponent<CameraBehavior>().robber_filter.GetComponent<Image>().color = ghost.stepvision_color;

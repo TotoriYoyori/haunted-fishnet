@@ -29,7 +29,12 @@ public class GhostScript : NetworkBehaviour
     [SerializeField] float dash_length;
     [SerializeField] float dash_delay_time;
     Vector3 charge_starting_position;
-    Vector3 last_valid_position; // New variable to store the last valid position
+    Vector3 last_valid_position;
+
+    // Boundary checking
+    [SerializeField] LayerMask boundaryLayer;
+    float boundaryCheckRadius = 0.1f;
+    float boundaryOffset = 0.05f;
 
     // Catching Variables
     [SerializeField] float laughing_duration;
@@ -43,7 +48,9 @@ public class GhostScript : NetworkBehaviour
         base.OnStartClient();
         Debug.Log("Ghost OnStartClient");
 
-        // Temporarily turning off music for the ghost so that theres only one music that plays
+        // Initializing the boundary layer
+        boundaryLayer = LayerMask.GetMask("MapBoundary");
+
         if (IsOwner) AudioManager.instance.musicSource.gameObject.SetActive(false);
 
         FindTeleportationPoint(GameObject.Find("teleportation_point_1"));
@@ -81,17 +88,10 @@ public class GhostScript : NetworkBehaviour
             if (is_aiming) AimForCharge(mouse_position);
             if (charge_target_position != Vector2.zero) Charging();
 
-            // Check for collisions with map boundaries
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
-            foreach (Collider2D collider in colliders)
+            // If not dashing, continuously update the last valid position to the current position
+            if (!is_dashing)
             {
-                if (collider.CompareTag("MapBoundary"))
-                {
-                    Debug.Log("Collided with MapBoundary");
-                    transform.position = last_valid_position; // Reset position to the last valid position
-                    EndCharge();
-                    break;
-                }
+                last_valid_position = transform.position;
             }
         }
     }
@@ -108,14 +108,83 @@ public class GhostScript : NetworkBehaviour
     {
         charge_time += Time.deltaTime;
         float progress = ((charge_time / dash_duration) > 1f) ? 1 : charge_time / dash_duration;
-
         float coolT = Mathf.Pow(progress, 2);
 
-        Vector3 next_position = Vector3.Lerp(charge_starting_position, charge_target_position, coolT);
+        // Calculating the next position 
+        Vector3 nextPosition = Vector3.Lerp(charge_starting_position, charge_target_position, coolT);
 
-        player.transform.position = next_position;
+        // Check if the next position would be inside a map boundary
+        if (IsPositionValid(nextPosition))
+        {
+            // If it's valid, move to that position
+            player.transform.position = nextPosition;
+        }
+        else
+        {
+            // If it's not valid, find the closest valid position
+            Vector3 direction = (nextPosition - charge_starting_position).normalized;
+            float distance = Vector3.Distance(charge_starting_position, nextPosition);
 
-        if (progress == 1) EndCharge();
+            // Searching for the closest valid position
+            float minDistance = 0;
+            float maxDistance = distance;
+            float currentDistance = maxDistance;
+            Vector3 validPosition = charge_starting_position;
+
+            for (int i = 0; i < 10; i++)
+            {
+                currentDistance = (minDistance + maxDistance) / 2;
+                Vector3 testPosition = charge_starting_position + direction * currentDistance;
+
+                if (IsPositionValid(testPosition))
+                {
+                    validPosition = testPosition;
+                    minDistance = currentDistance;
+                }
+                else
+                {
+                    maxDistance = currentDistance;
+                }
+            }
+
+            // Move to the valid position
+            player.transform.position = validPosition;
+
+            // End the dash since we hit map boundary
+            EndCharge();
+            return;
+        }
+
+        if (progress >= 1) EndCharge();
+    }
+
+    // Check if a position is valid (not inside a boundary)
+    bool IsPositionValid(Vector3 position)
+    {
+        // Check for map boundaries
+        Collider2D[] boundaryColliders = Physics2D.OverlapCircleAll(position, boundaryCheckRadius, boundaryLayer);
+        if (boundaryColliders.Length > 0)
+        {
+            return false;
+        }
+
+        // During dashing, we ignore pusher colliders
+        if (is_dashing)
+        {
+            return true;
+        }
+
+        // When not dashing, check for pusher colliders
+        Collider2D[] pusherColliders = Physics2D.OverlapCircleAll(position, boundaryCheckRadius);
+        foreach (Collider2D collider in pusherColliders)
+        {
+            if (collider.CompareTag("Pusher"))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     IEnumerator StartCharge()
@@ -131,17 +200,21 @@ public class GhostScript : NetworkBehaviour
         while (dash_delay_timer > 0)
         {
             dash_delay_timer -= Time.deltaTime;
-
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
         // Dash start soundeffect
         AudioManager.instance.PlaySFXGlobal("Dash");
 
-        charge_target_position = transform.position + aiming_arrow.transform.up * dash_length;
+        // Calculate initial dash target
+        Vector3 dashDirection = aiming_arrow.transform.up;
+        Vector3 initialTargetPosition = transform.position + dashDirection * dash_length;
+
+        charge_target_position = initialTargetPosition;
         charge_starting_position = transform.position;
-        last_valid_position = charge_starting_position; // Store the starting position
+        last_valid_position = charge_starting_position;
         charge_time = 0f;
+        is_dashing = true;
 
         // Cooldown
         StartCoroutine(ghostUI.Cooldown(dash_cooldown, true));
@@ -153,9 +226,70 @@ public class GhostScript : NetworkBehaviour
     {
         aiming_arrow.SetActive(false);
         charge_target_position = Vector3.zero;
-        SyncHideServerRpc(true);
+        is_dashing = false;
 
+        // Check if ghost is inside a pusher object when dash ends
+        CheckAndResolvePusherCollision();
+
+        SyncHideServerRpc(true);
         Debug.Log("Charge Ended");
+    }
+
+    void CheckAndResolvePusherCollision()
+    {
+        if (!IsOwner) return;
+
+        // Get all colliders at the current position
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Pusher"))
+            {
+                // Calculate the nearest edge point
+                Vector2 direction = GetNearestExitDirection(collider);
+
+                // Push the ghost out in that direction
+                float pushDistance = 0.5f;
+                transform.position += new Vector3(direction.x, direction.y, 0) * pushDistance;
+
+                // Stop the loop after the first pusher is found
+                break;
+            }
+        }
+    }
+
+    Vector2 GetNearestExitDirection(Collider2D pusherCollider)
+    {
+        Vector2 pusherCenter = pusherCollider.bounds.center;
+        Vector2 direction = (Vector2)transform.position - pusherCenter;
+
+        if (pusherCollider is CircleCollider2D)
+        {
+            return direction.normalized;
+        }
+
+        if (pusherCollider is BoxCollider2D)
+        {
+            BoxCollider2D boxCollider = pusherCollider as BoxCollider2D;
+            Vector2 extents = boxCollider.bounds.extents;
+
+            // Calculate the ratio
+            float xRatio = direction.x / extents.x;
+            float yRatio = direction.y / extents.y;
+
+            // Need to check which side is closer
+            if (Mathf.Abs(xRatio) > Mathf.Abs(yRatio))
+            {
+                return new Vector2(Mathf.Sign(direction.x), 0);
+            }
+            else
+            {
+                return new Vector2(0, Mathf.Sign(direction.y));
+            }
+        }
+
+        return direction.normalized;
     }
 
     public void ChargeAttack(bool is_on)
@@ -263,5 +397,29 @@ public class GhostScript : NetworkBehaviour
         is_laughing = false;
 
         transform.position = TeleportAway();
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Pusher") && ghost_hiding.activeSelf)
+        {
+            // Push the ghost away from this object
+            Vector2 direction = transform.position - collision.transform.position;
+            direction.Normalize();
+
+            transform.position += new Vector3(direction.x, direction.y, 0) * 0.3f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Pusher"))
+        {
+            // Push the ghost away from this object
+            Vector2 direction = transform.position - collision.transform.position;
+            direction.Normalize();
+
+            transform.position += new Vector3(direction.x, direction.y, 0) * 0.3f;
+        }
     }
 }

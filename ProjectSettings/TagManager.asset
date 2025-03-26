@@ -9,6 +9,8 @@ TagManager:
   - EscapeZone
   - Vent
   - VentButton
+  - MapBoundary
+  - Pusher
   - Robber
   layers:
   - Default
@@ -25,7 +27,7 @@ TagManager:
   - Nightvision
   - NormalVision
   - AttackingGhost
-  - 
+  - MapBoundary
   - 
   - 
   - 

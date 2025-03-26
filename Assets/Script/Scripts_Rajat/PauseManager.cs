@@ -5,6 +5,7 @@ public class PauseManager : MonoBehaviour
 
     private bool isPaused = false;
     public GameObject pausePanel;
+    public GameObject settingsPanel;
 
     void Start()
     {
@@ -31,5 +32,17 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = false;
         pausePanel.SetActive(false);
+    }
+
+    public void LoadSettingsPanel()
+    {
+        settingsPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void BackButton()
+    {
+        settingsPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 }
