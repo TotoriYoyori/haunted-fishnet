@@ -36,6 +36,11 @@ public class PauseManager : MonoBehaviour
 
     public void LoadSettingsPanel()
     {
+<<<<<<< HEAD
+        settingsPanel.SetActive(true);
+        pausePanel.SetActive(false);
+
+=======
         pausePanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
@@ -44,5 +49,6 @@ public class PauseManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
         pausePanel.SetActive(true);
+>>>>>>> main
     }
 }
