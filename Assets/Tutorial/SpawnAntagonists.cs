@@ -5,6 +5,7 @@ public class SpawnAntagonists : MonoBehaviour
     //objects to spawn
     public GameObject robberObject;
     public GameObject footsteps;
+    public GameObject footsteps2;
 
     //places to spawn robber
     public Transform firstInstance;
@@ -42,11 +43,13 @@ public class SpawnAntagonists : MonoBehaviour
 
             Instantiate(robberObject, thirdInstance.position, Quaternion.identity);
             footsteps.SetActive(false);
+            footsteps2.SetActive(true);
             thirdRobber = true;
         }
 
         if(TutorialProgress.part == 6)
         {
+            footsteps2.SetActive(false);
             //ghost wins
         }
     }
