@@ -1,10 +1,6 @@
 using FishNet.Object;
-using FishNet.Object.Synchronizing;
-using UnityEngine;
-using UnityEngine.InputSystem.Utilities;
 using System.Collections;
-using UnityEngine.Rendering;
-using System.Runtime.CompilerServices;
+using UnityEngine;
 
 public class RobberScript : NetworkBehaviour
 {
@@ -14,6 +10,7 @@ public class RobberScript : NetworkBehaviour
     public GameObject natural_light;
     [HideInInspector] public bool items_collected;
     public GameObject item_pick_up_aura;
+    RobberUI robberUI;
 
     // Shake variables
     [SerializeField] float radar_range;
@@ -27,6 +24,16 @@ public class RobberScript : NetworkBehaviour
     bool is_caught = false;
     [SerializeField] GameObject jumpscare;
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (IsOwner)
+        {
+            robberUI = GameObject.Find("RobberUI").GetComponent<RobberUI>();
+            if (robberUI == null) Debug.Log("Couldnt find ghost UI");
+            else robberUI.EnableUI();
+        }
+    }
     private void Start()
     {
         level_light = GameObject.Find("Candels");
@@ -63,6 +70,7 @@ public class RobberScript : NetworkBehaviour
     [ObserversRpc]
     public void EnableObseverRpc(bool is_enabled)
     {
+        item_pick_up_aura.SetActive(is_enabled);
         GetComponent<SpriteRenderer>().enabled = is_enabled;
         GetComponent<CircleCollider2D>().enabled = is_enabled;
         if (IsOwner) GetComponent<InputController>().enabled = is_enabled;
@@ -70,7 +78,10 @@ public class RobberScript : NetworkBehaviour
     }
     public void NightVision(bool is_on)
     {
-        player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
+        // Energy bar UI code (if its too low it wont work)
+        if (!robberUI.UseEnergy(is_on)) is_on = false;
+
+        player.main_camera.GetComponent<CameraBehavior>().SpecialVision(is_on, true);
         player.is_special_vision_on = is_on;
 
         // Disabling robbers natural light, so it doesnt look weird with night vision
@@ -162,7 +173,7 @@ public class RobberScript : NetworkBehaviour
     void SyncCatchRobberObserverRpc()
     {
         CaughthRobber();
-        
+
     }
     void CaughthRobber()
     {
@@ -173,7 +184,7 @@ public class RobberScript : NetworkBehaviour
         if (IsOwner) StartCoroutine(GetSpooked());
     }
 
-    IEnumerator GetSpooked() 
+    IEnumerator GetSpooked()
     {
         is_caught = true;
         float alpha = 1f;
