@@ -42,9 +42,20 @@ public class Game : NetworkBehaviour
     public GameObject loading_screen;
     public ItemLottery item_lottery;
 
+    public bool is_robber_connected = false;
+    public bool is_ghost_connected = false;
 
     void Start()
     {
         //network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            is_robber_connected = true;
+            is_ghost_connected = true;
+        }
     }
 }
