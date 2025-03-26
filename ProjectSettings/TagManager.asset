@@ -11,6 +11,7 @@ TagManager:
   - VentButton
   - MapBoundary
   - Pusher
+  - Robber
   layers:
   - Default
   - TransparentFX

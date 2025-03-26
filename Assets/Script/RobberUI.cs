@@ -17,7 +17,8 @@ public class RobberUI : MonoBehaviour
     [SerializeField] float burst_decrease;
     [SerializeField] float energy_decrease;
     [SerializeField] float energy_regeneration;
-    [SerializeField] float use_threshold;
+    //[SerializeField] float use_threshold;
+    bool recharging = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,8 +38,16 @@ public class RobberUI : MonoBehaviour
         EnergyManagement();
     }
 
+    void RechargeMode(bool is_recharge)
+    {
+        recharging = is_recharge;
+
+        energy_bar_sprite.color = (recharging) ? low_energy_color : full_energy_color;
+    }
+
     void EnergyManagement()
     {
+        if (current_energy >= 1f && recharging) RechargeMode(false);
         if (using_energy)
         {
             current_energy -= energy_decrease;
@@ -46,18 +55,23 @@ public class RobberUI : MonoBehaviour
             {
                 current_energy = 0;
                 Game.Instance.robber.Value.GetComponent<RobberScript>().NightVision(false); // turning night vision off if energy is at 0
+                RechargeMode(true);
             }
+            /*
             else if (current_energy < use_threshold && energy_bar_sprite.color == full_energy_color)
             {
                 energy_bar_sprite.color = low_energy_color;
                 Debug.Log("low energy level");
-            }
+            }*/
         }
         else
         {
             current_energy += energy_regeneration;
-            if (current_energy > 1f) current_energy = 1f;
-            else if (current_energy > use_threshold && energy_bar_sprite.color == low_energy_color) energy_bar_sprite.color = full_energy_color;
+            if (current_energy >= 1f)
+            {
+                current_energy = 1f;
+            }
+            //else if (current_energy > use_threshold && energy_bar_sprite.color == low_energy_color) energy_bar_sprite.color = full_energy_color;
         }
 
         energy_bar_sprite.fillAmount = current_energy;
@@ -65,7 +79,7 @@ public class RobberUI : MonoBehaviour
 
     public bool UseEnergy(bool is_using)
     {
-        if (current_energy < use_threshold)
+        if (recharging)
         {
             using_energy = false;
             return false;

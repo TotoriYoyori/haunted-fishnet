@@ -1,3 +1,4 @@
+using FishNet;
 using FishNet.Connection;
 using FishNet.Managing;
 using FishNet.Object;
@@ -13,6 +14,7 @@ public class PlayerInitializer : MonoBehaviour
         if (Game.Instance.network_manager != null)
         {
             Game.Instance.network_manager.SceneManager.OnClientLoadedStartScenes += OnClientLoadedStartScenes;
+            if (GameData.is_game_over == true) RespawnExistingPlayers();
         }
         else Debug.Log("Network manager not assigned");
     }
@@ -36,6 +38,21 @@ public class PlayerInitializer : MonoBehaviour
         //OnSpawned?.Invoke(network_obj);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) RespawnExistingPlayers();
+    }
+
+    private void RespawnExistingPlayers()
+    {
+        foreach (NetworkConnection conn in InstanceFinder.ServerManager.Clients.Values)
+        {
+            if (conn.IsActive)
+            {
+                SpawnCharacterSelect(conn);
+            }
+        }
+    }
 
     private void OnDestroy()
     {

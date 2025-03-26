@@ -82,7 +82,8 @@ public class GhostScript : NetworkBehaviour
         if (IsOwner)
         {
             Vector3 screen_mouse_position = Input.mousePosition;
-            mouse_position = player.camera.ScreenToWorldPoint(screen_mouse_position);
+
+            mouse_position = player.main_camera.ScreenToWorldPoint(screen_mouse_position);
 
             if (is_aiming) AimForCharge(mouse_position);
             if (charge_target_position != Vector2.zero) Charging();
@@ -311,7 +312,7 @@ public class GhostScript : NetworkBehaviour
         // Cooldown
         if (!is_on) StartCoroutine(ghostUI.Cooldown(stepvision_cooldown, false));
 
-        player.camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
+        player.main_camera.GetComponent<CameraBehavior>().SpecialVision(is_on, false);
 
         player.speed = (is_on) ? stepvision_speed : default_speed;
     }
