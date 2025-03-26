@@ -4,6 +4,8 @@ using UnityEngine;
 using FishNet.Managing;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System.Collections;
+using TMPro;
 
 public class Spawner : NetworkBehaviour
 {
@@ -15,9 +17,15 @@ public class Spawner : NetworkBehaviour
     // character select
     [SerializeField] Button ghost_button;
     [SerializeField] Button robber_button;
-    [SerializeField] GameObject ghost_taken_text;
-    [SerializeField] GameObject robber_taken_text;
+    [SerializeField] TextMeshProUGUI ghost_taken_text;
+    [SerializeField] TextMeshProUGUI robber_taken_text;
 
+
+    //Count down
+    [SerializeField] int countdown;
+    [SerializeField] float time_between_countdown;
+    [SerializeField] TextMeshProUGUI countdown_text;
+    
 
     public override void OnStartClient()
     {
@@ -44,23 +52,23 @@ public class Spawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnGhost(NetworkConnection sender = null)
     {
-        if (Game.Instance.ghost.Value != null)
+        if (Game.Instance.is_ghost_connected)
         {
             DenyChoiceObserverRpc(false);
             return;
         }
-        SpawnPlayer(ghost_prefab, FindSpawnPoint("GhostSpawnpoint"), sender, false);
+        StartCoroutine(SpawnPlayer(ghost_prefab, FindSpawnPoint("GhostSpawnpoint"), sender, false));
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnRobber(NetworkConnection sender = null)
     {
-        if (Game.Instance.robber.Value != null)
+        if (Game.Instance.is_robber_connected)
         {
             DenyChoiceObserverRpc(true);
             return;
         }
-        SpawnPlayer(robber_prefab, FindSpawnPoint("RobberSpawnpoint"), sender, true);
+        StartCoroutine(SpawnPlayer(robber_prefab, FindSpawnPoint("RobberSpawnpoint"), sender, true));
     }
 
     [ObserversRpc]
@@ -71,12 +79,12 @@ public class Spawner : NetworkBehaviour
         if (is_robber)
         {
             robber_button.gameObject.SetActive(false);
-            robber_taken_text.SetActive(true);
+            //robber_taken_text.SetActive(true);
         }
         else
         {
             ghost_button.gameObject.SetActive(false);
-            ghost_taken_text.SetActive(true);
+            //ghost_taken_text.SetActive(true);
         }
     }
     private Vector3 FindSpawnPoint(string spawnpointName)
@@ -85,31 +93,84 @@ public class Spawner : NetworkBehaviour
         return (spawnPoint != null) ? spawnPoint.transform.position : Vector3.zero;
     }
 
-    void SpawnPlayer(GameObject player_to_spawn, Vector3 position, NetworkConnection owner, bool is_robber)
+    IEnumerator SpawnPlayer(GameObject player_to_spawn, Vector3 position, NetworkConnection owner, bool is_robber)
     {
+        UpdatePlayerConnectionObserversRpc(is_robber); // telling the server that a client is connected as robber/ghost
+
+        // Waiting for the other client to connect
+        while (Game.Instance.is_robber_connected == false || Game.Instance.is_ghost_connected == false)
+        {
+            Debug.Log("Waiting for another player");
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // Count down
+        for (int a = countdown; a > 0; a--)
+        {
+            if (a > 0 && IsOwner) UpdateCountDownObserversRpc(a.ToString());
+
+            yield return new WaitForSeconds(time_between_countdown);
+        }
+
+        // Spawning the character prefab, technically starting the game
         new_player = Instantiate(player_to_spawn, position, Quaternion.identity);
         ServerManager.Spawn(new_player, owner);
 
+        // Assigning player and robber/ghost variables in the game script
         UpdatePlayerObserversRpc(is_robber);
 
-        // Setting up player variable on the client
-        // Game.Instance.player = new_player.GetComponent<Player>();
+        Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // verify connection
 
-        Debug.Log($"Spawned {(is_robber ? "Robber" : "Ghost")} for connection: {owner.ClientId}"); // line by GPT to verify connection
-
-        SelfDestruct();
+        SelfDestruct(); // Deactivating the character select screen
     }
+
+
     void SelfDestruct()
     {
         NetworkObject networkObject = GetComponent<NetworkObject>();
         networkObject.Despawn();
     }
-    // theres a polish cafe 
+
+    IEnumerator UpdateCountDown(string new_countdown)
+    {
+        countdown_text.text = new_countdown;
+
+        
+        float countdown_default_text_size = countdown_text.fontSize;
+        float current_text_size = countdown_default_text_size;
+
+        for (float a = 0; a <= time_between_countdown; a += time_between_countdown / 100)
+        {
+            //current_text_size *= 1.3f;
+            
+            countdown_text.fontSize = current_text_size + a * 20;
+            yield return new WaitForSeconds(time_between_countdown / 100);
+        }
+        countdown_text.fontSize = current_text_size;
+    }
+
+    [ObserversRpc]
+    void UpdateCountDownObserversRpc(string new_countdown)
+    {
+        StartCoroutine(UpdateCountDown(new_countdown));
+    }
+   
+    [ObserversRpc]
+    void UpdatePlayerConnectionObserversRpc(bool is_robber)
+    {
+        if (is_robber)
+            Game.Instance.is_robber_connected = true;
+        else
+            Game.Instance.is_ghost_connected = true;
+
+        //if (IsOwner) Game.Instance.player = new_player.GetComponent<Player>();
+    }
+
     [ObserversRpc]
     void UpdatePlayerObserversRpc(bool is_robber)
     {
         if (is_robber)
-            Game.Instance.robber.Value = new_player;
+            Game.Instance.robber.Value = new_player; 
         else
             Game.Instance.ghost.Value = new_player;
 

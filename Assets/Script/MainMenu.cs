@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+//using FishNet.Managing.Scened;
+using FishNet;
+using Unity.Mathematics;
 
 public class MainMenu : MonoBehaviour
 {
@@ -35,6 +38,21 @@ public class MainMenu : MonoBehaviour
         credits_window.SetActive(false);
     }
 
+    public void RealTutorial()
+    {
+        // closing credits in case they are open
+        credits_window.SetActive(false);
+
+        //creating a dummy server for the functionality
+        ServerCreate();
+        network.ClientManager.StartConnection();
+
+        //reset the tutorial stage in static script
+        TutorialProgress.part = 1;
+
+        //load the choice scene for the tutorial level
+        SceneManager.LoadScene("Choose_Tutorial", LoadSceneMode.Single);
+    }
     public void OpenCredits()
     {
         bool are_credits_open = (credits_window.activeSelf);
@@ -66,6 +84,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Client Button works");
         network.ClientManager.StartConnection();
 
+        // SceneLoadData sld = new SceneLoadData("Lvl_Tilemap");
+        // InstanceFinder.SceneManager.LoadGlobalScenes(sld);
         SceneManager.LoadScene("Lvl_Tilemap", LoadSceneMode.Single);
     }
 
@@ -79,7 +99,7 @@ public class MainMenu : MonoBehaviour
         {
             tugboat.SetClientAddress(input_field.text);
         }
-       
+
         Debug.Log(tugboat.GetClientAddress());
     }
 

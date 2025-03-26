@@ -223,9 +223,10 @@ GameObject:
   - component: {fileID: -4896882876058351143}
   - component: {fileID: 4216343954045900820}
   - component: {fileID: 674950313668253436}
+  - component: {fileID: 7521582741859784345}
   m_Layer: 6
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -485,7 +486,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &674950313668253436
 MonoBehaviour:
@@ -530,6 +531,27 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &7521582741859784345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238304887432459600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe42da8eb4d54584db1e058a645aa6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robberKills: 0
+  goUp: 0
+  goDown: 0
+  goLeft: 0
+  goRight: 0
+  stepVision: 0
+  throughWall: 0
+  finishSteps: 0
+  ghostTeleportBack: {fileID: 8080231199574203373, guid: 29be1592a97da074bbbb5001cf8a55c5, type: 3}
 --- !u!1 &5223075842775214517
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +911,7 @@ GameObject:
   - component: {fileID: 3689534578954984618}
   - component: {fileID: 8120849949804741715}
   - component: {fileID: 8728926136322762512}
+  - component: {fileID: 1087541025197267410}
   m_Layer: 13
   m_Name: AttackingGhost
   m_TagString: Ghost
@@ -1003,6 +1026,33 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.008152604, y: -0.36103952}
   m_Radius: 0.7080895
+--- !u!50 &1087541025197267410
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632733983475322842}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &6961304883764799202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1154,7 @@ GameObject:
   - component: {fileID: 7563545704372446208}
   m_Layer: 6
   m_Name: HidingGhost
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
