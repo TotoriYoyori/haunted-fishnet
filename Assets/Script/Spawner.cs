@@ -19,25 +19,27 @@ public class Spawner : NetworkBehaviour
     [SerializeField] Button robber_button;
     [SerializeField] TextMeshProUGUI ghost_taken_text;
     [SerializeField] TextMeshProUGUI robber_taken_text;
+    bool choice_made = false;
 
 
     //Count down
     [SerializeField] int countdown;
     [SerializeField] float time_between_countdown;
     [SerializeField] TextMeshProUGUI countdown_text;
-    
+
 
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         // Only allow the owner to see and interact with the character selection screen
-        
+
         if (!base.IsOwner)
         {
             ghost_button.gameObject.SetActive(false);
             robber_button.gameObject.SetActive(false);
             //SelfDestruct();
+            //this.gameObject.SetActive(false);
             return;
         }
 
@@ -52,40 +54,35 @@ public class Spawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnGhost(NetworkConnection sender = null)
     {
-        if (Game.Instance.is_ghost_connected)
-        {
-            DenyChoiceObserverRpc(false);
-            return;
-        }
+        if (Game.Instance.is_ghost_connected || choice_made) return;
+
+        SetChoiceObserverRpc(false);
+
         StartCoroutine(SpawnPlayer(ghost_prefab, FindSpawnPoint("GhostSpawnpoint"), sender, false));
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestSpawnRobber(NetworkConnection sender = null)
     {
-        if (Game.Instance.is_robber_connected)
-        {
-            DenyChoiceObserverRpc(true);
-            return;
-        }
+        if (Game.Instance.is_robber_connected || choice_made) return;
+
+        SetChoiceObserverRpc(true);
+       
         StartCoroutine(SpawnPlayer(robber_prefab, FindSpawnPoint("RobberSpawnpoint"), sender, true));
     }
 
     [ObserversRpc]
-    void DenyChoiceObserverRpc(bool is_robber)
+    void SetChoiceObserverRpc(bool is_robber)
     {
-        if (!IsOwner) return;
+        TextMeshProUGUI text = (is_robber) ? robber_taken_text : ghost_taken_text;
+        text.gameObject.SetActive(true);
 
-        if (is_robber)
+        if (IsOwner)
         {
-            robber_button.gameObject.SetActive(false);
-            //robber_taken_text.SetActive(true);
+            text.text = "You";
+            choice_made = true;
         }
-        else
-        {
-            ghost_button.gameObject.SetActive(false);
-            //ghost_taken_text.SetActive(true);
-        }
+        else text.text = "Opponent";
     }
     private Vector3 FindSpawnPoint(string spawnpointName)
     {

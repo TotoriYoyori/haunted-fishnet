@@ -396,7 +396,7 @@ MonoBehaviour:
   won: 0
   is_special_vision_on: 0
   speed: 0.06
-  camera: {fileID: 0}
+  main_camera: {fileID: 0}
   narrow_dark_filter: {fileID: 0}
   wide_dark_filter: {fileID: 5223075842775214517}
   sprite: {fileID: 5257183380063970371}
