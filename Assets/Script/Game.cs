@@ -49,4 +49,13 @@ public class Game : NetworkBehaviour
     {
         //network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            is_robber_connected = true;
+            is_ghost_connected = true;
+        }
+    }
 }

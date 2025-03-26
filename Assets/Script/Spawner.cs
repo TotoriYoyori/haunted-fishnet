@@ -17,8 +17,9 @@ public class Spawner : NetworkBehaviour
     // character select
     [SerializeField] Button ghost_button;
     [SerializeField] Button robber_button;
-    [SerializeField] GameObject ghost_taken_text;
-    [SerializeField] GameObject robber_taken_text;
+    [SerializeField] TextMeshProUGUI ghost_taken_text;
+    [SerializeField] TextMeshProUGUI robber_taken_text;
+
 
     //Count down
     [SerializeField] int countdown;
@@ -78,12 +79,12 @@ public class Spawner : NetworkBehaviour
         if (is_robber)
         {
             robber_button.gameObject.SetActive(false);
-            robber_taken_text.SetActive(true);
+            //robber_taken_text.SetActive(true);
         }
         else
         {
             ghost_button.gameObject.SetActive(false);
-            ghost_taken_text.SetActive(true);
+            //ghost_taken_text.SetActive(true);
         }
     }
     private Vector3 FindSpawnPoint(string spawnpointName)
