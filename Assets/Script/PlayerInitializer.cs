@@ -1,13 +1,11 @@
 using FishNet;
 using FishNet.Connection;
-using FishNet.Managing;
 using FishNet.Object;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class PlayerInitializer : MonoBehaviour
-{ 
-    [SerializeField] GameObject character_select_prefab; 
+{
+    [SerializeField] GameObject character_select_prefab;
 
     private void Start()
     {

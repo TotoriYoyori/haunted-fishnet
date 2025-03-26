@@ -8,16 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DemoLevel.unity
     guid: e72fbaae6054e48489962a514f2bb3f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 75868a5e2c71a4f499c1f8ba5f12c667
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lvl_Tilemap.unity
     guid: c9c3bcc0bf8003c4bb76241d57635f00
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RestartScene.unity
     guid: e83201b97edba7c47b9bd1d7018bdfbb
   - enabled: 1
+    path: Assets/Scenes/PauseTempScene.unity
+    guid: 24c62350b27e0344face0013abc43881
     path: Assets/Tutorial/Choose_Tutorial.unity
     guid: f6227b8f309a9a64491128159b5a81d6
   - enabled: 1
