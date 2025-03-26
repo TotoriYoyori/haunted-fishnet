@@ -16,7 +16,7 @@ public class Player : NetworkBehaviour
     public bool is_special_vision_on;
     public float speed;
     [HideInInspector]
-    public Camera camera;
+    public Camera main_camera;
     public GameObject narrow_dark_filter;
     public GameObject wide_dark_filter;
     public SpriteRenderer sprite;
@@ -49,9 +49,9 @@ public class Player : NetworkBehaviour
         if (base.IsOwner)
         {
             // Set up camera
-            camera = Camera.main;
+            main_camera = Camera.main;
             Debug.Log("Camera_supposed_to_be_assigned");
-            if (camera == null) Debug.Log("Camera_was_not_assigned");
+            if (main_camera == null) Debug.Log("Camera_was_not_assigned");
             Game.Instance.player = this;
 
             SetUpUI();
@@ -61,7 +61,7 @@ public class Player : NetworkBehaviour
                 robber.player = GetComponent<Player>();
                 narrow_dark_filter.SetActive(true);
                 wide_dark_filter.SetActive(true);
-                camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.ROBBER);
+                main_camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.ROBBER);
                 if (IsOwner) GetComponent<FootstepManager>().enabled = false;
             }
             else if (TryGetComponent(out GhostScript ghost))
@@ -69,8 +69,8 @@ public class Player : NetworkBehaviour
                 ghost.player = GetComponent<Player>(); 
                 ghost.default_speed = speed;
                 wide_dark_filter.SetActive(true);
-                camera.GetComponent<CameraBehavior>().robber_filter.GetComponent<Image>().color = ghost.stepvision_color;
-                camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
+                main_camera.GetComponent<CameraBehavior>().robber_filter.GetComponent<Image>().color = ghost.stepvision_color;
+                main_camera.GetComponent<CameraBehavior>().CameraMode(camera_mode.GHOST);
                 if (Game.Instance.item_lottery != null) Game.Instance.item_lottery.ClearLocations();
             }
 
@@ -87,7 +87,7 @@ public class Player : NetworkBehaviour
 
     private void Update()
     {
-        if (camera != null && this.gameObject.activeSelf) camera.GetComponent<CameraBehavior>().to_follow = transform.position;
+        if (main_camera != null && this.gameObject.activeSelf) main_camera.GetComponent<CameraBehavior>().to_follow = transform.position;
     }
 
     private void FixedUpdate()

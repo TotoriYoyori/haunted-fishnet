@@ -60,6 +60,37 @@ public class ItemPickUp : MonoBehaviour
         }
     }
 
+    public void StartPicking(bool picking)
+    {
+        if (closest_item == null) return;
+
+        if (closest_item.tag == "Vent")
+        {
+            closest_item.GetComponent<Vent>().OpenVent(picking);
+            // use went in some way
+            
+
+            return;
+        }
+
+        Debug.Log("StartedPicking");
+        picking_progress = 1;
+        SelectionAura.GetComponent<Image>().fillAmount = 1f;
+        is_picking = picking;
+    }
+
+    void LockOnItem(GameObject item)
+    {
+        if (item == null) SelectionAura.SetActive(false);
+        else
+        {
+            closest_item = item;
+            SelectionAura.SetActive(true);
+            SelectionAura.transform.position = closest_item.transform.position;
+        }
+
+    }
+
     void FinishPicking()
     {
         // Play sound effect
@@ -99,15 +130,19 @@ public class ItemPickUp : MonoBehaviour
             is_picking = false;
         }
     }
-    
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Vents
         if (collision.gameObject.tag == "Vent")
         {
-            LockOnItem(collision.gameObject);
+            // Experimental code where you press Q and E to use vents
+            collision.GetComponent<Vent>().OpenVent(true);
         }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         // Picking Items
         if (collision.gameObject.tag != "Item" || Game.Instance.robber.Value.GetComponent<RobberScript>().flashlight.activeSelf != true) return;
 
@@ -121,36 +156,7 @@ public class ItemPickUp : MonoBehaviour
         }
     }
 
-    public void StartPicking(bool picking)
-    {
-        if (closest_item == null) return;
-
-        if (closest_item.tag == "Vent")
-        {
-            closest_item.GetComponent<Vent>().OpenVent(picking);
-            // use went in some way
-
-
-            return;
-        }
-
-        Debug.Log("StartedPicking");
-        picking_progress = 1;
-        SelectionAura.GetComponent<Image>().fillAmount = 1f;
-        is_picking = picking;
-    }
-
-    void LockOnItem(GameObject item)
-    {
-        if (item == null) SelectionAura.SetActive(false);
-        else
-        {
-            closest_item = item;
-            SelectionAura.SetActive(true);
-            SelectionAura.transform.position = closest_item.transform.position;
-        }
-
-    }
+   
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -160,6 +166,11 @@ public class ItemPickUp : MonoBehaviour
         {
             LockOnItem(null);
             closest_item = null;
+        }
+        if (collision.gameObject.tag == "Vent")
+        {
+            // Experimental code where you press Q and E to use vents
+            collision.GetComponent<Vent>().OpenVent(false);
         }
     }
 }

@@ -850,9 +850,9 @@ PrefabInstance:
       propertyPath: m_text
       value: "Avoiding the Ghost\n\n\r\nWatch out for the Ghost, who will be trying
         to catch you as you explore the mansion!\n\r\nThe Ghost is invisible, but
-        you can see them through your Night Vision.\n\r\nYou can still sense when
-        the Ghost is close, if you pay close attention.\n\r\nThe Ghost can see the
-        both the light from your Lantern and footprints you leave behind while moving.\r"
+        you can see them through your Night Vision.\n\r\nYou can also sense when
+        the Ghost is close, if you pay close attention.\n\r\nThe Ghost can see both
+        the light from your Lantern and footprints you leave behind while moving.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSize
@@ -2047,6 +2047,7 @@ GameObject:
   - component: {fileID: 1112760427}
   - component: {fileID: 1112760426}
   - component: {fileID: 1112760429}
+  - component: {fileID: 1112760430}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2173,6 +2174,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1112760430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112760425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53ac96a2f21c3f428fbad781d67f00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input_field: {fileID: 0}
+  server_button_text: {fileID: 0}
+  server_text_color: {r: 0, g: 0, b: 0, a: 0}
+  tutorial_window: {fileID: 0}
+  credits_window: {fileID: 0}
 --- !u!1 &1214774441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,7 +3426,7 @@ PrefabInstance:
         and their location will be revealed to you when they use their Lantern.\n\r\nThe
         Robber cannot see you unless you Dash or they use their Night Vision, but
         they can feel when you get close.\n\r\nVents, which are scattered around
-        the mansion lets them quickly get away from you, but they can only travel
+        the mansion, lets them quickly get away from you but they can only travel
         to each vent once. Use that to your advantage!\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
@@ -3673,10 +3691,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_text
-      value: "Credits\n\n\r\nElisabetta Maria Poli - Character Design, Animation,
-        UI Art\n\r\nThuy Dang Ngoc Phuong - Environmental Art\n\r\nJoel Ow\xE9n -
-        Level Design, Tutorial Design, QA\n\r\nQuan Nguyen - Project Management,
-        Sound Design, Technical Support\n\r\nIgors Sorogovecs - Lead Design, Programming"
+      value: "Credits\n\n\r\nIgors Sorogovecs - Lead Design, Programming\n\nRajat
+        Upadhayaya - Programming\n\nFranciszek Ryt - Programming\n\nElisabetta Maria
+        Poli - Character Design, Animation, UI Art\n\nTuerxun Ailikamu - UI Art\n\r\nThuy
+        Dang Ngoc Phuong - Environmental Art\n\r\nJoel Ow\xE9n - Level Design, Tutorial
+        Design, QA\n\r\nQuan Nguyen - Project Management, Sound Design, Technical
+        Support"
       objectReference: {fileID: 0}
     - target: {fileID: 1320460311782135910, guid: ddf1d33731ea2c941ab3af76b5060fb3, type: 3}
       propertyPath: m_fontSize
